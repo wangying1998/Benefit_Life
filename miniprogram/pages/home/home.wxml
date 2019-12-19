@@ -1,0 +1,4 @@
+<!--miniprogram/pages/home/home.wxml-->
+<view>
+    <button bindtap="getTestList">获取数据</button>
+</view>
