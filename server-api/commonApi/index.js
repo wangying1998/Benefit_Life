@@ -295,11 +295,13 @@ function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + �
 	let result = {};
 	// 宜
 	db.collection('physical_should').get().then(res=>{
-		result.should = res.data[0];
+		let index = Math.random()*res.data.length;
+		result.should = res.data[index];
 	});
 	// 忌
 	db.collection('physical_avoid').get().then(res=>{
-		result.avoid = res.data[0];
+		let index = Math.random()*res.data.length;
+		result.avoid = res.data[index];
 	});
 	// 三餐
 	// 起居
@@ -322,11 +324,15 @@ function shouldOrAvoid(){				// 每日宜忌详情
 	let result = {};
 	// 宜
 	db.collection('physical_should').get().then(res=>{
-		result.should = res.data[0];
+		let index = Math.floor(Math.random()*res.data.length);
+		let idx = index<0 ? 0 : index;
+		result.should = res.data[idx];
 	});
 	// 忌
 	db.collection('physical_avoid').get().then(res=>{
-		result.avoid = res.data[0];
+		let index = Math.floor(Math.random()*res.data.length);
+		let idx = index<0 ? 0 : index;
+		result.avoid = res.data[idx];
 	});
 }
 
