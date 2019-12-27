@@ -11,9 +11,16 @@ const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+	let { OPENID, APPID, UNIONID } = cloud.getWXContext()
+	console.log(111,OPENID)
+
 	let url = event.url,
 		data = event.data;
 	switch (url){
+		
+	// 用户注册/登录
+		case '/login':
+			return userLogin();
 	// 体质测试模块
 		case '/test/list':				// 获取体质测试试题列表接口
 			return getTestList();
@@ -26,12 +33,28 @@ exports.main = async (event, context) => {
 			return returnHomeData();
 		case '/home/article_list':			// 首页 时令好文列表
 			return returnArticleList();
-		case '/should_avoid':				// 每日宜忌详情
+	// 个人档案
+		case '/profile':
+			return returnProfile();
+	// 每日宜忌详情
+		case '/should_avoid':
 			return shouldOrAvoid();
 
 		default:
 			break;
 	}
+}
+
+function userLogin(){		// 用户注册/登录
+	db.collection('user').add({
+		data: {
+			nickName: '没错就是我了',
+			avatar: 'https://wx4.sinaimg.cn/mw690/006c4YZzgy1g2wewc760rj30u00u0aho.jpg'
+		}
+	}).then((res)=>{
+		console.log(res);
+		return res;
+	})
 }
 
 function getTestList(){  // 获取体质测试试题列表接口
@@ -293,29 +316,41 @@ function returnSlides(){			// 首页轮播图
 
 function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 	let result = {};
-	// 宜
-	db.collection('physical_should').get().then(res=>{
-		let index = Math.random()*res.data.length;
-		result.should = res.data[index];
-	});
-	// 忌
-	db.collection('physical_avoid').get().then(res=>{
-		let index = Math.random()*res.data.length;
-		result.avoid = res.data[index];
-	});
-	// 三餐
-	// 起居
-	// let a = {
-	// 	imgUrl: '',
-	// 	name: '',
-	// 	desc: '',
-	// 	process: [
-	// 		'1. zenmezuo zfdsaifyhedfhyiedfy',
-	// 		'2. asiudyhweruwofj;rerererefdosk'
-	// 	]
-	// }
+	Promise.all([
+		// 个人档案
 
-	console.log(result);
+		// 宜
+		db.collection('physical_should').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			result.should = res.data[index];
+		}),
+		// 忌
+		db.collection('physical_avoid').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			result.avoid = res.data[index];
+		}),
+		// 三餐
+		db.collection('meals_data').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			result.meals = res.data[index];
+		}),
+		// 起居
+		db.collection('living_data').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			result.living = res.data[index];
+		})
+	]).then(()=>{
+		console.log(123,result);
+		return result;
+	})
+}
+
+function returnProfile(){					// 个人档案
+	let result = {};
+	result = {
+		avatar: "",
+		physical: "平和质"
+	}
 
 	return result;
 }
@@ -337,5 +372,5 @@ function shouldOrAvoid(){				// 每日宜忌详情
 }
 
 function returnArticleList(){			// 首页 时令好文列表
-
+	
 }

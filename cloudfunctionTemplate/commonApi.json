@@ -260,7 +260,13 @@
   {
     "name": "首页 每日宜忌+档案体质+三餐+起居",
     "value": {
-      "url": "/home/should_avoid"
+      "url": "/home/homedata"
+    }
+  },
+  {
+    "name": "登录/注册",
+    "value": {
+      "url": "/login"
     }
   }
 ]
