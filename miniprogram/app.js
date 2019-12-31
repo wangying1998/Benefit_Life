@@ -1,6 +1,50 @@
 //app.js
+import {
+  handleLogin
+} from './util/login';
+import {
+  getSessionData,
+  setSessionData
+} from './util/session';
 App({
   onLaunch: function () {
+    wx.getSystemInfo({
+      success: e => {
+        let custom = wx.getMenuButtonBoundingClientRect();
+        // this.globalData.StatusBar = e.statusBarHeight;
+        // this.globalData.Custom = custom;
+        // this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      }
+    });
+    !getSessionData() ? setSessionData({}) : '';
+
+    if (getSessionData().openId) {
+      handleLogin().then(res => {
+        // wx.switchTab({
+        //   url: '/pages/homeNew/homeNew',
+        // })
+      })
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            wx.getUserInfo({
+              success: res => {
+                this.globalData.userInfo = res.userInfo
+                if (this.userInfoReadyCallback) {
+                  this.userInfoReadyCallback(res)
+                }
+              }
+            })
+          }
+        }
+      })
+    }
+    else{
+      handleLogin().then(res => {
+        // console.log(res)
+      })
+    }
+    
     
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -16,6 +60,9 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      userid: '',
+      userInfo: null
+    }
   }
 })

@@ -12,15 +12,14 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
 	let { OPENID, APPID, UNIONID } = cloud.getWXContext()
-	console.log(111,OPENID)
 
 	let url = event.url,
 		data = event.data;
+	console.log('-------------',url, data)
 	switch (url){
-		
 	// 用户注册/登录
 		case '/login':
-			return userLogin();
+			return userLogin(OPENID);
 	// 体质测试模块
 		case '/test/list':				// 获取体质测试试题列表接口
 			return getTestList();
@@ -45,96 +44,105 @@ exports.main = async (event, context) => {
 	}
 }
 
-function userLogin(){		// 用户注册/登录
-	db.collection('user').add({
-		data: {
-			nickName: '没错就是我了',
-			avatar: 'https://wx4.sinaimg.cn/mw690/006c4YZzgy1g2wewc760rj30u00u0aho.jpg'
-		}
-	}).then((res)=>{
-		console.log(res);
-		return res;
-	})
+async function userLogin(data){		// 用户注册/登录
+	let db_data = await db.collection('user').where({
+		openId: data
+	}).get();
+	if(db_data.data.length==0){
+		let result = {};
+		const add = await db.collection('user').add({
+			data: {
+				nickName: '没错就是我了',
+				avatar: 'https://wx4.sinaimg.cn/mw690/006c4YZzgy1g2wewc760rj30u00u0aho.jpg',
+				openId: data
+			}
+		});
+
+		let id = add._id;
+		result = await db.collection('user').doc(id).get();
+		result.openId = data;
+		return result;
+	}else{
+		return db_data;
+	}
 }
 
-function getTestList(){  // 获取体质测试试题列表接口
+async function getTestList(){  // 获取体质测试试题列表接口
 	return db.collection('physical_test').get();
 }
 
-function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别及特征
-	// let data = {
-	// 	"answer": [
-	// 		{"id": 1, "score": 3},
-	// 		{"id": 2, "score": 3},
-	// 		{"id": 3, "score": 2},
-	// 		{"id": 4, "score": 3},
-	// 		{"id": 5, "score": 3},
-	// 		{"id": 6, "score": 3},
-	// 		{"id": 7, "score": 3},
-	// 		{"id": 8, "score": 3},
+async function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别及特征
+	// data = [
+	// 	{id: 1, score: 3},
+	// 	{id: 2, score: 3},
+	// 	{id: 3, score: 2},
+	// 	{id: 4, score: 3},
+	// 	{id: 5, score: 3},
+	// 	{id: 6, score: 3},
+	// 	{id: 7, score: 3},
+	// 	{id: 8, score: 3},
 
-	// 		{"id": 10, "score": 3},
-	// 		{"id": 11, "score": 3},
-	// 		{"id": 12, "score": 3},
-	// 		{"id": 13, "score": 2},
-	// 		{"id": 14, "score": 3},
-	// 		{"id": 16, "score": 3},
+	// 	{id: 10, score: 3},
+	// 	{id: 11, score: 3},
+	// 	{id: 12, score: 3},
+	// 	{id: 13, score: 2},
+	// 	{id: 14, score: 3},
+	// 	{id: 16, score: 3},
 
-	// 		{"id": 17, "score": 3},
-	// 		{"id": 18, "score": 3},
-	// 		{"id": 19, "score": 3},
-	// 		{"id": 20, "score": 2},
-	// 		{"id": 22, "score": 3},
-	// 		{"id": 23, "score": 3},
+	// 	{id: 17, score: 3},
+	// 	{id: 18, score: 3},
+	// 	{id: 19, score: 3},
+	// 	{id: 20, score: 2},
+	// 	{id: 22, score: 3},
+	// 	{id: 23, score: 3},
 
-	// 		{"id": 24, "score": 3},
-	// 		{"id": 25, "score": 3},
-	// 		{"id": 26, "score": 4},
-	// 		{"id": 27, "score": 3},
-	// 		{"id": 28, "score": 2},
-	// 		{"id": 29, "score": 3},
-	// 		{"id": 30, "score": 3},
-	// 		{"id": 31, "score": 3},
+	// 	{id: 24, score: 3},
+	// 	{id: 25, score: 3},
+	// 	{id: 26, score: 4},
+	// 	{id: 27, score: 3},
+	// 	{id: 28, score: 2},
+	// 	{id: 29, score: 3},
+	// 	{id: 30, score: 3},
+	// 	{id: 31, score: 3},
 
-	// 		{"id": 32, "score": 3},
-	// 		{"id": 33, "score": 3},
-	// 		{"id": 34, "score": 3},
-	// 		{"id": 35, "score": 4},
-	// 		{"id": 36, "score": 2},
-	// 		{"id": 37, "score": 3},
-	// 		{"id": 38, "score": 3},
-	// 		{"id": 39, "score": 2},
+	// 	{id: 32, score: 3},
+	// 	{id: 33, score: 3},
+	// 	{id: 34, score: 3},
+	// 	{id: 35, score: 4},
+	// 	{id: 36, score: 2},
+	// 	{id: 37, score: 3},
+	// 	{id: 38, score: 3},
+	// 	{id: 39, score: 2},
 
-	// 		{"id": 40, "score": 4},
-	// 		{"id": 41, "score": 2},
-	// 		{"id": 42, "score": 3},
-	// 		{"id": 43, "score": 3},
-	// 		{"id": 44, "score": 3},
-	// 		{"id": 45, "score": 3},
+	// 	{id: 40, score: 4},
+	// 	{id: 41, score: 2},
+	// 	{id: 42, score: 3},
+	// 	{id: 43, score: 3},
+	// 	{id: 44, score: 3},
+	// 	{id: 45, score: 3},
 
-	// 		{"id": 46, "score": 2},
-	// 		{"id": 47, "score": 2},
-	// 		{"id": 48, "score": 3},
-	// 		{"id": 49, "score": 2},
-	// 		{"id": 50, "score": 3},
-	// 		{"id": 52, "score": 2},
+	// 	{id: 46, score: 2},
+	// 	{id: 47, score: 2},
+	// 	{id: 48, score: 3},
+	// 	{id: 49, score: 2},
+	// 	{id: 50, score: 3},
+	// 	{id: 52, score: 2},
 
-	// 		{"id": 54, "score": 3},
-	// 		{"id": 55, "score": 3},
-	// 		{"id": 56, "score": 3},
-	// 		{"id": 57, "score": 2},
-	// 		{"id": 58, "score": 3},
-	// 		{"id": 59, "score": 2},
+	// 	{id: 54, score: 3},
+	// 	{id: 55, score: 3},
+	// 	{id: 56, score: 3},
+	// 	{id: 57, score: 2},
+	// 	{id: 58, score: 3},
+	// 	{id: 59, score: 2},
 
-	// 		{"id": 60, "score": 2},
-	// 		{"id": 61, "score": 3},
-	// 		{"id": 62, "score": 3},
-	// 		{"id": 63, "score": 3},
-	// 		{"id": 64, "score": 2},
-	// 		{"id": 65, "score": 2},
-	// 		{"id": 66, "score": 3}
-	// 	]
-	// };
+	// 	{id: 60, score: 2},
+	// 	{id: 61, score: 3},
+	// 	{id: 62, score: 3},
+	// 	{id: 63, score: 3},
+	// 	{id: 64, score: 2},
+	// 	{id: 65, score: 2},
+	// 	{id: 66, score: 3}
+	// ];
 
 	let origin = {  // 原始分
 			type_a: 0,    //  平和质
@@ -166,11 +174,11 @@ function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别
 	};
 
 	// 将66道题目补全
-	data.push({ "id": 9,  "score": data[1].score });
-	data.push({ "id": 15, "score": data[2].score });
-	data.push({ "id": 53, "score": data[3].score });
-	data.push({ "id": 51, "score": data[7].score });
-	data.push({ "id": 21, "score": data[13].score });
+	data.push({ id: 9,  score: data[1].score });
+	data.push({ id: 15, score: data[2].score });
+	data.push({ id: 53, score: data[3].score });
+	data.push({ id: 51, score: data[7].score });
+	data.push({ id: 21, score: data[13].score });
 
 	data.forEach(item => {
 		switch(item.id){ 
@@ -301,7 +309,7 @@ function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别
 		}
 	}
 
-	db.collection('physical_feature').where({
+	await db.collection('physical_feature').where({
 		name: result.main[0]
 	}).get().then(res=>{
 		result.main_feature = res.data;
@@ -310,15 +318,14 @@ function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别
 	return result;
 }
 
-function returnSlides(){			// 首页轮播图
+async function returnSlides(){			// 首页轮播图
 	// return db.collection('slide-picture').get();
 }
 
-function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
+async function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 	let result = {};
-	Promise.all([
 		// 个人档案
-
+	await Promise.all([
 		// 宜
 		db.collection('physical_should').get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
@@ -339,13 +346,12 @@ function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + �
 			let index = Math.floor(Math.random()*res.data.length);
 			result.living = res.data[index];
 		})
-	]).then(()=>{
-		console.log(123,result);
-		return result;
-	})
+	]);
+
+	return result;
 }
 
-function returnProfile(){					// 个人档案
+async function returnProfile(){					// 个人档案
 	let result = {};
 	result = {
 		avatar: "",
@@ -355,22 +361,26 @@ function returnProfile(){					// 个人档案
 	return result;
 }
 
-function shouldOrAvoid(){				// 每日宜忌详情
+async function shouldOrAvoid(){				// 每日宜忌详情
 	let result = {};
 	// 宜
-	db.collection('physical_should').get().then(res=>{
-		let index = Math.floor(Math.random()*res.data.length);
-		let idx = index<0 ? 0 : index;
-		result.should = res.data[idx];
-	});
-	// 忌
-	db.collection('physical_avoid').get().then(res=>{
-		let index = Math.floor(Math.random()*res.data.length);
-		let idx = index<0 ? 0 : index;
-		result.avoid = res.data[idx];
-	});
+	await Promise.all([
+		db.collection('physical_should').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			let idx = index<0 ? 0 : index;
+			result.should = res.data[idx];
+		}),
+		// 忌
+		db.collection('physical_avoid').get().then(res=>{
+			let index = Math.floor(Math.random()*res.data.length);
+			let idx = index<0 ? 0 : index;
+			result.avoid = res.data[idx];
+		})
+	]);
+
+	return result;
 }
 
-function returnArticleList(){			// 首页 时令好文列表
+async function returnArticleList(){			// 首页 时令好文列表
 	
 }
