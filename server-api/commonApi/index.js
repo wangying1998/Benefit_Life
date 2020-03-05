@@ -31,6 +31,8 @@ exports.main = async (event, context) => {
 	// 首页接口
 		case '/home':			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 			return returnHomeData(data);
+		case '/articles':
+			return getAllArticles(data);
 	// 个人档案
 		case '/home/physicalinfo':
 			return returnPhysicalInfo(data);
@@ -303,9 +305,9 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 	return result;
 }
 
-// async function returnSlides(){			// 首页轮播图
-// 	return db.collection('slides_list').get();
-// }
+async function getAllArticles(){			// 获取所有推文
+	return await db.collection('articles').get();
+}
 
 async function returnHomeData(data){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 	let result = {};

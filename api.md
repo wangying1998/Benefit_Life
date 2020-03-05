@@ -38,6 +38,12 @@
     param:
         无
 
+【获取所有推文】
+    url:
+        /articles
+    param:
+        无
+
 【个人档案 = 体质详情】
     url:
         /home/physicalinfo
