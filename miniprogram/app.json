@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/home/home"
+    "pages/tabs/home/home",
+    "pages/tabs/squre/square",
+    "pages/tabs/recuperate/recuperate",
+    "pages/tabs/my/my"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -8,6 +11,36 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "益生活",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabs/home/home",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/tabs/squre/square",
+        "text": "广场",
+        "iconPath": "/images/square.png",
+        "selectedIconPath": "/images/square-active.png"
+      },
+      {
+        "pagePath": "pages/tabs/recuperate/recuperate",
+        "text": "调养",
+        "iconPath": "/images/health.png",
+        "selectedIconPath": "/images/health-active.png"
+      },
+      {
+        "pagePath": "pages/tabs/my/my",
+        "text": "我的",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my-active.png"
+      }
+    ],
+    "color": "#99daa2",
+    "selectedColor": "#299939"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

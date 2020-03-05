@@ -1,0 +1,168 @@
+-----------------------------------------此篇内容中id均省略--------------------------------
+"user"
+{
+    "nickName": "测试",
+    "avatar": "",
+    "openId": "11111111111111111111111",
+    "physical": "平和质",
+    "both": "特禀质,血瘀质",
+    "create_time": ""
+}
+
+"physical_test"
+{
+    "question": "",
+    "create_time": ""
+}
+
+
+"physical_feature"
+{
+    "name": "平和质",
+    "means": {
+        "question": "",
+        "answer": [
+            "1",
+            "2"
+        ]
+    },
+    "bother": {
+        "question": "",
+        "answer": [
+            "1",
+            "2"
+        ]
+    },
+    "reason": {
+        "question": "",
+        "answer": [
+            "1",
+            "2"
+        ]
+    },
+    "alert": {
+        "question": "",
+        "answer": [
+            "1",
+            "2"
+        ]
+    },
+    "improve": {
+        "question": "",
+        "answer": [
+            "1",
+            "2"
+        ]
+    },
+    "create_time": ""
+}
+
+"slide_list"
+{
+    "imgUrl": "",
+    "class": ""
+}
+
+"suggest"
+{
+    "physical": "平和质",
+    "class": "should(1) or avoid(0)",
+    "title": "",
+    "content": "",
+    "create_time": ""
+}
+
+"food"
+{
+    "name": "苹果",
+    "img": "食材图片",
+    "class": "水果   1/食材  2",
+    "physical": "平和质",
+    "desc": "产地啊什么的简介",
+    "suitable": "适合physical的人吃，一段文字",
+    "taboo": "食材禁忌内容",
+    "efficacy": "食材功效",
+    "details": "食材详情",
+    "create_time": ""
+}
+
+"living"
+{
+    "title": "",
+    "img": "",
+    "physical": "平和质",
+    "content": "富文本内容",
+    "steps": [
+        "如果有动作需求，则有步骤显示",
+        "2"
+    ],
+    "create_time": ""
+}
+
+"articles"
+{
+    "title": "",
+    "author": "",
+    "content": "富文本内容",
+    "likeCount": 23,
+    "lookCount": 123,
+    "create_time": ""
+}
+
+"user_activity"
+{
+    "userId": "用户id",
+    "content": "富文本",
+    "imgs": [
+        "",
+        ""
+    ],
+    "likeCount": 12,
+    "create_time": ""
+}
+
+"activity_comment"
+{
+    "act_id": "",
+    "userId": "",
+    "content": "",
+    "create_time": ""    
+}
+
+"articles_comment"
+{
+    "article_id": "",
+    "userId": "",
+    "content": "",
+    "create_time": ""
+}
+
+"message_log"
+{
+    "act_id": "",
+    "userId": "",
+    "content": "",
+    "create_time": ""
+}
+
+"disease"
+{
+    "name": "",
+    "img": "",
+    "desc": "简述",
+    "reason": "形成原因",
+    "doctor": "何时就医",
+    "suggest": "生活建议",
+    "class": "呼吸(1),常见问题(2),头面五官(3),女性保养(4),小儿（1~3岁）(5),救急(6)"
+}
+
+"user_like"
+{
+    "userId": "用户id",
+    "class": "表示喜欢的是文章（0）还是动态（1）",
+    "likeId": "喜欢的动态/文章的id",
+    "create_time": ""
+}
+
+"feedback"
+{    }

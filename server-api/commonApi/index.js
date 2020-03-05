@@ -15,135 +15,113 @@ exports.main = async (event, context) => {
 
 	let url = event.url,
 		data = event.data;
+
 	console.log('-------------',url, data)
 	switch (url){
 	// 用户注册/登录
 		case '/login':
 			return userLogin(OPENID);
+		case '/update_baseinfo':
+			return updateBaseinfo(data);
 	// 体质测试模块
-		case '/test/list':				// 获取体质测试试题列表接口
-			return getTestList();
-		case '/test/answer':			// 接收答案-计算分数-返回体质类别及特征
+		case '/physical/test':				// 获取体质测试试题接口
+			return getTestList(data);
+		case '/physical/answer':			// 接收答案-计算分数-返回体质类别及特征
 			return getPhysicalType(data);
 	// 首页接口
-		case '/home/slidepic':			// 首页轮播图
-			return returnSlides();
-		case '/home/homedata':			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
-			return returnHomeData();
-		case '/home/article_list':			// 首页 时令好文列表
-			return returnArticleList();
+		case '/home':			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
+			return returnHomeData(data);
 	// 个人档案
-		case '/profile':
-			return returnProfile();
+		case '/home/physicalinfo':
+			return returnPhysicalInfo(data);
 	// 每日宜忌详情
-		case '/should_avoid':
-			return shouldOrAvoid();
+		case '/home/should_avoid':
+			return shouldOrAvoid(data);
+
+	// 查询动态列表
+	case '/square/activity':
+		return returnActivity(data);
+	case '/square/user/activity':
+		return returnMyDynamicList(data);
+	// 发布动态
+		case '/square/activity/add':
+			return addDynamic(data);
+	// 删除动态
+		case '/square/activity/delete':
+			return deleteDynamic(data);
+	// 喜欢推文/动态
+		case '/like':
+			return likeSomthing(data);
+
+	// 调养
+		case '/disease/list':
+			return returnRecuperate(data);
+	// 调养详情
+		case '/disease/detail':
+			return returnRecuperateDetail(data);
+	// 饮食 & 饮食详情
+		case '/food/detail':
+			return returnFoodList(data);
+
+	// 我的
+		case '/my':
+			return returnUserInfo(data);
+	// 我喜欢的动态/推文
+		case '/my/like':
+			return returnLikeList(data);
+	// 反馈
+		case '/feedback':
+			return feedback(data);
 
 		default:
 			break;
 	}
 }
 
-async function userLogin(data){		// 用户注册/登录
+async function userLogin(openid){		// 用户注册/登录
 	let db_data = await db.collection('user').where({
-		openId: data
+		openId: openid
 	}).get();
-	if(db_data.data.length==0){
+
+	if(db_data.data.length == 0){
 		let result = {};
-		const add = await db.collection('user').add({
+		const user = await db.collection('user').add({		// 完成用户数据初始化
 			data: {
-				nickName: '没错就是我了',
-				avatar: 'https://wx4.sinaimg.cn/mw690/006c4YZzgy1g2wewc760rj30u00u0aho.jpg',
-				openId: data
+				nickName: "",
+				avatar: "",
+				openId: openid,
+				physical: "",
+				both: "",
+				create_time: new Date(),
+				update_time: new Date()
 			}
 		});
 
-		let id = add._id;
+		let id = user._id;
 		result = await db.collection('user').doc(id).get();
-		result.openId = data;
+		result.openId = openid;
+		
 		return result;
 	}else{
 		return db_data;
 	}
 }
 
-async function getTestList(){  // 获取体质测试试题列表接口
-	return db.collection('physical_test').get();
+async function updateBaseinfo(data){		// 更新用户头像昵称等信息
+	return await db.collection('user').doc(data.userId).update({
+		data: {
+			nickName: data.nickName,
+			avatar: data.avatar,
+			update_time: new Date()
+		}
+	});
 }
 
-async function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别及特征
-	// data = [
-	// 	{id: 1, score: 3},
-	// 	{id: 2, score: 3},
-	// 	{id: 3, score: 2},
-	// 	{id: 4, score: 3},
-	// 	{id: 5, score: 3},
-	// 	{id: 6, score: 3},
-	// 	{id: 7, score: 3},
-	// 	{id: 8, score: 3},
+async function getTestList(data){  // 获取体质测试试题接口
+	return await db.collection('physical_test').get();
+}
 
-	// 	{id: 10, score: 3},
-	// 	{id: 11, score: 3},
-	// 	{id: 12, score: 3},
-	// 	{id: 13, score: 2},
-	// 	{id: 14, score: 3},
-	// 	{id: 16, score: 3},
-
-	// 	{id: 17, score: 3},
-	// 	{id: 18, score: 3},
-	// 	{id: 19, score: 3},
-	// 	{id: 20, score: 2},
-	// 	{id: 22, score: 3},
-	// 	{id: 23, score: 3},
-
-	// 	{id: 24, score: 3},
-	// 	{id: 25, score: 3},
-	// 	{id: 26, score: 4},
-	// 	{id: 27, score: 3},
-	// 	{id: 28, score: 2},
-	// 	{id: 29, score: 3},
-	// 	{id: 30, score: 3},
-	// 	{id: 31, score: 3},
-
-	// 	{id: 32, score: 3},
-	// 	{id: 33, score: 3},
-	// 	{id: 34, score: 3},
-	// 	{id: 35, score: 4},
-	// 	{id: 36, score: 2},
-	// 	{id: 37, score: 3},
-	// 	{id: 38, score: 3},
-	// 	{id: 39, score: 2},
-
-	// 	{id: 40, score: 4},
-	// 	{id: 41, score: 2},
-	// 	{id: 42, score: 3},
-	// 	{id: 43, score: 3},
-	// 	{id: 44, score: 3},
-	// 	{id: 45, score: 3},
-
-	// 	{id: 46, score: 2},
-	// 	{id: 47, score: 2},
-	// 	{id: 48, score: 3},
-	// 	{id: 49, score: 2},
-	// 	{id: 50, score: 3},
-	// 	{id: 52, score: 2},
-
-	// 	{id: 54, score: 3},
-	// 	{id: 55, score: 3},
-	// 	{id: 56, score: 3},
-	// 	{id: 57, score: 2},
-	// 	{id: 58, score: 3},
-	// 	{id: 59, score: 2},
-
-	// 	{id: 60, score: 2},
-	// 	{id: 61, score: 3},
-	// 	{id: 62, score: 3},
-	// 	{id: 63, score: 3},
-	// 	{id: 64, score: 2},
-	// 	{id: 65, score: 2},
-	// 	{id: 66, score: 3}
-	// ];
-
+async function getPhysicalType(data){  // 接收答案-计算分数-返回体质类别及特征  同时更新用户体质类别
 	let origin = {  // 原始分
 			type_a: 0,    //  平和质
 			type_b: 0,    //  气虚质
@@ -174,13 +152,13 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 	};
 
 	// 将66道题目补全
-	data.push({ id: 9,  score: data[1].score });
-	data.push({ id: 15, score: data[2].score });
-	data.push({ id: 53, score: data[3].score });
-	data.push({ id: 51, score: data[7].score });
-	data.push({ id: 21, score: data[13].score });
+	data.answer.push({ id: 9,  score: data.answer[1].score });
+	data.answer.push({ id: 15, score: data.answer[2].score });
+	data.answer.push({ id: 53, score: data.answer[3].score });
+	data.answer.push({ id: 51, score: data.answer[7].score });
+	data.answer.push({ id: 21, score: data.answer[13].score });
 
-	data.forEach(item => {
+	data.answer.forEach(item => {
 		switch(item.id){ 
 			case 2: 
 			case 3: 
@@ -309,6 +287,13 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 		}
 	}
 
+	await db.collection('user').doc(data.userId).update({		// 更新用户体质
+		data: {
+			physical: result.main[0],
+			both: result.both.join(',')
+		}
+	});
+
 	await db.collection('physical_feature').where({
 		name: result.main[0]
 	}).get().then(res=>{
@@ -318,69 +303,187 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 	return result;
 }
 
-async function returnSlides(){			// 首页轮播图
-	// return db.collection('slide-picture').get();
-}
+// async function returnSlides(){			// 首页轮播图
+// 	return db.collection('slides_list').get();
+// }
 
-async function returnHomeData(){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
+async function returnHomeData(data){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 	let result = {};
+	let GLOBAL_USER = await db.collection('user').where({
+		_id: data.userId
+	}).get();
 		// 个人档案
 	await Promise.all([
+		// 轮播图
+		db.collection('slides_list').get().then(res=>{
+			result.slideList = res.data;
+		}),
 		// 宜
-		db.collection('physical_should').get().then(res=>{
+		db.collection('suggest').where({
+			class: 1,
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
 			result.should = res.data[index];
 		}),
 		// 忌
-		db.collection('physical_avoid').get().then(res=>{
+		db.collection('suggest').where({
+			class: 0,
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
 			result.avoid = res.data[index];
 		}),
-		// 三餐
-		db.collection('meals_data').get().then(res=>{
+		// 水果
+		db.collection('food').where({
+			class: 1,
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
-			result.meals = res.data[index];
+			result.meals = res.data[index, res.data];
 		}),
 		// 起居
-		db.collection('living_data').get().then(res=>{
+		db.collection('living').where({
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
 			result.living = res.data[index];
+		}),
+		db.collection('articles').get().then(res=>{
+			res.articleList = res.data.slice(0,5);
 		})
 	]);
 
 	return result;
 }
 
-async function returnProfile(){					// 个人档案
-	let result = {};
-	result = {
-		avatar: "",
-		physical: "平和质"
-	}
+async function returnPhysicalInfo(data){
+	let GLOBAL_USER = await db.collection('user').where({
+		_id: data.userId
+	}).get();
+
+	// 个人体质档案 = 体质详情
+	let result = db.collection('physical_feature').where({
+		name: GLOBAL_USER.data[0].physical
+	}).get();
 
 	return result;
 }
 
-async function shouldOrAvoid(){				// 每日宜忌详情
+async function shouldOrAvoid(data){				// 每日宜忌详情
 	let result = {};
+	let GLOBAL_USER = await db.collection('user').where({
+		_id: data.userId
+	}).get();
 	// 宜
 	await Promise.all([
-		db.collection('physical_should').get().then(res=>{
+		// 宜
+		db.collection('suggest').where({
+			class: 1,
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
-			let idx = index<0 ? 0 : index;
-			result.should = res.data[idx];
+			result.should = res.data[index];
 		}),
 		// 忌
-		db.collection('physical_avoid').get().then(res=>{
+		db.collection('suggest').where({
+			class: 0,
+			physical: GLOBAL_USER.data[0].physical
+		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
-			let idx = index<0 ? 0 : index;
-			result.avoid = res.data[idx];
-		})
+			result.avoid = res.data[index];
+		}),
 	]);
 
 	return result;
 }
 
-async function returnArticleList(){			// 首页 时令好文列表
-	
+// async function returnArticleList(data){			// 首页 时令好文列表
+// 	return await db.collection('article_list').get();
+// }
+
+async function returnMyDynamicList(data){		// 查询动态列表
+	// 根据用户id进行筛选	-- 自己发表的动态
+	return await db.collection('user_activity').where({
+		userId: data.userId
+	}).get();
+}
+async function returnActivity(data){
+	let result = {};
+	if(data.id){
+		result = await db.collection('user_activity').where({
+			_id: data.id
+		}).get();
+	}else{		// 所有动态
+		result = await db.collection('user_activity').get();
+	}
+	return result;
+}
+
+async function addDynamic(data){		// 发布动态
+	return await db.collection('user_activity').add({
+		data: {
+			userId: data.userId,
+			content: data.content,
+			imgs: data.imgs || '图片',
+			likeCount: 0,
+			create_time: new Date()
+		}
+	});
+}
+
+async function deleteDynamic(data){		// 删除动态
+	return await db.collection('user_activity').doc(data.id).remove();
+}
+
+async function returnRecuperate(data){		// 调养
+	return await db.collection('disease').get();
+}
+
+async function returnRecuperateDetail(data){		// 调养详情
+	return await db.collection('disease').where({
+		_id: data.id
+	}).get();
+}
+
+async function returnFoodList(data){		// 饮食 & 详情
+	return await db.collection('food').where({
+		_id: data.id
+	}).get();
+}
+
+async function returnUserInfo(data){		// 我的
+	return db.collection('user').where({
+		_id: data.userId
+	}).get();
+}
+
+async function likeSomthing(data){
+	return await db.collection('user_like').add({
+		data: {
+			...data,
+			create_time: new Date()
+		}
+	});
+}
+
+async function returnLikeList(data){		// 我喜欢的动态/推文
+	let result = {};
+	// 动态
+	result.article = await db.collection('user_like').where({
+		userId: data.userId,
+		class: 1
+	}).get();
+	// 文章
+	result.activity = await db.collection('user_like').where({
+		userId: data.userId,
+		class: 0
+	}).get();
+	return result;
+}
+
+async function feedback(data){		// 反馈
+	return await db.collection('feedback').add({
+		data
+	});
 }

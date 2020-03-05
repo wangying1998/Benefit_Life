@@ -1,272 +1,407 @@
 [
   {
-    "name": "提交测试答案",
+    "name": "feedback",
     "value": {
-      "url": "/test/answer",
-      "data": [
-        {
-          "id": 1,
-          "score": 3
-        },
-        {
-          "id": 2,
-          "score": 3
-        },
-        {
-          "id": 3,
-          "score": 2
-        },
-        {
-          "id": 4,
-          "score": 3
-        },
-        {
-          "id": 5,
-          "score": 3
-        },
-        {
-          "id": 6,
-          "score": 3
-        },
-        {
-          "id": 7,
-          "score": 3
-        },
-        {
-          "id": 8,
-          "score": 3
-        },
-        {
-          "id": 10,
-          "score": 3
-        },
-        {
-          "id": 11,
-          "score": 3
-        },
-        {
-          "id": 12,
-          "score": 3
-        },
-        {
-          "id": 13,
-          "score": 2
-        },
-        {
-          "id": 14,
-          "score": 3
-        },
-        {
-          "id": 16,
-          "score": 3
-        },
-        {
-          "id": 17,
-          "score": 3
-        },
-        {
-          "id": 18,
-          "score": 3
-        },
-        {
-          "id": 19,
-          "score": 3
-        },
-        {
-          "id": 20,
-          "score": 2
-        },
-        {
-          "id": 22,
-          "score": 3
-        },
-        {
-          "id": 23,
-          "score": 3
-        },
-        {
-          "id": 24,
-          "score": 3
-        },
-        {
-          "id": 25,
-          "score": 3
-        },
-        {
-          "id": 26,
-          "score": 4
-        },
-        {
-          "id": 27,
-          "score": 3
-        },
-        {
-          "id": 28,
-          "score": 2
-        },
-        {
-          "id": 29,
-          "score": 3
-        },
-        {
-          "id": 30,
-          "score": 3
-        },
-        {
-          "id": 31,
-          "score": 3
-        },
-        {
-          "id": 32,
-          "score": 3
-        },
-        {
-          "id": 33,
-          "score": 3
-        },
-        {
-          "id": 34,
-          "score": 3
-        },
-        {
-          "id": 35,
-          "score": 4
-        },
-        {
-          "id": 36,
-          "score": 2
-        },
-        {
-          "id": 37,
-          "score": 3
-        },
-        {
-          "id": 38,
-          "score": 3
-        },
-        {
-          "id": 39,
-          "score": 2
-        },
-        {
-          "id": 40,
-          "score": 4
-        },
-        {
-          "id": 41,
-          "score": 2
-        },
-        {
-          "id": 42,
-          "score": 3
-        },
-        {
-          "id": 43,
-          "score": 3
-        },
-        {
-          "id": 44,
-          "score": 3
-        },
-        {
-          "id": 45,
-          "score": 3
-        },
-        {
-          "id": 46,
-          "score": 2
-        },
-        {
-          "id": 47,
-          "score": 2
-        },
-        {
-          "id": 48,
-          "score": 3
-        },
-        {
-          "id": 49,
-          "score": 2
-        },
-        {
-          "id": 50,
-          "score": 3
-        },
-        {
-          "id": 52,
-          "score": 2
-        },
-        {
-          "id": 54,
-          "score": 3
-        },
-        {
-          "id": 55,
-          "score": 3
-        },
-        {
-          "id": 56,
-          "score": 3
-        },
-        {
-          "id": 57,
-          "score": 2
-        },
-        {
-          "id": 58,
-          "score": 3
-        },
-        {
-          "id": 59,
-          "score": 2
-        },
-        {
-          "id": 60,
-          "score": 2
-        },
-        {
-          "id": 61,
-          "score": 3
-        },
-        {
-          "id": 62,
-          "score": 3
-        },
-        {
-          "id": 63,
-          "score": 3
-        },
-        {
-          "id": 64,
-          "score": 2
-        },
-        {
-          "id": 65,
-          "score": 2
-        },
-        {
-          "id": 66,
-          "score": 3
-        }
-      ]
+      "url": "/feedback",
+      "data": {
+        "content": "反馈测试"
+      }
     }
   },
   {
-    "name": "get体质测试试题",
+    "name": "/update_baseinfo",
     "value": {
-      "url": "/test/list"
+      "url": "/update_baseinfo",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce",
+        "nickName": "nihao",
+        "avatar": "touxiang"
+      }
     }
   },
   {
-    "name": "首页 每日宜忌+档案体质+三餐+起居",
+    "name": "模板",
     "value": {
-      "url": "/home/homedata"
+      "url": "/home",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
     }
   },
   {
-    "name": "登录/注册",
+    "name": "/physical/test",
     "value": {
-      "url": "/login"
+      "url": "/physical/answer",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce",
+        "answer": [
+          {
+            "id": 1,
+            "score": 3
+          },
+          {
+            "id": 2,
+            "score": 3
+          },
+          {
+            "id": 3,
+            "score": 3
+          },
+          {
+            "id": 4,
+            "score": 3
+          },
+          {
+            "id": 5,
+            "score": 3
+          },
+          {
+            "id": 6,
+            "score": 3
+          },
+          {
+            "id": 7,
+            "score": 3
+          },
+          {
+            "id": 8,
+            "score": 3
+          },
+          {
+            "id": 10,
+            "score": 3
+          },
+          {
+            "id": 11,
+            "score": 3
+          },
+          {
+            "id": 12,
+            "score": 3
+          },
+          {
+            "id": 13,
+            "score": 3
+          },
+          {
+            "id": 14,
+            "score": 3
+          },
+          {
+            "id": 16,
+            "score": 3
+          },
+          {
+            "id": 17,
+            "score": 3
+          },
+          {
+            "id": 18,
+            "score": 3
+          },
+          {
+            "id": 19,
+            "score": 3
+          },
+          {
+            "id": 20,
+            "score": 3
+          },
+          {
+            "id": 22,
+            "score": 3
+          },
+          {
+            "id": 23,
+            "score": 3
+          },
+          {
+            "id": 24,
+            "score": 3
+          },
+          {
+            "id": 25,
+            "score": 3
+          },
+          {
+            "id": 26,
+            "score": 3
+          },
+          {
+            "id": 27,
+            "score": 3
+          },
+          {
+            "id": 28,
+            "score": 3
+          },
+          {
+            "id": 29,
+            "score": 3
+          },
+          {
+            "id": 30,
+            "score": 3
+          },
+          {
+            "id": 31,
+            "score": 3
+          },
+          {
+            "id": 32,
+            "score": 3
+          },
+          {
+            "id": 33,
+            "score": 3
+          },
+          {
+            "id": 34,
+            "score": 3
+          },
+          {
+            "id": 35,
+            "score": 3
+          },
+          {
+            "id": 36,
+            "score": 3
+          },
+          {
+            "id": 37,
+            "score": 3
+          },
+          {
+            "id": 38,
+            "score": 3
+          },
+          {
+            "id": 39,
+            "score": 3
+          },
+          {
+            "id": 40,
+            "score": 3
+          },
+          {
+            "id": 41,
+            "score": 3
+          },
+          {
+            "id": 42,
+            "score": 3
+          },
+          {
+            "id": 43,
+            "score": 3
+          },
+          {
+            "id": 44,
+            "score": 3
+          },
+          {
+            "id": 45,
+            "score": 3
+          },
+          {
+            "id": 46,
+            "score": 3
+          },
+          {
+            "id": 47,
+            "score": 3
+          },
+          {
+            "id": 48,
+            "score": 3
+          },
+          {
+            "id": 49,
+            "score": 3
+          },
+          {
+            "id": 50,
+            "score": 3
+          },
+          {
+            "id": 52,
+            "score": 3
+          },
+          {
+            "id": 54,
+            "score": 3
+          },
+          {
+            "id": 55,
+            "score": 3
+          },
+          {
+            "id": 56,
+            "score": 3
+          },
+          {
+            "id": 57,
+            "score": 3
+          },
+          {
+            "id": 58,
+            "score": 3
+          },
+          {
+            "id": 59,
+            "score": 3
+          },
+          {
+            "id": 60,
+            "score": 3
+          },
+          {
+            "id": 61,
+            "score": 3
+          },
+          {
+            "id": 62,
+            "score": 3
+          },
+          {
+            "id": 63,
+            "score": 3
+          },
+          {
+            "id": 64,
+            "score": 3
+          },
+          {
+            "id": 65,
+            "score": 3
+          },
+          {
+            "id": 66,
+            "score": 3
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "/home",
+    "value": {
+      "url": "/home",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
+    }
+  },
+  {
+    "name": "/home/physicalinfo",
+    "value": {
+      "url": "/home/physicalinfo",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
+    }
+  },
+  {
+    "name": "/home/should_avoid",
+    "value": {
+      "url": "/home/should_avoid",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
+    }
+  },
+  {
+    "name": "/square/activity",
+    "value": {
+      "url": "/square/user/activity",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce",
+        "id": "9d1e7fc8-7c6c-4a75-819c-7f30417f91a1"
+      }
+    }
+  },
+  {
+    "name": "/square/activity/add",
+    "value": {
+      "url": "/square/activity/add",
+      "data": {
+        "userId": "用户id",
+        "content": "富文本111",
+        "imgs": [
+          ""
+        ],
+        "likeCount": 1111
+      }
+    }
+  },
+  {
+    "name": "/square/activity/delete",
+    "value": {
+      "url": "/square/activity/delete",
+      "data": {
+        "id": "1583329599380_2_93951"
+      }
+    }
+  },
+  {
+    "name": "/disease/list",
+    "value": {
+      "url": "/disease/list",
+      "data": {}
+    }
+  },
+  {
+    "name": "/disease/detail",
+    "value": {
+      "url": "/disease/detail",
+      "data": {
+        "id": "0fa6c7d6-7975-455d-b64f-f5f60d98caa6"
+      }
+    }
+  },
+  {
+    "name": "/food/detail",
+    "value": {
+      "url": "/food/detail",
+      "data": {
+        "id": "d0155c7f-f92d-4883-9852-2c9466390c43"
+      }
+    }
+  },
+  {
+    "name": "/my",
+    "value": {
+      "url": "/my",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
+    }
+  },
+  {
+    "name": "/my/like",
+    "value": {
+      "url": "/my/like",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce"
+      }
+    }
+  },
+  {
+    "name": "/login",
+    "value": {
+      "url": "/login",
+      "data": ""
+    }
+  },
+  {
+    "name": "/like",
+    "value": {
+      "url": "/like",
+      "data": {
+        "userId": "4b0b9ca25e0ac25c00344b462767f7ce",
+        "likeId": "a0e732ac-82d7-45d1-a928-96db1b0e1489",
+        "class": 1
+      }
     }
   }
 ]

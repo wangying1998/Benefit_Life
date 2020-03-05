@@ -1,12 +1,17 @@
 import { getSessionData } from './session';
 
 // 请求方法
-function request(options = {}){
+function request(options){
 	wx.showLoading();
 	return new Promise((resolve, reject)=>{
+		const {
+			data = {}
+		} = options;
+
 		const { userId, openId } = getSessionData();
+		
 		if(userId && openId){
-			Object.assign(options.data={}, { userId, openId });
+			Object.assign(data, { userId, openId });
 		}else{
 			wx.hideLoading()
 		}

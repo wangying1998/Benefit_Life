@@ -19,7 +19,7 @@ export function handleLogin() {
           // const data = {
           //   code: res.code
           // }
-
+          
           goLogin().then(response => {
             console.log(response); //别注释掉了， 有时看偶发bug
             const sessionData = {

@@ -1,7 +1,8 @@
 // miniprogram/pages/home/home.js
 import {
-	getTestList
-} from '../../api/api.js'
+	getHomeData,
+	updateBaseinfo
+} from '../../../api/api.js'
 
 Page({
 
@@ -9,12 +10,21 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		slideList: [],
 	},
 
-	getTestList() {
-		getTestList({}).then(res => {
-			console.log(res)
+	getHomeData() {		// 获取轮播列表
+		getHomeData({}).then(res => {
+			console.log(111111111,res)
+		})
+	},
+	updateBaseinfo(){
+		let params = {
+			nickName: '没错就是我了',
+			avatar: "头像"
+		};
+		updateBaseinfo(params).then(res=>{
+			console.log(22222222,res)
 		})
 	},
 
@@ -22,7 +32,8 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function(options) {
-
+		this.getHomeData();
+		this.updateBaseinfo();
 	},
 
 	/**
