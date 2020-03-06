@@ -439,7 +439,33 @@ async function deleteDynamic(data){		// 删除动态
 }
 
 async function returnRecuperate(data){		// 调养
-	return await db.collection('disease').get();
+	let result = {};
+	// 呼吸
+	result.breath = await db.collection('disease').where({
+		class: 1
+	}).get();
+	// 常见问题
+	result.common_question = await db.collection('disease').where({
+		class: 2
+	}).get();
+	// 头面五官
+	result.face = await db.collection('disease').where({
+		class: 3
+	}).get();
+	// 女性保养
+	result.woman = await db.collection('disease').where({
+		class: 4
+	}).get();
+	// 小儿（1~3岁）
+	result.child = await db.collection('disease').where({
+		class: 5
+	}).get();
+	// 救急
+	result.aid = await db.collection('disease').where({
+		class: 6
+	}).get();
+
+	return result;
 }
 
 async function returnRecuperateDetail(data){		// 调养详情
