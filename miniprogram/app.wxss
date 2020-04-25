@@ -2,6 +2,6 @@
 page {
 	background-color: #f8f8f8;
 }
-.container {
+/* .container {
 	padding: 0 40rpx;
-}
+} */

@@ -1,0 +1,15 @@
+<!--pages/home/my-physique/physique.wxml-->
+<view>
+    <view class="body-head">
+        <image class="head-icon" src="../../images/test.png"></image>
+        <view class="head-tip">以下问题请根据你最近三个月的身体感受回答，孕妇及16岁以下人群不建议使用本测试题。</view> 
+    </view>
+    <view class="body-question">
+        <view class="question-item" wx:for="{{testList}}" wx:key="id">
+            <view class="question">{{item.id}}.{{item.question}}</view>
+            <view class="select">
+                <text class="select-button" wx:for="{{selectButton}}" wx:key="id">{{item.select}}</text>
+            </view>
+        </view>
+    </view>
+</view>

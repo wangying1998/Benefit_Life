@@ -55,6 +55,7 @@
         /home/should_avoid
     param:
         无
+【搜索】？
 
 - 动态
 【全部动态列表】

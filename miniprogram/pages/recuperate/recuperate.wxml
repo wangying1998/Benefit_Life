@@ -1,0 +1,9 @@
+<!--miniprogram/pages/tabs/recuperate/recuperate.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view>
+    <block class="" wx:for="{{diseaseList}}" wx:key="id">
+        <view>
+          <label class='item_content'>{{item.name}}</label>
+        </view>
+    </block>
+</view>

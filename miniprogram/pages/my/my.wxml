@@ -1,0 +1,18 @@
+<!--miniprogram/pages/tabs/my/my.wxml-->
+<view >
+    <view class="my-info">
+        <image class='edit-icon' src="../../images/edit.png" bindtap="editInfo"></image>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="nickname">{{userInfo.nickName}}</view>
+    </view>
+    <view>
+      <block class="my-items" wx:for="{{personalList}}" wx:key="id" >
+          <view class="item" bindtap="gotoPage" id="{{item.id}}">
+            <image class='item-icon' src="{{item.icon}}"></image>
+            <text class='item-content'>{{item.text}}</text>
+            <image class="detail" src="../../images/next.png" ></image>
+          </view>
+      </block>
+    </view>
+</view>
+<!-- <text>miniprogram/pages/tabs/my/my.wxml</text> -->

@@ -1,0 +1,52 @@
+page {
+  font-size: 28rpx;
+}
+.dynamic-item {
+  /* display: flex; */
+  background-color: #fff;
+  
+}
+.tip {
+  margin-left: 50rpx;
+}
+.tip image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-left: 10rpx;
+}
+.perInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 670rpx;
+  margin: 0 auto;
+}
+.perInfo .info {
+  display: flex;
+  align-items: center;
+}
+.release-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+.release-name {
+  color: #333;
+  font-size: 28rpx;
+}
+.release-date {
+  color: #999;
+  font-size: 24rpx;
+}
+.send {
+  width: 35rpx;
+  height: 35rpx;
+}
+.dynamic-copywriting {
+  color: #333333;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  width: 670rpx;
+  margin: 0 auto;
+}

@@ -1,11 +1,11 @@
 //app.js
 import {
   handleLogin
-} from './util/login';
+} from './utils/login';
 import {
   getSessionData,
   setSessionData
-} from './util/session';
+} from './utils/session';
 App({
   onLaunch: function () {
     wx.getSystemInfo({
@@ -20,6 +20,7 @@ App({
 
     if (getSessionData().openId) {
       handleLogin().then(res => {
+        console.log("登陆",res);
         // wx.switchTab({
         //   url: '/pages/homeNew/homeNew',
         // })
@@ -41,7 +42,7 @@ App({
     }
     else{
       handleLogin().then(res => {
-        // console.log(res)
+        console.log(res)
       })
     }
     

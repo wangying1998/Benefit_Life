@@ -1,0 +1,91 @@
+page {
+    font-size: 28rpx;
+}
+/* .nav-bar {
+    background-color: #fff;
+} */
+.search{
+    width: 76%;
+    /* border-radius: 100%; */
+    background-color: #fff;
+  }
+  .search_arr {
+    border: 1px solid #d0d0d0;
+    border-radius: 10rpx;
+    margin-left: 20rpx;
+    /* border-radius: 20%; */
+    
+  }
+  .search_arr input{
+    margin-left: 30rpx;
+    height: 35rpx;
+  }
+  .sousuo {
+    padding-left: 8%;
+    width: 15%;
+    line-height: 45rpx;
+    text-align: center;
+    border-radius: 100%;
+  }
+  .page_row{
+    display: flex;
+    flex-direction: row
+  }
+.searchcion {
+    /* margin: 10rpx 10rpx 10rpx 10rpx; */
+    position: absolute;
+    margin-left: 5%;
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+}
+.dynamic-item {
+    /* display: flex; */
+    background-color: #fff;
+    
+}
+.tip {
+    margin-left: 50rpx;
+}
+.tip image {
+    width: 45rpx;
+    height: 45rpx;
+    margin-left: 10rpx;
+}
+.perInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 670rpx;
+    margin: 0 auto;
+}
+.perInfo .info {
+    display: flex;
+    align-items: center;
+}
+.release-avatar {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+.release-name {
+    color: #333;
+    font-size: 28rpx;
+}
+.release-date {
+    color: #999;
+    font-size: 24rpx;
+}
+.send {
+    width: 35rpx;
+    height: 35rpx;
+}
+.dynamic-copywriting {
+    color: #333333;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    width: 670rpx;
+    margin: 0 auto;
+}

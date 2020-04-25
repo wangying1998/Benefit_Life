@@ -1,0 +1,45 @@
+<!--miniprogram/pages/tabs/squre/square.wxml-->
+<view >
+    <view class='page_row' >
+        <view class="search" bindtap="gotoSearch">
+            <view class="df search_arr">
+                <icon class="searchcion" size='18' type='search'></icon>
+                <input class="sousuo" disabled placeholder="搜索" bindtap='search'/>
+            </view>
+        </view>
+        <view class="tip">
+            <image bindtap="gotoNotice" class="notice" src="../../images/mobile.png"></image>
+            <image bindtap="gotoSend" class="send" src="../../images/send.png"></image>
+        </view>
+    </view>
+    <view class="square-list">
+        <view class="dynamic-item">
+            <view class="perInfo">
+                <view class="info">
+                    <image bindtap="bindViewTap" class="release-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                    <view class="">
+                        <view class="release-name">{{userInfo.nickName}}</view>
+                        <view class="release-date">12月11号</view>
+                    </view>
+                </view>
+                <!-- <view> -->
+                    <image bindtap="gotoLike" class="send" src="../../images/no-collect.png"></image>
+                <!-- </view> -->
+            </view>
+            <view class="dynamic-copywriting">
+                晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，
+                而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，
+                而且舒缓肌肉，消除疲劳晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，
+                消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，
+                能够让双脚放松，而且舒缓肌肉，消除疲劳
+            </view>
+            
+            <view>
+                <image></image>
+            </view>
+        </view>
+        
+        <view>
+        </view>
+    </view>
+</view>

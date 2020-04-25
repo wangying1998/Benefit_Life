@@ -1,9 +1,20 @@
 {
   "pages": [
-    "pages/tabs/home/home",
-    "pages/tabs/squre/square",
-    "pages/tabs/recuperate/recuperate",
-    "pages/tabs/my/my"
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/detail-dynamic/detail-dynamic",
+    "pages/square/square",
+    "pages/recuperate/recuperate",
+    "pages/my/my",
+    "pages/physique/physique",
+    "pages/setting/setting",
+    "pages/feedback/feedback",
+    "pages/modify-information/modify-information",
+    "pages/search/search",
+    "pages/taboo/taboo",
+    "pages/notice/notice",
+    "pages/send-dynamic/send-dynamic"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -15,29 +26,31 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/tabs/home/home",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "/images/home.png",
         "selectedIconPath": "/images/home-active.png"
       },
+      
       {
-        "pagePath": "pages/tabs/squre/square",
-        "text": "广场",
-        "iconPath": "/images/square.png",
-        "selectedIconPath": "/images/square-active.png"
-      },
-      {
-        "pagePath": "pages/tabs/recuperate/recuperate",
+        "pagePath": "pages/recuperate/recuperate",
         "text": "调养",
         "iconPath": "/images/health.png",
         "selectedIconPath": "/images/health-active.png"
       },
       {
-        "pagePath": "pages/tabs/my/my",
+        "pagePath": "pages/square/square",
+        "text": "广场",
+        "iconPath": "/images/square.png",
+        "selectedIconPath": "/images/square-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
         "text": "我的",
         "iconPath": "/images/my.png",
         "selectedIconPath": "/images/my-active.png"
       }
+
     ],
     "color": "#99daa2",
     "selectedColor": "#299939"
@@ -45,3 +58,5 @@
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }
+
+      

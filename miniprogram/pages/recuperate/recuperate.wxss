@@ -1,0 +1,6 @@
+/* miniprogram/pages/tabs/recuperate/recuperate.wxss */
+@import "../../wxParse/wxParse.wxss";
+.item_content {
+    width: 80rpx;
+    height: 90rpx;
+}

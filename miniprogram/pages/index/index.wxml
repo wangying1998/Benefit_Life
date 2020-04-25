@@ -1,0 +1,103 @@
+<!--index.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class="container">
+  <view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='header'>
+            <image src='../../images/logo.jpg'></image>
+        </view>
+ 
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+ 
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>
+<view wx:else class="index-content">
+    <swiper indicator-dots="true" autoplay="true" interval="1500" duration="1500" circular="true" class="swiper">  
+      <block wx:for="{{slideList}}" wx:key="id">  
+        <swiper-item>  
+          <image src="{{item.imgUrl}}" class="slide-image" mode="aspectFill"/>  
+        </swiper-item>  
+      </block>  
+    </swiper>
+    <view>
+      <view class="archives" bindtap="gotoFile">
+        <view class="left">
+          <view class="divLine"></view>
+          <text class="text">档案：</text>
+          <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        </view>
+        <view class="right">
+           <text class="look">查看</text>
+          <image class="detail" src="../../images/next.png" ></image>
+        </view>
+      </view>
+      <view class="taboo">
+        <view class="calendar">
+          <!-- 后端定义数据格式是什么？ -->
+          <view class="date">
+            <view class="solar">
+              <view class="big">30</view>
+              <text class="small">2020/03</text>
+            </view>
+            <view class="lunar">
+              <view>丁酉年</view>
+              <text>三月初七</text>
+            </view>
+          </view>
+          <view class="mod-text">
+            <view class="suitable">
+              <view class="text-suitable">宜</view>
+              <view>沐浴</view>
+            </view>
+            <view class="diet">
+              <view class="text-diet">忌</view>
+              <view>大辛大辣椒</view>
+            </view>
+          </view>
+        </view>
+        <view class="other">
+          <view class="other-item three-meals">
+            <view>
+              <view class="title">食材</view>
+              <view class="other-content">幸运水果：火龙果</view>
+            </view>
+            <image src='../../images/logo.jpg'></image>
+          </view>
+          <view class="other-item living">
+            <view>
+              <view class="title">起居</view>
+              <view class="other-content">早睡早起精神好</view>
+            </view>
+            <image src='../../images/logo.jpg'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="article">
+      <view class="article-title">
+        <view class="divLine"></view>
+        <text class="text">时令好文</text>
+      </view>
+      <block class="" wx:for="{{RecoArticle}}" wx:key="id">
+         <!-- 样式问题，尤其是图片？？ -->
+         <!-- 给一个id，用来点击跳转详情 -->
+          <view hover-class='hover-class'  style='display:flex; height:140px;border-bottom: 1px solid #DBDBDB'>
+            <view style='display:flex; flex-direction:column;'>
+              <!-- <template is="wxParse" data="{{wxParseData:relayArr[index]}}" /> -->
+              <rich-text nodes="{{item.content}}" bindtap="tap"></rich-text>
+              <!-- <label class='item_content'>{{item.content}}</label> -->
+              <!-- <label class='item_content'>{{item.author}}</label> -->
+            </view>
+          </view>
+      </block>
+    </view>
+</view>
+</view>

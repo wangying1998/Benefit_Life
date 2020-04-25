@@ -1,0 +1,57 @@
+/* pages/home/my-physique/physique.wxss */
+
+
+.body-head {
+    width: 750rpx;
+    height: 222rpx;
+    background-color: #23A257;
+}
+
+.body-head image {
+    width: 94rpx;
+    height: 94rpx;
+}
+
+.body-head .head-tip {
+    width: 660rpx;
+    color: #FFFFFF;
+    font-size: 10px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+}
+
+.body-question {
+    
+}
+
+.question {
+    color: #101010;
+    margin-left: 44rpx;
+    margin-right: 44rpx;
+    width: 660rpx;
+}
+.question-item {
+    margin-top: 35rpx;
+    border-bottom: 1px solid rgba(187, 187, 187, 1);
+    
+}
+.select {
+    width: 660rpx;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    margin: 22rpx 0 22rpx 45rpx;
+}
+
+.select .select-button {
+    width: 75rpx;
+    height: 75rpx;
+    line-height: 75rpx;
+    text-align: center;
+    border-radius: 100%;
+    border: 1px solid #000; 
+    display: inline-block; 
+    font-size: 12px;
+    border: 1px solid #BBB;
+}

@@ -1,0 +1,65 @@
+/* miniprogram/pages/tabs/my/my.wxss */
+page {
+    font-size: 14px;
+}
+
+.my-info {
+    width: 750rpx;
+    height: 374rpx;
+    background-color: #23A257;
+}
+
+
+.my-info image {
+    width: 105rpx;
+    height: 105rpx;
+    border-radius: 105rpx;
+    margin: 0rpx 321rpx 23rpx 321rpx;
+}
+
+.my-info .nickname {
+    width: 150rpx;
+    margin: 0 auto; 
+    text-align: center;
+    color: #fff;
+}
+.my-info .edit-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 30rpx 30rpx 0 ;
+    float: right;
+}
+
+.headUrl {
+   /* background-color: #23A257; */
+}
+
+.detail {
+    width: 25rpx;
+    height: 25rpx;
+}
+.item-icon {
+    width: 35rpx;
+    height: 35rpx;
+}
+.item-content {
+    color: rgb(124, 120, 120);
+}
+.item{
+    border-bottom: 1px solid #75726B;
+    height: 75rpx;
+    width: 750rpx;
+    line-height: 75rpx;
+}
+.item .item-icon {
+    vertical-align: middle;
+    margin: 0 30rpx 0 34rpx;
+
+}
+.item .item-content {
+    vertical-align: middle;
+    margin-right: 500rpx;
+}
+.item .detail {
+    vertical-align: middle;
+}
