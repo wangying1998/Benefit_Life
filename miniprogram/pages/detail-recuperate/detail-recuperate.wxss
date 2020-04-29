@@ -1,1 +1,16 @@
 /* pages/toboo/toboo.wxss */
+page {
+    font-size: 28rpx;
+}
+.det-img {
+    width: 60rpx;
+    height: 60rpx;
+    text-align: center;
+}
+.title {
+    font-weight: bold; 
+    color: black;
+}
+.text-desc {
+    color: #4F4F4F; 
+}

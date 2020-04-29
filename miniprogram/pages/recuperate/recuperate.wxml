@@ -1,9 +1,18 @@
-<!--miniprogram/pages/tabs/recuperate/recuperate.wxml-->
-<import src="../../wxParse/wxParse.wxml" />
 <view>
-    <block class="" wx:for="{{diseaseList}}" wx:key="id">
-        <view>
+  <view wx:for="{{diseaseList}}" wx:key="id" class="recuperate">
+    <view>
+      <image class="icon-menu" src="../../images/caidan.png"></image>
+      <text>呼吸</text>
+    </view>
+    <view class="question"  >
+      <view  wx:for="{{item.data}}" wx:key="id" >
+        <view class="recu-item" bindtap="gotoRecuDetail" data-index="{{item._id}}" >
+          <view class="item-img">
+            <image class="icon-recu" src="../../images/ganmao.png"></image>
+          </view>
           <label class='item_content'>{{item.name}}</label>
         </view>
-    </block>
+      </view> 
+    </view>
+  </view>
 </view>

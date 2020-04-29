@@ -1,4 +1,8 @@
-// pages/toboo/toboo.js
+
+import {
+  getDiseaseDetail
+} from '../../api/api.js'
+
 Page({
 
   /**
@@ -7,12 +11,30 @@ Page({
   data: {
 
   },
-
+  getDiseaseDetail(id) {		// 获取调养数据
+    let param = {
+      id: id
+    }
+    // var that = this;
+		getDiseaseDetail(param).then(res => {
+			this.setData({
+				diseaseDetail: res,
+			})
+      console.log("调养详情",res);
+      wx.setNavigationBarTitle({
+        title: res.data[0].name//页面标题为路由参数
+      })
+    })
+    
+		
+	},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
+    this.getDiseaseDetail(options.id);
+    
   },
 
   /**

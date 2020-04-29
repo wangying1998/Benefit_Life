@@ -11,18 +11,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // diseaseList: [],
   },
   getDiseaseList() {		// 获取调养数据
+    // 返回改成数组
+    // 带图片一起返回？？分类的名字加一个字段
 		getDiseaseList({}).then(res => {
 			this.setData({
-				diseaseList: res.data,
+				diseaseList: res,
 			})
-			console.log("调养",this.diseaseList);
+			console.log("调养",res);
 		})
 		
 	},
-
+  gotoRecuDetail: function (e) {
+    let query = e.currentTarget.dataset['index']
+    wx.navigateTo({
+      url: `/pages/detail-recuperate/detail-recuperate?id=${query}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

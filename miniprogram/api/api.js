@@ -62,6 +62,13 @@ export function getDiseaseList(data){
 		data
 	})
 }
+// 获取调养详情
+export function getDiseaseDetail(data){	
+	return request({
+		url: "/disease/detail",
+		data
+	})
+}
 
 // 获取动态列表
 export function getSquareList(data){	
