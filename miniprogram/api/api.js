@@ -55,6 +55,14 @@ export function getTestQuestion(data){
 	})
 }
 
+// 提交体质测试
+export function sendTestAnswer(data){	
+	return request({
+		url: "/physical/answer",
+		data
+	})
+}
+
 // 获取调养病情
 export function getDiseaseList(data){	
 	return request({
@@ -82,6 +90,14 @@ export function getSquareList(data){
 export function sendDynamic(data){	
 	return request({
 		url: "/square/activity/add",
+		data
+	})
+}
+
+// 删除动态
+export function deleteDynamic(data){	
+	return request({
+		url: "/square/activity/delete",
 		data
 	})
 }

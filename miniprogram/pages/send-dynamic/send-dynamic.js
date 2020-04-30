@@ -40,10 +40,10 @@ Page({
         for (let i = 0; i < res.tempFilePaths.length; i++) {
           imgs.push(res.tempFilePaths[i])
         }
-
         that.setData({
           imgs: imgs
         })
+        
 
         }
       }
@@ -60,7 +60,7 @@ Page({
   //发布按钮事件
   send:function(){
     var that = this;
-    var user_id = wx.getStorageSync('userid')
+    var user_id = wx.getStorageSync('userid');
     wx.showLoading({
       title: '上传中',
     })
@@ -68,7 +68,7 @@ Page({
     // 发布动态上传图片
     let params = {
       	content: that.data.content,
-      	img: that.data.imgs
+      	imgs: that.data.imgs
     };
     sendDynamic(params).then(res => {
 			this.setData({
@@ -76,9 +76,10 @@ Page({
 			})
       console.log("发布动态成功了吗",res);
       // 目前是没成功的状态，发布动态不成功
-      wx.navigateTo({
-        url: '/pages/square/square',
-      })
+      wx.navigateBack();
+      // wx.navigateTo({
+      //   url: '/pages/square/square',
+      // })
 		})
     // that.img_upload()
   },

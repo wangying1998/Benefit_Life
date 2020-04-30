@@ -55,3 +55,9 @@
     font-size: 12px;
     border: 1px solid #BBB;
 }
+
+.selected{
+    background-color: #FFA404;
+    color: rgba(255, 255, 255, 1);
+    border:1px solid #FFA404;
+}  

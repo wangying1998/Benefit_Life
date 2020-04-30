@@ -40,9 +40,13 @@ page {
     height: 15px;
     text-align: center;
 }
+.square-list {
+    /* margin: */
+}
 .dynamic-item {
     /* display: flex; */
     background-color: #fff;
+    margin: 16rpx;
     
 }
 .tip {
@@ -88,4 +92,5 @@ page {
     line-height: 40rpx;
     width: 670rpx;
     margin: 0 auto;
+    margin-top: 16rpx;
 }

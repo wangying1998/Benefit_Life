@@ -19,19 +19,26 @@ page {
     color: #373636;
     font-size: 26rpx;
 }
+.class-name {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
 
+.class-name image {
+    margin-right: 6rpx;
+}
 .icon-menu {
     width: 30rpx;
     height: 30rpx;
     color: #23A257;
-    
 }
 
 .question .recu-item {
     display: inline-block;
-    width: 140rpx;
-    flex: 1;
-    margin: 0 16rpx 16rpx 16rpx;
+    width: 160rpx;
+    /* flex: 1; */
+    margin: 16rpx 0 16rpx 16rpx;
     text-align: center;
 }
 .item-img {

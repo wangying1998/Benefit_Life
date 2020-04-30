@@ -1,8 +1,8 @@
 <view>
   <view wx:for="{{diseaseList}}" wx:key="id" class="recuperate">
-    <view>
+    <view class="class-name">
       <image class="icon-menu" src="../../images/caidan.png"></image>
-      <text>呼吸</text>
+      <text>{{item.class}}</text>
     </view>
     <view class="question"  >
       <view  wx:for="{{item.data}}" wx:key="id" >

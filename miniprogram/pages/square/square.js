@@ -3,6 +3,7 @@
 import {
 	getSquareList,
 } from '../../api/api.js'
+var Time = require('../../utils/util.js');
 
 Page({
 
@@ -12,14 +13,15 @@ Page({
   data: {
     squareList: {},
     userInfo: {},
+    like: {},
   },
 
   getData() {
     getSquareList({}).then(res => {
 			this.setData({
-				squareList: res,
+				squareList: res.list,
 			})
-			console.log("动态",res);
+			console.log("动态",res.list);
 		})
 
   },
@@ -28,16 +30,17 @@ Page({
       url: '/pages/search/search'
     })
   },
+  // 点赞
   gotoLike: function() {
-    wx.navigateTo({
-      url: '/pages/notice/notice'
-    })
+    
   },
+  // 去消息通知
   gotoNotice: function() {
     wx.navigateTo({
       url: '/pages/notice/notice'
     })
   },
+  // 去发送
   gotoSend: function() {
     wx.navigateTo({
       url: '/pages/send-dynamic/send-dynamic'
@@ -47,10 +50,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData();
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-  })
+
+    
   },
 
   /**
@@ -64,7 +65,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData();
+    this.setData({
+      userInfo: wx.getStorageSync('userInfo'),
+  })
   },
 
   /**
