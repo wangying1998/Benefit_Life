@@ -490,26 +490,33 @@ async function returnRecuperate(data){		// 调养
 	result.breath = await db.collection('disease').where({
 		class: 1
 	}).get();
+	result.breath.class = '呼吸';
+
 	// 常见问题
 	result.common_question = await db.collection('disease').where({
 		class: 2
 	}).get();
+	result.common_question.class = '常见问题';
 	// 头面五官
 	result.face = await db.collection('disease').where({
 		class: 3
 	}).get();
+	result.face.class = '头面五官';
 	// 女性保养
 	result.woman = await db.collection('disease').where({
 		class: 4
 	}).get();
+	result.woman.class = '女性保养';
 	// 小儿（1~3岁）
 	result.child = await db.collection('disease').where({
 		class: 5
 	}).get();
+	result.child.class = '小儿（1~3岁）';
 	// 救急
 	result.aid = await db.collection('disease').where({
 		class: 6
 	}).get();
+	result.aid.class = '救急';
 
 	return result;
 }
