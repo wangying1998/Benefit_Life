@@ -2,8 +2,8 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init({
-  traceUser: true,
-  env: 'test-gb0if'
+	traceUser: true,
+	env: 'test-gb0if'
   // env: 'node-l1lsj'
 })
 
@@ -21,12 +21,15 @@ exports.main = async (event, context) => {
 	// 用户注册/登录
 		case '/login':
 			return userLogin(OPENID);
+	// 更新用户基本信息
 		case '/update_baseinfo':
 			return updateBaseinfo(data);
 	// 体质测试模块
-		case '/physical/test':				// 获取体质测试试题接口
+	// 获取体质测试试题接口
+		case '/physical/test':
 			return getTestList(data);
-		case '/physical/answer':			// 接收答案-计算分数-返回体质类别及特征
+	// 接收答案-计算分数-返回体质类别及特征
+		case '/physical/answer':
 			return getPhysicalType(data);
 	// 首页接口
 		case '/home':			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
@@ -406,18 +409,61 @@ async function shouldOrAvoid(data){				// 每日宜忌详情
 
 async function returnMyDynamicList(data){		// 查询动态列表
 	// 根据用户id进行筛选	-- 自己发表的动态
-	return await db.collection('user_activity').where({
-		userId: data.userId
-	}).get();
+	let result = await db.collection('user').aggregate()
+		.lookup({
+			from: 'user_activity',
+			pipeline: db.command.aggregate.pipeline()
+			.match({
+				userId: data.userId
+			})
+			.done(),
+			as: 'actList',
+		})
+		.end()
+		.catch(err => console.error(err));
+	let temp = [];
+	result.list.forEach(ele=>{
+		if(ele._id == data.userId){
+			temp.push(ele)
+		}
+	})
+	console.log(temp)
+	return temp;
 }
 async function returnActivity(data){
 	let result = {};
 	if(data.id){
-		result = await db.collection('user_activity').where({
-			_id: data.id
-		}).get();
+		// result = await db.collection('user_activity').where({
+		// 	_id: data.id
+		// }).get();
+
+		result = await db.collection('user_activity').aggregate()
+		.lookup({
+			from: 'user',
+			localField: 'userId',
+			foreignField: '_id',
+			as: 'userInfo',
+		})
+		.end()
+		.catch(err => console.error(err))
+		let tempArr = [];
+		result.list.forEach(ele=>{
+			if(ele._id == data.id){
+				tempArr.push(ele)
+			}
+		})
+		result = tempArr;
 	}else{		// 所有动态
-		result = await db.collection('user_activity').get();
+		// result = await db.collection('user_activity').get();
+		result = await db.collection('user_activity').aggregate()
+		.lookup({
+			from: 'user',
+			localField: 'userId',
+			foreignField: '_id',
+			as: 'userInfo',
+		})
+		.end()
+		.catch(err => console.error(err))
 	}
 	return result;
 }
