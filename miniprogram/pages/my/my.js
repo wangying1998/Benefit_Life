@@ -14,7 +14,7 @@ Page({
       {
         id: 'collection',
         icon: '../../images/collection.png',
-        text: '我的收藏',
+        text: '我喜欢的',
       },
       {
         id: 'my-post',

@@ -1,16 +1,42 @@
 /* pages/toboo/toboo.wxss */
 page {
     font-size: 28rpx;
+    
+}
+.title-img {
+    text-align: center;
 }
 .det-img {
     width: 60rpx;
     height: 60rpx;
-    text-align: center;
+    
 }
 .title {
     font-weight: bold; 
-    color: black;
+    color: #23A257;
+    border: 1px solid rgba(196, 196, 196,0.6);
+    display: flex;
+    justify-items: center;
+    padding: 10rpx 5rpx;
+}
+.title image {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 0 10rpx;
 }
 .text-desc {
     color: #4F4F4F; 
+    margin: 20rpx;
+}
+.text-other {
+    color: #4F4F4F;
+    margin: 20rpx;
+}
+.footer {
+    text-align: center;
+    margin: 30rpx auto;
+}
+.footer image{
+    width: 60rpx;
+    height: 60rpx;
 }

@@ -4,6 +4,7 @@ import {
 	getSquareList,
 } from '../../api/api.js'
 
+
 Page({
 
   /**
@@ -19,38 +20,17 @@ Page({
 			this.setData({
 				squareList: res,
 			})
-			console.log("动态",res);
+			console.log("我的动态",res);
 		})
 
-  },
-  gotoSearch: function() {
-    wx.navigateTo({
-      url: '/pages/search/search'
-    })
-  },
-  gotoLike: function() {
-    wx.navigateTo({
-      url: '/pages/notice/notice'
-    })
-  },
-  gotoNotice: function() {
-    wx.navigateTo({
-      url: '/pages/notice/notice'
-    })
-  },
-  gotoSend: function() {
-    wx.navigateTo({
-      url: '/pages/send-dynamic/send-dynamic'
-    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData();
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-  })
+  //   this.setData({
+  //     userInfo: wx.getStorageSync('userInfo'),
+  // })
   },
 
   /**
@@ -64,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData();
   },
 
   /**

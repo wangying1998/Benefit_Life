@@ -1,32 +1,41 @@
-<view class="intro">
-    <view class="square-list">
-        <view class="dynamic-item">
-            <view class="perInfo">
-                <view class="info">
-                    <image bindtap="bindViewTap" class="release-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                    <view class="">
-                        <view class="release-name">{{userInfo.nickName}}</view>
-                        <view class="release-date">12月11号</view>
-                    </view>
-                </view>
-                <!-- <view> -->
-                    <image bindtap="gotoLike" class="send" src="../../images/no-collect.png"></image>
-                <!-- </view> -->
-            </view>
-            <view class="dynamic-copywriting">
-                晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，
-                而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，
-                而且舒缓肌肉，消除疲劳晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，
-                消除疲劳,晚上睡前泡泡热水脚，能够让双脚放松，而且舒缓肌肉，消除疲劳,晚上睡前泡泡热水脚，
-                能够让双脚放松，而且舒缓肌肉，消除疲劳
-            </view>
-            
-            <view>
-                <image></image>
-            </view>
-        </view>
-        
-        <view>
-        </view>
-    </view>
-</view>
+<view
+	 class="square-list"
+	 wx:for="{{squareList}}"
+	 wx:key="id"
+	 bindtap="gotoDetails"
+	>
+		<view class="dynamic-item">
+			<!-- 个人信息+时间 -->
+			<view class="perInfo">
+				<view class="info">
+					<image
+					 bindtap="bindViewTap"
+					 class="release-avatar"
+					 src="{{item.userInfo[0].avatar}}"
+					 mode="cover"
+					/>
+					<view class="">
+						<view class="release-name">{{item.userInfo[0].nickName}}</view>
+						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
+					</view>
+				</view>
+				<view>
+                    <image bindtap="gotoLike" wx:if="{{false}}" data-id="{{item._id}}"
+                    class="send" src="../../images/no-collect.png"></image>
+                    <image bindtap="gotoLike" wx:else="{{}}"
+					class="send" src="../../images/collect.png"></image>
+				</view>
+			</view>
+			<!-- 内容 -->
+			<view class="dynamic-copywriting">
+				{{item.content}}
+			</view>
+			<!-- 图片 -->
+			<view wx:if="{{true}}" class="content-img">
+				<image src="../../images/home.png"></image>
+			</view>
+			<view class="opt-delete">删除</view>
+		<!-- </view> -->
+
+		</view>
+	</view>

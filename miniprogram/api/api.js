@@ -101,7 +101,27 @@ export function deleteDynamic(data){
 		data
 	})
 }
-
+// 我喜欢的
+export function getMyLike(data){	
+	return request({
+		url: "/my/like",
+		data
+	})
+}
+// 点赞/喜欢
+export function clickLick(data){	
+	return request({
+		url: "/like",
+		data
+	})
+}
+// 反馈
+export function Feedback(data){	
+	return request({
+		url: "/feedback",
+		data
+	})
+}
 
 
 

@@ -50,3 +50,20 @@ page {
   width: 670rpx;
   margin: 0 auto;
 }
+/* 动态图片 */
+.content-img {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+.content-img image{
+  width: 215rpx;
+  height: 150rpx;
+  text-align: center;
+}
+.opt-delete {
+  float: right;
+  color: #999;
+  font-size: 20rpx;
+}

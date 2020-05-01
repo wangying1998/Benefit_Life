@@ -1,1 +1,5 @@
-<view class="intro">意见反馈</view>
+<view>
+    <view class="tip">请尽情反馈，我们会尽快帮您解决问题</view>
+    <textarea class='text' bindinput="input" placeholder="请提交给我们您的账号以及遇到的具体的问题" auto-height/>
+    <button class='btn' bindtap='sumbit'>提交</button>
+</view>

@@ -40,15 +40,6 @@ page {
     height: 15px;
     text-align: center;
 }
-.square-list {
-    /* margin: */
-}
-.dynamic-item {
-    /* display: flex; */
-    background-color: #fff;
-    margin: 16rpx;
-    
-}
 .tip {
     margin-left: 50rpx;
 }
@@ -57,6 +48,18 @@ page {
     height: 45rpx;
     margin-left: 10rpx;
 }
+
+.square-list {
+    /* margin: */
+}
+.dynamic-item {
+    /* display: flex; */
+    background-color: #fff;
+    margin: 16rpx;
+    padding: 16rpx;
+    
+}
+
 .perInfo {
     display: flex;
     align-items: center;
@@ -94,3 +97,17 @@ page {
     margin: 0 auto;
     margin-top: 16rpx;
 }
+/* 动态图片 */
+.content-img {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20rpx;
+}
+.content-img image{
+    width: 215rpx;
+    height: 150rpx;
+    text-align: center;
+}
+
+

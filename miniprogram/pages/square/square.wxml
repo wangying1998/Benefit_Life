@@ -27,6 +27,7 @@
 	 bindtap="gotoDetails"
 	>
 		<view class="dynamic-item">
+			<!-- 个人信息+时间 -->
 			<view class="perInfo">
 				<view class="info">
 					<image
@@ -41,23 +42,29 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{true}}"
+                    <image bindtap="gotoLike" wx:if="{{false}}" data-id="{{item._id}}"
                     class="send" src="../../images/no-collect.png"></image>
                     <image bindtap="gotoLike" wx:else="{{}}"
-                    class="send" src="../../images/collect.png" >
-                    </image>
+					class="send" src="../../images/collect.png"></image>
 				</view>
 			</view>
+			<!-- 内容 -->
 			<view class="dynamic-copywriting">
 				{{item.content}}
 			</view>
+			<!-- 图片 -->
+			<view wx:if="{{true}}" class="content-img">
+				<image src="../../images/home.png"></image>
+				<image src="../../images/home.png"></image>
+				<image src="../../images/home.png"></image>
+				<image src="../../images/home.png"></image>
+			</view>
+		<!-- </view> -->
 
-			<!-- <view wx:if="{{}}">
-				<image src="{{item.}}" />
-			</view> -->
 		</view>
-
-		<view/>
+	</view>
+	<view class="refresh-block" wx:if="{{loading}}">
+		<image animation="{{refreshAnimation}}" src="../../resources/refresh.png"></image>
 	</view>
 </view>
 

@@ -1,12 +1,36 @@
 
-<view>
+<view class="">
     <!-- 数据返回的层级太深，可以修改简单一点，因为是详情只有一个 -->
-    <image src="../../images/ganmao.png" class="det-img"></image>
-    <rich-text nodes="{{diseaseDetail.data[0].desc}}" class="text-desc"></rich-text>
-     <view class="title">形成原因？</view>
-     <rich-text nodes="{{diseaseDetail.data[0].reason}}" class="text-desc"></rich-text>
-     <view class="title">何时就医？</view>
-     <rich-text nodes="{{diseaseDetail.data[0].doctor}}" class="text-desc"></rich-text>
-    <view class="title">生活建议？</view>
-    <rich-text nodes="{{diseaseDetail.data[0].suggest}}" class="text-desc"></rich-text>
+    <view class="title-img">
+        <image src="../../images/ganmao.png" class="det-img"></image>
+    </view>
+    <view class="text-desc">
+        <rich-text nodes="{{diseaseDetail.data[0].desc}}" ></rich-text>
+    </view>
+    
+    <view class="title">
+        <image src="../../images/wenhao.png"></image>
+         <text>形成原因？</text>
+    </view>
+     <view class="text-other">
+        <rich-text nodes="{{diseaseDetail.data[0].reason}}"></rich-text>
+     </view>
+     <view class="title">
+         <image src="../../images/yisheng.png"></image>
+         <text>何时就医</text>
+     </view>
+     <view class="text-other">
+        <rich-text nodes="{{diseaseDetail.data[0].doctor}}" ></rich-text>
+     </view>
+
+    <view class="title">
+        <image src="../../images/icon.png"></image>
+        <text>生活建议？</text>
+    </view>
+    <view class="text-other">
+        <rich-text nodes="{{diseaseDetail.data[0].suggest}}"></rich-text>
+    </view>
+    <view class="footer">
+        <image src="../../images/yezi.png" class="det-img"></image>
+    </view>
 </view>

@@ -1,4 +1,64 @@
-.intro {
-  margin: 30px;
+/*  tab */
+.swiper-tab {
+  width: 100%;
   text-align: center;
+  line-height: 50rpx;
+}
+.swiper-tab-list {  
+  font-size: 28rpx;
+  display: inline-block;
+  width: 30%;
+  color: #777777;
+}
+.on { 
+  color: #23A257;
+  border-bottom: 3rpx solid #23A257;
+}
+
+.swiper-box { 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: hidden;
+}
+.swiper-box view {
+  text-align: center;
+}
+/* 动态 */
+.perInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 670rpx;
+  margin: 0 auto;
+}
+.perInfo .info {
+  display: flex;
+  align-items: center;
+}
+.release-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+.release-name {
+  color: #333;
+  font-size: 28rpx;
+}
+.release-date {
+  color: #999;
+  font-size: 24rpx;
+}
+.send {
+  width: 35rpx;
+  height: 35rpx;
+}
+.dynamic-copywriting {
+  color: #333333;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 16rpx;
 }

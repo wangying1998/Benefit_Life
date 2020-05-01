@@ -1,7 +1,7 @@
 
 
 <view class='page'>
-    <textarea class='text' bindinput="input" placeholder="说点什么吧" auto-height/>
+    <textarea class='text' bindinput="input" maxlength='200' placeholder="说点什么吧" auto-height/>
     <view class="image_content">
         <view class="img" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
             <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>

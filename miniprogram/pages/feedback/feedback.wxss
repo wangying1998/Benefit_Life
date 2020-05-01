@@ -1,4 +1,22 @@
-.intro {
-  margin: 30px;
-  text-align: center;
+page {
+  font-size: 28rpx;
+}
+.tip {
+  margin: 20rpx ;
+  color: rgb(83, 81, 81);
+}
+.text {
+  width: 100%;
+  min-height: 150px;
+  border: 1px solid rgba(196, 196, 196,0.6);
+  padding: 10rpx;
+  background-color: #fff;
+  margin: 0 auto;
+}
+.btn {
+  background-color: #23A257;
+  color: #fff;
+  font-weight: 400;
+  height: 80rpx;
+  margin-top: 30rpx;
 }

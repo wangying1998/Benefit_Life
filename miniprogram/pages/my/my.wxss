@@ -46,7 +46,7 @@ page {
     color: rgb(124, 120, 120);
 }
 .item{
-    border-bottom: 1px solid #75726B;
+    border-bottom: 1px solid rgba(196, 196, 196,0.6);
     height: 75rpx;
     width: 750rpx;
     line-height: 75rpx;

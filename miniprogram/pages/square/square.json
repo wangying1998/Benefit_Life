@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "广场"
+  "navigationBarTitleText": "广场",
+  "enablePullDownRefresh": true
 }
