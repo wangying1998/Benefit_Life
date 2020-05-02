@@ -475,17 +475,6 @@ async function returnActivity(data){
 		}else{
 			result[0].isLike = false;	// 动态喜欢标识
 		}
-		
-		
-		let like_result = await db.collection('user_like').get();
-		result.list.forEach(async function(ele){
-			ele.isLike = false;
-			like_result.data.forEach(item=>{
-				if(item.likeId == ele._id && item.userId == data.userId){
-					ele.isLike = true;	// 动态喜欢标识
-				}
-			})
-		})
 	}else{		// 所有动态
 		// result = await db.collection('user_activity').get();
 		result = await db.collection('user_activity').aggregate()
