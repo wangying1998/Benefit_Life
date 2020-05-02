@@ -475,6 +475,17 @@ async function returnActivity(data){
 		}else{
 			result[0].isLike = false;	// 动态喜欢标识
 		}
+		
+		
+		let like_result = await db.collection('user_like').get();
+		result.list.forEach(async function(ele){
+			ele.isLike = false;
+			like_result.data.forEach(item=>{
+				if(item.likeId == ele._id && item.userId == data.userId){
+					ele.isLike = true;	// 动态喜欢标识
+				}
+			})
+		})
 	}else{		// 所有动态
 		// result = await db.collection('user_activity').get();
 		result = await db.collection('user_activity').aggregate()
@@ -486,16 +497,16 @@ async function returnActivity(data){
 		})
 		.end()
 		.catch(err => console.error(err))
+		
+		let like_result = await db.collection('user_like').get();
+		console.log(33333333333333,like_result)
 		result.list.forEach(async function(ele){
-			let like_result = await db.collection('user_like').where({
-				likeId: ele._id,
-				userId: data.userId
-			}).get();
-			if(like_result.data.length){
-				ele.isLike = true;	// 动态喜欢标识
-			}else{
-				ele.isLike = false;	// 动态喜欢标识
-			}
+			ele.isLike = false;
+			like_result.data.forEach(item=>{
+				if(item.likeId == ele._id && item.userId == data.userId){
+					ele.isLike = true;	// 动态喜欢标识
+				}
+			})
 		})
 	}
 	return result;
@@ -582,18 +593,70 @@ async function likeSomthing(data){
 }
 
 async function returnLikeList(data){		// 我喜欢的动态/推文
-	let result = {};
+	let result = {
+		article: [],
+		activity: []
+	};
 	// 动态
-	result.article = await db.collection('user_like').where({
-		userId: data.userId,
-		class: 1
-	}).get();
-	// 文章
-	result.activity = await db.collection('user_like').where({
-		userId: data.userId,
-		class: 0
-	}).get();
-	return result;
+	// result.article = await db.collection('user_like').where({
+	// 	userId: data.userId,
+	// 	class: 1
+	// }).get();
+	// // 文章
+	// result.activity = await db.collection('user_like').where({
+	// 	userId: data.userId,
+	// 	class: 0
+	// }).get();
+	// return result;
+
+	let art_like = await db.collection('user_like').aggregate()
+		.lookup({
+			from: 'articles',
+			localField: 'likeId',
+			foreignField: '_id',
+			as: 'article',
+		}).lookup({
+			from: 'user',
+			localField: 'userId',
+			foreignField: '_id',
+			as: 'userInfo'
+		})
+		.end()
+		.catch(err => console.error(err));
+		if(art_like.list && art_like.list.length){
+			art_like.list.forEach(ele => {
+				if(ele.article.length){
+					if(ele.userId == data.userId){
+						result.article.push(ele)
+					}
+				}
+			});
+		}
+	let act_like = await db.collection('user_like').aggregate()
+		.lookup({
+			from: 'user_activity',
+			localField: 'likeId',
+			foreignField: '_id',
+			as: 'activity',
+		}).lookup({
+			from: 'user',
+			localField: 'userId',
+			foreignField: '_id',
+			as: 'userInfo'
+		})
+		.end()
+		.catch(err => console.error(err));
+		if(act_like.list && act_like.list.length){
+			act_like.list.forEach(ele => {
+				if(ele.activity.length){
+					if(ele.userId == data.userId){
+						result.activity.push(ele)
+					}
+				}
+			});
+		}
+
+		return result;
 }
 
 async function feedback(data){		// 反馈
