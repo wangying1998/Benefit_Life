@@ -221,9 +221,7 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 		&& trans.type_h < 30
 	){
 		if(result.main.length == 0) result.main.push('平和质');
-	}
-	
-	else if(trans.type_a >= 60
+	}else if(trans.type_a >= 60
 		&& trans.type_b < 40
 		&& trans.type_c < 40
 		&& trans.type_d < 40
@@ -234,9 +232,7 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 		&& trans.type_h < 40
 	){
 		if(result.main.length == 0) result.main.push('基本是平和质');
-	}
-
-	else if(trans.type_a < 60){
+	}else if(trans.type_a < 60){
 		if(trans.type_b >= 40){
 			if(result.main.length == 0) result.main.push('气虚质');
 			else result.both.push('气虚质');
@@ -323,10 +319,12 @@ async function getArtDetail(data){		// 获取推文详情
 			likeId: data.id,
 			userId: data.userId
 		}).get();
+
 		if(like_result.data.length){
 			result[0].isLike = true;	// 动态喜欢标识
 		}else{
 			result[0].isLike = false;	// 动态喜欢标识
+		}
 	}
 	return result;
 }
@@ -335,7 +333,6 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 	let GLOBAL_USER = await db.collection('user').where({
 		_id: data.userId
 	}).get();
-	console.log(123,GLOBAL_USER)
 		// 个人档案
 	await Promise.all([
 		// 轮播图
@@ -375,7 +372,7 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 		}),
 		// 推文
 		db.collection('articles').get().then(res=>{
-			res.articleList = res.data.length>=5?res.data.slice(0,5):res.data;
+			res.articleList = res.data.slice(0,5);
 		})
 	]);
 	return result;
@@ -422,9 +419,9 @@ async function shouldOrAvoid(data){				// 每日宜忌详情
 	return result;
 }
 
-// async function returnArticleList(data){			// 首页 时令好文列表
-// 	return await db.collection('article_list').get();
-// }
+async function returnArticleList(data){			// 首页 时令好文列表
+	return await db.collection('article_list').get();
+}
 
 async function returnMyDynamicList(data){		// 查询动态列表
 	// 根据用户id进行筛选	-- 自己发表的动态
@@ -509,7 +506,7 @@ async function addDynamic(data){		// 发布动态
 		data: {
 			userId: data.userId,
 			content: data.content,
-			imgs: data.imgs || '图片',
+			imgs: data.imgs || [],
 			likeCount: 0,
 			create_time: new Date()
 		}
@@ -602,5 +599,5 @@ async function returnLikeList(data){		// 我喜欢的动态/推文
 async function feedback(data){		// 反馈
 	return await db.collection('feedback').add({
 		data
-	});
+	})
 }
