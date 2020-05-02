@@ -36,6 +36,8 @@ exports.main = async (event, context) => {
 			return returnHomeData(data);
 		case '/articles':
 			return getAllArticles(data);
+		case '/article/detail':
+			return getArtDetail(data);
 	// 个人档案
 		case '/home/physicalinfo':
 			return returnPhysicalInfo(data);
@@ -221,7 +223,7 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 		if(result.main.length == 0) result.main.push('平和质');
 	}
 	
-	if(trans.type_a >= 60
+	else if(trans.type_a >= 60
 		&& trans.type_b < 40
 		&& trans.type_c < 40
 		&& trans.type_d < 40
@@ -234,7 +236,7 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 		if(result.main.length == 0) result.main.push('基本是平和质');
 	}
 
-	if(trans.type_a < 60){
+	else if(trans.type_a < 60){
 		if(trans.type_b >= 40){
 			if(result.main.length == 0) result.main.push('气虚质');
 			else result.both.push('气虚质');
@@ -308,15 +310,32 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 	return result;
 }
 
-async function getAllArticles(){			// 获取所有推文
+async function getAllArticles(){			// 获取所有推文列表
 	return await db.collection('articles').get();
 }
+async function getArtDetail(data){		// 获取推文详情
+	if(data.id){
+		result = await db.collection('articles').where({
+			_id: data.id
+		}).get();
 
+		let like_result = await db.collection('user_like').where({
+			likeId: data.id,
+			userId: data.userId
+		}).get();
+		if(like_result.data.length){
+			result[0].isLike = true;	// 动态喜欢标识
+		}else{
+			result[0].isLike = false;	// 动态喜欢标识
+	}
+	return result;
+}
 async function returnHomeData(data){			// 首页 档案中体质类别 + 每日宜忌 + 三餐 + 起居
 	let result = {};
 	let GLOBAL_USER = await db.collection('user').where({
 		_id: data.userId
 	}).get();
+	console.log(123,GLOBAL_USER)
 		// 个人档案
 	await Promise.all([
 		// 轮播图
@@ -354,11 +373,11 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 			let index = Math.floor(Math.random()*res.data.length);
 			result.living = res.data[index];
 		}),
+		// 推文
 		db.collection('articles').get().then(res=>{
-			res.articleList = res.data.slice(0,5);
+			res.articleList = res.data.length>=5?res.data.slice(0,5):res.data;
 		})
 	]);
-
 	return result;
 }
 
@@ -427,15 +446,15 @@ async function returnMyDynamicList(data){		// 查询动态列表
 			temp.push(ele)
 		}
 	})
-	console.log(temp)
 	return temp;
 }
 async function returnActivity(data){
 	let result = {};
 	if(data.id){
-		// result = await db.collection('user_activity').where({
-		// 	_id: data.id
-		// }).get();
+		let like_result = await db.collection('user_like').where({
+			likeId: data.id,
+			userId: data.userId
+		}).get();
 
 		result = await db.collection('user_activity').aggregate()
 		.lookup({
@@ -453,6 +472,12 @@ async function returnActivity(data){
 			}
 		})
 		result = tempArr;
+
+		if(like_result.data.length){
+			result[0].isLike = true;	// 动态喜欢标识
+		}else{
+			result[0].isLike = false;	// 动态喜欢标识
+		}
 	}else{		// 所有动态
 		// result = await db.collection('user_activity').get();
 		result = await db.collection('user_activity').aggregate()
@@ -464,6 +489,17 @@ async function returnActivity(data){
 		})
 		.end()
 		.catch(err => console.error(err))
+		result.list.forEach(async function(ele){
+			let like_result = await db.collection('user_like').where({
+				likeId: ele._id,
+				userId: data.userId
+			}).get();
+			if(like_result.data.length){
+				ele.isLike = true;	// 动态喜欢标识
+			}else{
+				ele.isLike = false;	// 动态喜欢标识
+			}
+		})
 	}
 	return result;
 }
