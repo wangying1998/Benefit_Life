@@ -14,7 +14,9 @@ Page({
     testList: [],
     idx: '',
     quesIndex: '',
-    scoreArr: [],
+    scoreArr: {
+      answer: []
+    },
     selectButton: [
       {
         score: 1,
@@ -72,7 +74,7 @@ Page({
     let that = this;
     var scoreArr = this.data.scoreArr;
     var  scoreObj = {id: e.target.dataset.order, score: e.target.dataset.score};
-    scoreArr.push(scoreObj);
+    scoreArr.answer.push(scoreObj);
     this.setData({
        idx: e.target.dataset.score,
        quesIndex: e.target.dataset.order,
@@ -80,13 +82,22 @@ Page({
     });
     console.log(e.target.dataset.score,e.target.dataset.order);
     console.log("分数",that.data.scoreArr);
+    
   },
-  sendTestAnswer() {
-    let param = {
+  // sendTestAnswer() {
+  //   let param = {
 
-    }
-    getTestQuestion({}).then(res => {
-			console.log("体质测试题目",res);
+  //   }
+  //   getTestQuestion({}).then(res => {
+	// 		console.log("体质测试题目",res);
+	// 	})
+  // },
+  submitTest() {
+    var that = this;
+    let param = that.data.scoreArr;
+    console.log("分数信息",param);
+    sendTestAnswer(param).then(res => {
+			console.log("提交体质测试题目",res);
 		})
   },
   /**

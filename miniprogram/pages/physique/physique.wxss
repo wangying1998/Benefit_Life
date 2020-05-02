@@ -60,4 +60,11 @@
     background-color: #FFA404;
     color: rgba(255, 255, 255, 1);
     border:1px solid #FFA404;
+}
+.btn {
+    background-color: #23A257;
+    color: #fff;
+    font-weight: 400;
+    height: 80rpx;
+    margin: 30rpx 0;
 }  

@@ -142,7 +142,7 @@ Page({
           that.setData({
               isHide: false
           });
-          this.getHomeDataa();
+          this.getHomeData();
 		      this.getShouldAvoid();
 		      this.getRecoArticle();
       } else {

@@ -34,7 +34,7 @@
 			<view wx:if="{{true}}" class="content-img">
 				<image src="../../images/home.png"></image>
 			</view>
-			<view class="opt-delete">删除</view>
+			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
 		<!-- </view> -->
 
 		</view>

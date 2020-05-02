@@ -1,5 +1,5 @@
 import {
-	sendDynamic,
+  sendDynamic,
 } from '../../api/api.js'
 
 Page({
@@ -13,7 +13,7 @@ Page({
   },
   input:function(e){
     this.setData({
-      content:e.detail.value
+      content: e.detail.value
     })
   },
 

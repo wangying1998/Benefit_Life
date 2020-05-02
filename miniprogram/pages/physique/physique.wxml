@@ -11,6 +11,7 @@
                 <view class="" 
                     class="select-button {{idx == item.score & quesIndex == question.id?'selected':''}}"
                     wx:for="{{selectButton}}" wx:key="id" bindtap="clickAnswer" 
+                    data-current="{{question.id}}"
                     data-score="{{item.score}}"
                     data-order = "{{question.id}}"
                     >
@@ -19,4 +20,7 @@
             </view>
         </view>
     </view>
+    <button class="btn" bindtap="submitTest">
+        提交
+    </button>
 </view>

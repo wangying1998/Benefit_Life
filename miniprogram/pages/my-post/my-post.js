@@ -1,7 +1,8 @@
 // miniprogram/pages/tabs/squre/square.js
 
 import {
-	getSquareList,
+  getSquareList,
+  deleteDynamic
 } from '../../api/api.js'
 
 
@@ -23,6 +24,14 @@ Page({
 			console.log("我的动态",res);
 		})
 
+  },
+  goDelete() {
+    gdeleteDynamic({}).then(res => {
+			this.setData({
+				squareList: res,
+			})
+			console.log("我的动态",res);
+		})
   },
   /**
    * 生命周期函数--监听页面加载
