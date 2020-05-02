@@ -59,6 +59,9 @@ exports.main = async (event, context) => {
 	// 喜欢推文/动态
 		case '/like':
 			return likeSomthing(data);
+	// 不喜欢推文/动态
+		case '/dislike':
+			return dislikeSomthing(data);
 
 	// 调养
 		case '/disease/list':
@@ -437,11 +440,20 @@ async function returnMyDynamicList(data){		// 查询动态列表
 		})
 		.end()
 		.catch(err => console.error(err));
+	let like_result = await db.collection('user_like').get();
 	let temp = [];
 	result.list.forEach(ele=>{
 		if(ele._id == data.userId){
 			temp.push(ele)
 		}
+	})
+	temp[0].actList.forEach(function(ele){
+		ele.isLike = false;
+		like_result.data.forEach(item=>{
+			if(item.likeId == ele._id && item.userId == data.userId){
+				ele.isLike = true;	// 动态喜欢标识
+			}
+		})
 	})
 	return temp;
 }
@@ -488,8 +500,7 @@ async function returnActivity(data){
 		.catch(err => console.error(err))
 		
 		let like_result = await db.collection('user_like').get();
-		console.log(33333333333333,like_result)
-		result.list.forEach(async function(ele){
+		result.list.forEach(function(ele){
 			ele.isLike = false;
 			like_result.data.forEach(item=>{
 				if(item.likeId == ele._id && item.userId == data.userId){
@@ -579,6 +590,14 @@ async function likeSomthing(data){
 			create_time: new Date()
 		}
 	});
+}
+
+async function dislikeSomthing(data){		// 不喜欢动态/推文
+	return await db.collection('user_like').doc({
+		_id: data.id,
+		class: data.class,
+		userId: data.userId
+	}).remove();
 }
 
 async function returnLikeList(data){		// 我喜欢的动态/推文
