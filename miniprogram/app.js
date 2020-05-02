@@ -21,9 +21,9 @@ App({
     if (getSessionData().openId) {
       handleLogin().then(res => {
         console.log("登陆",res);
-        // wx.switchTab({
-        //   url: '/pages/homeNew/homeNew',
-        // })
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
       })
       wx.getSetting({
         success: res => {

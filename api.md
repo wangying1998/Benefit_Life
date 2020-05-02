@@ -44,6 +44,12 @@
     param:
         无
 
+【获取推文详情】
+    url:
+        /articles/detail
+    param:
+        id: 推文id
+
 【个人档案 = 体质详情】
     url:
         /home/physicalinfo

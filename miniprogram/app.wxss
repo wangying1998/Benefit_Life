@@ -2,6 +2,86 @@
 page {
 	background-color: #f8f8f8;
 }
-/* .container {
+.container {
 	padding: 0 40rpx;
-} */
+}
+/* flex布局 */
+.flex{
+	display: flex;
+}
+.fl-rev{
+	display: flex;
+	flex-direction: row-reverse;
+}
+.fl-wrap{
+	display: flex;
+	flex-wrap: wrap;
+}
+.fl-cen-cen{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.fl-cen-bet{
+	display: flex;
+	justify-content: center;
+	align-items: space-between;
+}
+.fl-cen-aro{
+	display: flex;
+	justify-content: center;
+	align-items: space-around;
+}
+.fl-sta-cen{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.fl-bet-cen{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.fl-bet-aro{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.fl-cen-col{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.fl-col{
+	display: flex;
+	flex-direction: column;
+}
+.fl-col-cen{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* 字号 */
+.large-size{
+	font-size: 32rpx;
+}
+.title-size{
+	font-size: 30rpx;
+}
+.content-size{
+	font-size: 28rpx;
+}
+.small-size{
+	font-size: 26rpx;
+}
+.mini-size{
+	font-size: 24rpx;
+}
+/* 全局 */
+view {
+	box-sizing: border-box;
+}
+.mr-t-20{
+	margin-top: 20rpx;
+}

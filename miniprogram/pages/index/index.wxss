@@ -1,9 +1,7 @@
 
 @import "../../wxParse/wxParse.wxss";
-
-page {
-  background: #f5f5f5;
-  font-size: 28rpx;
+.container{
+  background-color: #fff;
 }
 
 .header {
@@ -17,18 +15,16 @@ page {
   margin: 50rpx auto;
 
 }
-
+/* 授权登录 */
 .header image {
   width: 200rpx;
   height: 200rpx;
   border-radius: 50%;
 }
-
-.container .content {
+.content {
   margin-left: 50rpx;
   margin-bottom: 90rpx;
 }
-
 .content text {
   display: block;
   color: #9d9d9d;
@@ -40,40 +36,33 @@ page {
   font-size: 35rpx;
 }
 
+.line {
+  width: 6rpx;
+  height: 30rpx;
+  background: #299939;
+}
 .archives {
   height: 80rpx;
-  font-size: 12px;
-  display: flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 0 16rpx;
+  padding: 0 20rpx;
   background-color: #fff;
 }
-.archives .left {
-  display: flex; 
-  align-items:center;
+.archive-txt{
+  margin-left: 15rpx;
+  margin-right: 5rpx;
 }
-
-.archives .left .avatar {
+.avatar {
   width: 50rpx;
   height: 50rpx;
-  border-radius: 100%;
+  border-radius: 50%;
 }
-.divLine {
-  background: #23A257;
-  height: 30rpx;
-  width: 6rpx;
-  margin-right: 16rpx;
-}
+.look-txt {
+  color: #299939;
+  margin-right: 5rpx;
 
-.archives .right {
-  color: #23A257;
-  display: flex; 
-  align-items:center;
 }
-.archives .right .detail {
-  height: 25rpx;
-  width: 25rpx;
+.detail {
+  height: 26rpx;
+  width: 26rpx;
 }
 image {
   width: 80rpx;
@@ -83,108 +72,89 @@ image {
   width: 100%;
   height: 300rpx;
 }
-.taboo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  font-size: 28rpx;
-  /* height: 260rpx; */
-  border-top: 1px solid rgba(196, 196, 196,0.6);
+.mid-box{
   background-color: #fff;
+  border-top: #F1F1F1 1px solid;
 }
 
-.calendar {
-  width: 300rpx;
+.left-box {
+  width: 400rpx;
+  height: 250rpx;
+  padding: 22rpx 45rpx;
+  border-right: #F1F1F1 1px solid;
+}
+.date-flex{
   display: flex;
-  justify-content: space-between;
-  border-right: 1px solid rgba(196, 196, 196,0.6);
-  padding: 20rpx;
-  height: 220rpx;
-  
-  
+  flex-direction: column;
+  align-items: flex-end;
 }
-.lunar {
-  writing-mode: vertical-lr;
-  font-size: 24rpx;
-  text-align: center;
+.date-color{
+  color: #888888;
 }
-.solar .big {
-  font-size: 35rpx;
-  text-align: center;
+.date {
+  font-size: 50rpx;
+  font-weight: bold;
 }
 .solar .small {
   color: #888888;
   font-size: 25rpx;
 }
-.mod-text {
+.date-line{
+  height: 60rpx;
+  border-right: #000 1px solid;
+}
+.align-r{
+  text-align: right;
+  margin-right: 15rpx;
+}
+.mr-l-20{
+  margin-left: 20rpx;
+}
+.suit-txt{
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+  background-color: #299939;
+  color: #fff;
+  padding: 10rpx;
+}
+.taboo-txt{
+  width: 45rpx;
+  height: 45rpx;
+  padding: 10rpx;
+  border: #888888 1px solid;
+  border-radius: 50%;
+}
+.vertical-txt{
   writing-mode: vertical-lr;
 }
-.mod-text .suitable {
-  display: flex;
-}
-.text-suitable {
-  background-color: #23A257;
-  width: 45rpx;
-  height: 45rpx;
-  border-radius: 100%;
-  color: white;
-  /* line-height: 45rpx; */
-  text-align: center;
-  margin-right: 20rpx;
-  margin-bottom: 20rpx;
-}
-.text-diet {
-  width: 45rpx;
-  height: 45rpx;
-  border: 1px solid #888;
-  border-radius: 100%;
-  color: #888;
-  /* line-height: 45rpx; */
-  text-align: center;
-  box-sizing: border-box;
-  margin-bottom: 20rpx;
-}
-.mod-text .diet {
-  display: flex;
-}
-.other {
-  width: 450rpx;
-  /* border: 1px solid #23A257; */
-}
 
-.other-item {
-  display: flex; 
-  align-items: center;
-  justify-content: space-between;
-  padding: 20rpx;
-  
+.con-box{
+  width: 350rpx;
+  height: 125rpx;
+  padding: 17rpx 30rpx;
 }
-.other-item image {
+.meal{
+  border-bottom: #F1F1F1 1px solid;
+}
+.meal-con{
+  margin-top: 15rpx;
+}
+.meal-pic {
   width: 90rpx;
   height: 90rpx;
-  border-radius: 100%;
-}
-.other-item .other-content {
-  font-size: 26rpx;
+  border-radius: 50%;
 }
 
-.other-item .title{
-  color: #23A257;
+.title{
+  color: #299939;
 }
 .living {
   border-top: 1px solid rgb(196, 196, 196);
 }
 /* 时令好文 */
-.article {
+.art-title{
+  line-height: 80rpx;
+  padding: 0 20rpx;
   background-color: #fff;
-  margin-top: 25rpx;
-}
-.article-title {
-  display: flex;
-  align-items: center;
-  margin-left: 16rpx;
-}
-.article-title .text {
-  
 }
