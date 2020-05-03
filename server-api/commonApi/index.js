@@ -375,7 +375,7 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 		}),
 		// 推文
 		db.collection('articles').get().then(res=>{
-			res.articleList = res.data.slice(0,5);
+			result.articleList = res.data.slice(0,5);
 		})
 	]);
 	return result;
