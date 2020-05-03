@@ -18,7 +18,7 @@ export function updateBaseinfo (data){  // 获取体质测试列表
 }
 
 
-// 获取轮播列表
+// 获取首页数据
 export function getHomeData (data){  // 获取体质测试列表
 	data.openId =  openId;
 	data.userId = userId;
@@ -146,6 +146,16 @@ export function deleteDynamic(data){
 		data
 	})
 }
+// 个人信息
+export function getMyinfo(data){
+	data.openId =  openId;
+	data.userId = userId;	
+	return request({
+		url: "/my",
+		data
+	})
+}
+
 // 我喜欢的
 export function getMyLike(data){
 	data.openId =  openId;
@@ -155,6 +165,7 @@ export function getMyLike(data){
 		data
 	})
 }
+
 // 点赞/喜欢
 export function clickLick(data){
 	data.openId =  openId;

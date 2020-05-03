@@ -1,4 +1,6 @@
 <import src="../../wxParse/wxParse.wxml" />
+
+
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
     <block wx:for="{{slideList}}" wx:key="id">
@@ -64,7 +66,7 @@
   </view>
 
   <view class="article mr-t-20">
-    <view class="archives fl-bet-cen">
+    <view class="archives fl-bet-cen" bindtap="moreArticle">
       <view class="fl-cen-cen">
         <view class="line"></view>
         <text class="title-size archive-txt">时令好文</text>
@@ -74,13 +76,17 @@
         <image class="detail" src="../../images/next.png"></image>
       </view>
     </view>
-    <block class="" wx:for="{{RecoArticle}}" wx:key="id">
-      <view>
-        <view class="fl-cen-col">
-
+    <view wx:for="{{articleList}}" wx:key="id" >
+      <view class="article-item">
+        <view class="art-text">
+            <view class="art-title">{{item.title}}</view>
+            <view class="art-date">阅读量：{{item.lookCount}}</view>
         </view>
+        <!-- <view > -->
+          <image src="{{item.img}}" class="art-img"/>
+        <!-- </view> -->
+        
       </view>
-    </block>
+    </view>
   </view>
 </view>
-<!-- </view> -->

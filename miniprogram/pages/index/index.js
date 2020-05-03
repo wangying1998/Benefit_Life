@@ -1,8 +1,7 @@
 import {
     getHomeData,
-    getShouldAvoid,
-    getRecoArticle,
-    getPhysicalInfo
+    getPhysicalInfo,
+    getMyinfo
   } from '../../api/api.js'
   
   var app = getApp();
@@ -16,53 +15,38 @@ import {
       //判断小程序的API，回调，参数，组件等是否在当前版本可用。
       canIUse: wx.canIUse('button.open-type.getUserInfo'),
       // isHide: false,
-      slideList: '',
+      slideList: '', //轮播
+      articleList: [], // 时令好文
+      living: {}, // 起居
+      should: {}, 
       userInfo: {},
       shouldToDo: '',
       RecoArticle: [],
       physicalInfo: '',
     },
-    // globalData: {
-    //   userInfo: null
-    // },
     getHomeData() {
       this.setData({
         userInfo: wx.getStorageSync('userInfo'),
       })
-      // 获取轮播列表
+      // 获取首页数据
       getHomeData({}).then(res => {
         this.setData({
           slideList: res.slideList,
+          articleList: res.articleList,
+          should: res.should,
+          living: res.living
         })
+        console.log("首页数据",res);
+        console.log("tuijianwenzhang ",this.data.articleList);
       })
-      // 推荐文章
-      let that = this;
-      getRecoArticle({}).then(res => {
-        this.setData({
-          RecoArticle: res.data,
-        })
-        let lists = res.data;
-        var relayArr = [];
-        for (var i = 0; i < lists.length; i++) {
-          relayArr.push(lists[i].content);
-        }
-        for (let i = 0; i < relayArr.length; i++) {
-          WxParse.wxParse('content' + i, 'html', relayArr[i], that);
-          if (i === relayArr.length - 1) {
-            WxParse.wxParseTemArray("relayArr", 'content', relayArr.length, that);
-          }
-        }
-        console.log(relayArr);
-        console.log("这里", WxParse.wxParseTemArray("relayArr", 'content', relayArr.length, that))
-        console.log("推荐文章", res.data);
+      getMyinfo({}).then(res => {
+        // this.setData({
+        //   : res,
+        // })
+        console.log("首页个人信息", res);
       })
-      // 每日宜忌
-      getShouldAvoid({}).then(res => {
-        this.setData({
-          shouldToDo: res,
-        })
-        console.log("适宜", res);
-      })
+
+ 
     },
     // 获取个人档案
     // 获取的时候字段表明曾经是否测试过？
@@ -90,6 +74,12 @@ import {
           }
           } 
         });
+    },
+    // 查看更多
+    moreArticle () {
+      wx.navigateTo({
+        url: '/pages/all-article/all-article',
+      })
     },
   
     onShow: function () {

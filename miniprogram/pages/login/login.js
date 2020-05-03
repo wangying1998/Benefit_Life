@@ -43,7 +43,7 @@ Page({
 
             }
             updateBaseinfo(param).then(res => {
-              
+              console.log(res); 
             })
             wx.navigateBack();
               

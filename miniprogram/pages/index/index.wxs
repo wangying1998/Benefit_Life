@@ -1,0 +1,47 @@
+
+
+// WXS 中不能调用 javascript 中定义的函数或者变量，也不能调用小程序提供的
+// API，他的运行环境和 javascript 是隔离的。
+// 只能使用 var 来定义变量，表现形式和 javascript 一样，会有变量提升。
+// 不能使用 new Date() 应该使用 。
+
+
+// function formatDateTime(date, fmt = 'YYYY-MM-DD HH:mm:ss') {
+//     date = typeof date === 'object' ? date : new Date(date || +new Date());
+    
+// }
+function formatNumber(n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+
+var filter = {
+	formatTime: function(time ,format = 'Y-M-D h:m:s'){
+        var date = getDate(time);
+        var formateArr  = ['Y','M','D','h','m','s'];
+        var returnArr   = [];
+       
+        returnArr.push(date.getFullYear());
+        returnArr.push(formatNumber(date.getMonth() + 1));
+        returnArr.push(formatNumber(date.getDate()));
+       
+        returnArr.push(formatNumber(date.getHours()));
+        returnArr.push(formatNumber(date.getMinutes()));
+        returnArr.push(formatNumber(date.getSeconds()));
+
+        for (var i = 0; i < returnArr.length; ++i) {
+            format = format.replace(formateArr[i], returnArr[i]);
+          }
+
+        // for (var i in returnArr)
+        // {
+        //   format = format.replace(formateArr[i], returnArr[i]);
+        // }
+        return format;
+	}
+}
+
+// 导出对外暴露的属性
+module.exports = {
+	formatTime: filter.formatTime
+}
