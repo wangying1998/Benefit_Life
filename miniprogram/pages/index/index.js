@@ -34,7 +34,6 @@ import {
         this.setData({
           slideList: res.slideList,
         })
-        console.log(33333, this.slideList);
       })
       // 推荐文章
       let that = this;
