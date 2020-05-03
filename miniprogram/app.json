@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/login/login",
     "pages/logs/logs",
-    "pages/detail-dynamic/detail-dynamic",
     "pages/square/square",
     "pages/recuperate/recuperate",
     "pages/my/my",
@@ -13,7 +13,8 @@
     "pages/search/search",
     "pages/taboo/taboo",
     "pages/notice/notice",
-    "pages/send-dynamic/send-dynamic"
+    "pages/send-dynamic/send-dynamic",
+    "pages/detail-dynamic/detail-dynamic"
 
   ],
   "window": {

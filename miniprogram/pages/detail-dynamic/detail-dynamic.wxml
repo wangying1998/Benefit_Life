@@ -1,2 +1,42 @@
-<!--pages/detail-dynamic/detail-dynamic.wxml-->
-<text>pages/detail-dynamic/detail-dynamic.wxml</text>
+
+<wxs module="filter" src="./detail-dynamic.wxs" />
+<view
+	 class="square-list"
+	 wx:key="id"
+	 bindtap="gotoDetails"
+	>
+		<view class="dynamic-item">
+			<!-- 个人信息+时间 -->
+			<view class="perInfo">
+				<view class="info">
+					<image
+					 class="release-avatar"
+					 src="{{detailDyna.userInfo[0].avatar}}"
+					 mode="cover"
+					></image>
+					<view class="">
+						<view class="release-name">{{detailDyna.userInfo[0].nickName}}</view>
+						<view class="release-date">{{filter.formatTime(detailDyna.create_time,'M月D日h:m')}}</view>
+					</view>
+				</view>
+				<view>
+                    <image bindtap="gotoLike" wx:if="{{false}}" data-id="{{detailDyna._id}}"
+                    class="send" src="../../images/no-collect.png"></image>
+                    <image bindtap="gotoLike" wx:else="{{}}"
+					class="send" src="../../images/collect.png"></image>
+				</view>
+			</view>
+			<!-- 内容 -->
+			<view>
+				<!-- 文字 -->
+				<view class="dynamic-copywriting">
+					{{detailDyna.content}}
+				</view>
+				<!-- 图片 -->
+				<view wx:if="{{detailDyna.imgs.length != 0}}" class="content-img" >
+					<image src="{{item}}" wx:for="{{detailDyna.imgs}}" wx:key="id"></image>
+				</view>
+			</view>
+
+		</view>
+	</view>

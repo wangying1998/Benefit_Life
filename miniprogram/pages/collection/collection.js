@@ -1,7 +1,8 @@
 
 import {
   getMyLike,
-  clickLick
+  clickLick,
+  disLick
 } from '../../api/api.js'
 
 Page({
@@ -14,8 +15,8 @@ Page({
   getMyLike() {
     getMyLike({}).then(res => {
       this.setData({
-        activityList: res.activity.data,// 动态
-        articleList: res.article.data, //文章
+        activityList: res.activity,// 动态
+        articleList: res.article, //文章
       })
       console.log("我喜欢的",res);
     })
@@ -24,17 +25,30 @@ Page({
   gotoLike: function(e) {
     var param = {
       likeId: e.currentTarget.dataset['id'],
-      class: -1
-
+      class: 1
     }
     clickLick(param).then(res => {
       // this.setData({
       // 	squareList: res,
       // })
-      console.log("点赞或者是取消点赞",res);
+      console.log("点赞",res);
     })
     
   },
+  // 取消点赞
+  goDislike: function(e) {
+    var param = {
+      id: e.currentTarget.dataset['id'],
+      class: 1
+    }
+    disLick(param).then(res => {
+      // this.setData({
+      // 	squareList: res,
+      // })
+      console.log("取消点赞",res);
+    })
+  },
+
   onLoad: function() {
 
       var that = this;

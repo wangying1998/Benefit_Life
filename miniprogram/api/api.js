@@ -1,8 +1,27 @@
 import { request } from '../utils/request.js';
+import {
+	getSessionData,
+  } from '../utils/session';
+  var openId = getSessionData('openId');
+  var userId = getSessionData('userId');
+	
+  
+
+// 更新用户信息
+export function updateBaseinfo (data){  // 获取体质测试列表
+	data.openId =  openId;
+	data.userId = userId;
+	return request({
+		url: '/update_baseinfo',
+		data
+	});
+}
+
 
 // 获取轮播列表
 export function getHomeData (data){  // 获取体质测试列表
-
+	data.openId =  openId;
+	data.userId = userId;
 	return request({
 		url: '/home',
 		data
@@ -10,6 +29,8 @@ export function getHomeData (data){  // 获取体质测试列表
 }
 // 获取个人档案
 export function getPhysicalInfo (data){  // 获取体质测试列表
+	data.openId =  openId;
+	data.userId = userId;
 	return request({
 		url: '/home/physicalinfo',
 		data
@@ -17,22 +38,19 @@ export function getPhysicalInfo (data){  // 获取体质测试列表
 }
 
 // 获取体质测试列表
-export function getTestList (data){  
+export function getTestList (data){
+	data.openId =  openId;
+	data.userId = userId;  
 	return request({
 		url: '/physical/test',
 		data
 	});
 }
 
-// 修改头像等基本信息
-export function updateBaseinfo(data){	
-	return request({
-		url: "/update_baseinfo",
-		data
-	})
-}
 // 获取每日宜忌详情
-export function getShouldAvoid(data){	
+export function getShouldAvoid(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/home/should_avoid",
 		data
@@ -40,7 +58,9 @@ export function getShouldAvoid(data){
 }
 
 // 获取推文
-export function getRecoArticle(data){	
+export function getRecoArticle(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/articles",
 		data
@@ -48,7 +68,9 @@ export function getRecoArticle(data){
 }
 
 // 获取体质测试题目
-export function getTestQuestion(data){	
+export function getTestQuestion(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/physical/test",
 		data
@@ -56,7 +78,9 @@ export function getTestQuestion(data){
 }
 
 // 提交体质测试
-export function sendTestAnswer(data){	
+export function sendTestAnswer(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/physical/answer",
 		data
@@ -64,7 +88,9 @@ export function sendTestAnswer(data){
 }
 
 // 获取调养病情
-export function getDiseaseList(data){	
+export function getDiseaseList(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/disease/list",
 		data
@@ -72,6 +98,8 @@ export function getDiseaseList(data){
 }
 // 获取调养详情
 export function getDiseaseDetail(data){	
+	data.openId =  openId;
+	data.userId = userId;
 	return request({
 		url: "/disease/detail",
 		data
@@ -79,15 +107,30 @@ export function getDiseaseDetail(data){
 }
 
 // 获取动态列表
-export function getSquareList(data){	
+export function getSquareList(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/square/activity",
 		data
 	})
 }
 
+// 获取我的动态列表
+export function getUserSquareList(data){
+	data.openId =  openId;
+	data.userId = userId;	
+	return request({
+		url: "/square/user/activity",
+		data
+	})
+}
+
+
 // 发布动态
-export function sendDynamic(data){	
+export function sendDynamic(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/square/activity/add",
 		data
@@ -95,28 +138,45 @@ export function sendDynamic(data){
 }
 
 // 删除动态
-export function deleteDynamic(data){	
+export function deleteDynamic(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/square/activity/delete",
 		data
 	})
 }
 // 我喜欢的
-export function getMyLike(data){	
+export function getMyLike(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/my/like",
 		data
 	})
 }
 // 点赞/喜欢
-export function clickLick(data){	
+export function clickLick(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/like",
 		data
 	})
 }
+// 取消点赞
+export function disLick(data){
+	data.openId =  openId;
+	data.userId = userId;	
+	return request({
+		url: "/dislike",
+		data
+	})
+}
 // 反馈
-export function Feedback(data){	
+export function Feedback(data){
+	data.openId =  openId;
+	data.userId = userId;	
 	return request({
 		url: "/feedback",
 		data

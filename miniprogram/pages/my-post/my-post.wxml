@@ -1,3 +1,4 @@
+<wxs module="filter" src="./my-post.wxs" />
 <view
 	 class="square-list"
 	 wx:for="{{squareList}}"
@@ -9,13 +10,12 @@
 			<view class="perInfo">
 				<view class="info">
 					<image
-					 bindtap="bindViewTap"
 					 class="release-avatar"
-					 src="{{item.userInfo[0].avatar}}"
+					 src="{{myInfo.avatar}}"
 					 mode="cover"
 					/>
 					<view class="">
-						<view class="release-name">{{item.userInfo[0].nickName}}</view>
+						<view class="release-name">{{myInfo.nickName}}</view>
 						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
 					</view>
 				</view>
@@ -27,12 +27,15 @@
 				</view>
 			</view>
 			<!-- 内容 -->
-			<view class="dynamic-copywriting">
-				{{item.content}}
-			</view>
-			<!-- 图片 -->
-			<view wx:if="{{true}}" class="content-img">
-				<image src="../../images/home.png"></image>
+			<view bindtap="detailDynamic" data-id="{{item._id}}">
+				<!-- 文字 -->
+				<view class="dynamic-copywriting">
+					{{item.content}}
+				</view>
+				<!-- 图片 -->
+				<view wx:if="{{item.imgs.length != 0}}" class="content-img" >
+					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id"></image>
+				</view>
 			</view>
 			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
 		<!-- </view> -->

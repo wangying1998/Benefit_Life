@@ -14,33 +14,33 @@
 			<view class="perInfo">
 				<view class="info">
 					<image
-					 bindtap="bindViewTap"
 					 class="release-avatar"
 					 src="{{item.userInfo[0].avatar}}"
 					 mode="cover"
 					/>
 					<view class="">
 						<view class="release-name">{{item.userInfo[0].nickName}}</view>
-						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
+						<view class="release-date">{{filter.formatTime(item.activity[0].create_time,'M月D日h:m')}}</view>
 					</view>
 				</view>
 				<view>
-                    <!-- 应该在后台存放一个字段表示是否是喜欢过的 -->
-                    <image bindtap="gotoLike" wx:if="{{true}}"
+                    <image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item._id}}"
                     class="send" src="../../images/no-collect.png"></image>
                     <image bindtap="gotoLike" wx:else="{{}}"
-                    class="send" src="../../images/collect.png" >
-                    </image>
+					class="send" src="../../images/collect.png"></image>
 				</view>
 			</view>
-			<view class="dynamic-copywriting">
-                {{item.content}}
-                我喜欢的
+			<!-- 内容 -->
+			<view bindtap="detailDynamic" data-id="{{item._id}}">
+				<!-- 文字 -->
+				<view class="dynamic-copywriting">
+					{{item.activity[0].content}}
+				</view>
+				<!-- 图片 -->
+				<view wx:if="{{item.activity[0].imgs.length != 0}}" class="content-img" >
+					<image src="{{item}}" wx:for="{{item.activity[0].imgs}}" wx:key="id"></image>
+				</view>
 			</view>
-
-			<!-- <view wx:if="{{}}">
-				<image src="{{item.}}" />
-			</view> -->
 		</view>
 
 		</view>

@@ -21,9 +21,9 @@
   width: 100%; 
   overflow: hidden;
 }
-.swiper-box view {
+/* .swiper-box view {
   text-align: center;
-}
+} */
 /* 动态 */
 .perInfo {
   display: flex;
@@ -35,6 +35,12 @@
 .perInfo .info {
   display: flex;
   align-items: center;
+}
+.dynamic-item {
+  background-color: #fff;
+  margin: 16rpx;
+  padding: 16rpx;
+  
 }
 .release-avatar {
   width: 70rpx;
@@ -61,4 +67,17 @@
   width: 670rpx;
   margin: 0 auto;
   margin-top: 16rpx;
+}
+/* 动态图片 */
+.content-img {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+.content-img image{
+  width: 215rpx;
+  height: 150rpx;
+  text-align: center;
+  margin: 0 5rpx 5rpx 0;
 }

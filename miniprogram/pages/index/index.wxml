@@ -1,23 +1,4 @@
-<!-- index.wxml -->
 <import src="../../wxParse/wxParse.wxml" />
-<!-- <view> -->
-<!-- <view wx:if="{{isHide}}">
-    <view wx:if="{{canIUse}}" >
-        <view class='header'>
-            <image src='../../images/logo.jpg'></image>
-        </view>
-
-        <view class='content'>
-            <view>申请获取以下权限</view>
-            <text>获得你的公开信息(昵称，头像等)</text>
-        </view>
-
-        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-            授权登录
-        </button>
-    </view>
-    <view wx:else>请升级微信版本</view>
-  </view> -->
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
     <block wx:for="{{slideList}}" wx:key="id">
@@ -83,10 +64,6 @@
   </view>
 
   <view class="article mr-t-20">
-    <!-- <view class=".fl-sta-cen art-title">
-      <view class="line"></view>
-      <view class="archive-txt">时令好文</view>
-    </view> -->
     <view class="archives fl-bet-cen">
       <view class="fl-cen-cen">
         <view class="line"></view>

@@ -1,8 +1,5 @@
 // miniprogram/pages/tabs/my/my.js
 
-// import {
-// 	updateBaseinfo,
-// } from '../../api/api.js'
 
 Page({
 
@@ -94,9 +91,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-        userInfo: wx.getStorageSync('userInfo'),
-    })
+    
     // wx.getStorage({
     //   key: 'userInfo',
     //   success (res) {
@@ -117,7 +112,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 点击查看体质测试
 
+      wx.getSetting({
+        success: function(res) {
+          if (!res.authSetting['scope.userInfo']) {
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          } 
+        } 
+      });
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo'),
+    })
   },
 
   /**

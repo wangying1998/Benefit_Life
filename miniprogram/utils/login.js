@@ -21,7 +21,7 @@ export function handleLogin() {
           // }
           
           goLogin().then(response => {
-            console.log(response); //别注释掉了， 有时看偶发bug
+            console.log("登陆接口的调用返回",response); //别注释掉了， 有时看偶发bug
             const sessionData = {
               userId: response.data._id || response.data[0]._id,
               openId: response.openId || response.data[0].openId

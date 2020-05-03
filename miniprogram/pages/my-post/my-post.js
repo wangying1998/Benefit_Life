@@ -2,6 +2,7 @@
 
 import {
   getSquareList,
+  getUserSquareList,
   deleteDynamic
 } from '../../api/api.js'
 
@@ -15,32 +16,38 @@ Page({
     squareList: {},
     userInfo: {},
   },
+  
 
   getData() {
-    getSquareList({}).then(res => {
+    getUserSquareList({}).then(res => {
 			this.setData({
-				squareList: res,
-			})
+        squareList: res[0].actList,
+        myInfo: res[0],
+      })
+      // wx.setNavigationBarTitle({
+      //   title: res.data[0].name//页面标题为路由参数
+      // })
 			console.log("我的动态",res);
 		})
 
   },
   goDelete() {
-    gdeleteDynamic({}).then(res => {
+    deleteDynamic({}).then(res => {
 			this.setData({
 				squareList: res,
 			})
-			console.log("我的动态",res);
+			console.log("删除动态",res);
 		})
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  //   this.setData({
-  //     userInfo: wx.getStorageSync('userInfo'),
-  // })
-  },
+  // onLoad: function (options) {
+   
+  //   this.getData(options.id);
+
+    
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -54,6 +61,17 @@ Page({
    */
   onShow: function () {
     this.getData();
+    wx.getUserInfo({
+      success: function(res) {
+        var userInfo = res.userInfo //用户基本信息
+        var nickName = userInfo.nickName //用户名
+        var avatarUrl = userInfo.avatarUrl //头像链接
+        var gender = userInfo.gender //性别 0：未知、1：男、2：女
+        var province = userInfo.province //所在省
+        var city = userInfo.city //所在市
+        var country = userInfo.country //所在国家
+      }
+    })
   },
 
   /**

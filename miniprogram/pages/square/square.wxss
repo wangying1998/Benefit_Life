@@ -108,6 +108,7 @@ page {
     width: 215rpx;
     height: 150rpx;
     text-align: center;
+    margin: 0 5rpx 5rpx 0;
 }
 
 

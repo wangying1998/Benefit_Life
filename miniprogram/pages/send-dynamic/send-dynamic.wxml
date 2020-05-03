@@ -11,5 +11,5 @@
             <image bindtap="chooseimage" class="moment_img" src='../../images/add-image.png'></image>
         </view>
     </view>
-    <button bindtap="send" class="btn-release">发布</button>
+    <button bindtap="goSend" class="btn-release">发布</button>
 </view>
