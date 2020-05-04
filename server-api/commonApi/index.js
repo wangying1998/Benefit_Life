@@ -390,7 +390,7 @@ async function returnPhysicalInfo(data){
 	}).get();
 
 	// 个人体质档案 = 体质详情
-	let result = db.collection('physical_feature').where({
+	let result = await db.collection('physical_feature').where({
 		name: GLOBAL_USER.data[0].physical
 	}).get();
 
