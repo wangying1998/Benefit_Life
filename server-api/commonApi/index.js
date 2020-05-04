@@ -317,6 +317,11 @@ async function getArtDetail(data){		// 获取推文详情
 		result = await db.collection('articles').where({
 			_id: data.id
 		}).get();
+		await db.collection('articles').doc(data.id).update({
+			data: {
+				lookCount: _.inc(1)
+			}
+		})
 		let like_result = await db.collection('user_like').where({
 			likeId: data.id,
 			userId: data.userId
@@ -389,31 +394,16 @@ async function returnPhysicalInfo(data){
 		name: GLOBAL_USER.data[0].physical
 	}).get();
 
+	result.data[0].both = GLOBAL_USER.data[0].both;
+
 	return result;
 }
 
 async function shouldOrAvoid(data){				// 每日宜忌详情
-	// let result = {};
-	// let GLOBAL_USER = await db.collection('user').where({
-	// 	_id: data.userId
-	// }).get();
-	// 宜
-	// await Promise.all([
-		// 宜忌
-		return await db.collection('suggest').where({
-			_id: data.id
-		}).get();
-		// 忌
-		// db.collection('suggest').where({
-		// 	class: 0,
-		// 	physical: GLOBAL_USER.data[0].physical
-		// }).get().then(res=>{
-		// 	let index = Math.floor(Math.random()*res.data.length);
-		// 	result.avoid = res.data[index];
-		// }),
-	// ]);
-
-	// return result;
+	// 宜忌
+	return await db.collection('suggest').where({
+		_id: data.id
+	}).get();
 }
 
 async function returnArticleList(data){			// 首页 时令好文列表
@@ -578,6 +568,19 @@ async function returnUserInfo(data){		// 我的
 }
 
 async function likeSomthing(data){
+	if(data.class == 1){// 喜欢推文
+		await db.collection('articles').doc(data.likeId).update({
+			data: {
+				likeCount: _.inc(1)
+			}
+		})
+	}else if(data.class == 0){
+		await db.collection('user_activity').doc(data.likeId).update({
+			data: {
+				likeCount: _.inc(1)
+			}
+		})
+	}
 	return await db.collection('user_like').add({
 		data: {
 			...data,
@@ -587,6 +590,19 @@ async function likeSomthing(data){
 }
 
 async function dislikeSomthing(data){		// 不喜欢动态/推文
+	if(data.class == 1){// 喜欢推文
+		await db.collection('articles').doc(data.likeId).update({
+			data: {
+				likeCount: _.inc(-1)
+			}
+		})
+	}else if(data.class == 0){
+		await db.collection('user_activity').doc(data.likeId).update({
+			data: {
+				likeCount: _.inc(-1)
+			}
+		})
+	}
 	return await db.collection('user_like').doc({
 		_id: data.id,
 		class: data.class,
