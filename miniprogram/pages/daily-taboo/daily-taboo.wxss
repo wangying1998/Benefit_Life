@@ -1,1 +1,69 @@
-/* pages/toboo/toboo.wxss */
+page {
+    font-size: 28rpx;
+    /* background: url(../../images/bg2.png) center no-repeat; */
+}
+
+/* 日期 */
+.date {
+    margin: 0 auto;
+    text-align: center;
+}
+.date view {
+    margin: 10rpx;
+}
+.date-day {
+    color: #299939;
+    font-weight: 500;
+    font-size: 90rpx;
+}
+.date-year {
+    font-size: 30rpx;
+}
+/* .date-week {
+
+}
+.date-nongli {
+
+} */
+
+.suggest-content {
+    width: 670rpx;
+    margin: 0 auto;
+    margin-top: 50rpx;
+  }
+.title {
+    display: flex;
+}
+.suit-txt {
+    width: 45rpx;
+    height: 45rpx;
+    border-radius: 50%;
+    background-color: #299939;
+    color: #fff;
+    padding: 10rpx;
+    text-align: center;
+    margin-right: 15rpx;
+  }
+.suit-title {
+    display: inline-block;
+    color: #299939;
+}
+.taboo-txt {
+    width: 45rpx;
+    height: 45rpx;
+    padding: 10rpx;
+    border: #888888 1px solid;
+    border-radius: 50%;
+    margin-right: 15rpx;
+    color: #888;
+}
+  .vertical-txt {
+    display: inline-block;
+    color: #888;
+  }
+  
+  .look-txt {
+      color: #333;
+      font-size: 26rpx;
+      margin: 25rpx 0;
+  }

@@ -1,18 +1,32 @@
-// pages/toboo/toboo.js
+import {
+  getArtDetails
+} from '../../api/api.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    detail: {}
   },
-
+  getDetail (id) {
+    let param = {
+      id: id,
+    }
+    getArtDetails(param).then(res => {
+      this.setData({
+        detail: res,
+      })
+      console.log("时令详细",res);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.artid);
+    this.getDetail(options.artid);
   },
 
   /**

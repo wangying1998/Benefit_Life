@@ -40,7 +40,7 @@ Page({
           suggest: res.suggest
         })
         console.log("首页数据",res);
-        console.log("tuijianwenzhang ",this.data.articleList);
+        // console.log("tuijianwenzhang ",this.data.articleList);
       })
       getMyinfo({}).then(res => {
         // this.setData({
@@ -76,23 +76,14 @@ Page({
           } 
         });
     },
-    // 食材
     gotoMeal() {
       wx.navigateTo({
         url: '/pages/meal/meal',
       })
     },
-    // 起居
     gotoLiving() {
       wx.navigateTo({
         url: '/pages/living/living',
-      })
-    },
-    // 每日宜忌
-    goDailytaboo(e) {
-      let query = e.currentTarget.dataset['id'];
-      wx.navigateTo({
-        url: `/pages/daily-taboo/daily-taboo?id=${query}`,
       })
     },
     // 查看更多

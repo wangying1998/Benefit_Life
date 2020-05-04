@@ -1,1 +1,7 @@
-<view class="intro">我的体质就是这样</view>
+<view>
+    <image src="../../images/wenhao.png" />
+    <view >
+    <text>{{living.title}}</text>
+    <rich-text nodes="{{living.content}}"></rich-text>>
+    </view>
+</view>

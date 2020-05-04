@@ -1,9 +1,7 @@
 // pages/toboo/toboo.js
 import {
-  getShouldAvoid,
+  getHomeData,
 } from '../../api/api.js'
-
-
 
 Page({
 
@@ -11,26 +9,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shouldToDo: '',
+    meals: {},
   },
-  getShouldAvoid(id) {
-    let param = {
-      id: id
-    }
-    getShouldAvoid(param).then(res => {
-      this.setData({
-        avoid: res.data[0].avoid,
-        should: res.data[0].should
-      })
-      console.log("适宜", res);
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // 每日宜忌
-      this.getShouldAvoid(options.id);
+    getHomeData({}).then(res => {
+      this.setData({
+        meals: res.meals,
+      })
+      console.log("食材",res);
+    })
   },
 
   /**
@@ -67,18 +58,4 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -1,9 +1,6 @@
 // pages/toboo/toboo.js
 import {
-  getHomeData,
-  getShouldAvoid,
   getRecoArticle,
-  getPhysicalInfo,
   getMyinfo
 } from '../../api/api.js'
 var WxParse = require('../../wxParse/wxParse.js');

@@ -21,10 +21,10 @@
     </view>
   </view>
   <view class="flex mid-box mini-size">
-    <view class="left-box fl-bet-cen">
+    <view class="left-box fl-bet-cen" bindtap="goDailytaboo" data-id="{{suggest._id}}">
       <view>
         <view class="date-flex">
-          <view class="date">30</view>
+          <view class="date" bindtap="">30</view>
           <text class="mini-size date-color">2020/03</text>
         </view>
         <view class="fl-cen-cen mr-t-20">
@@ -38,29 +38,29 @@
       <view class="flex">
         <view class="fl-col-cen">
           <view class="suit-txt fl-cen-cen">宜</view>
-          <view class="look-txt vertical-txt mr-t-20">沐浴</view>
+          <view class="look-txt vertical-txt mr-t-20">{{suggest.should.title}}</view>
         </view>
         <view class="fl-col-cen date-color mr-l-20">
           <view class="taboo-txt fl-cen-cen">忌</view>
-          <view class="vertical-txt mr-t-20">大辛大辣椒</view>
+          <view class="vertical-txt mr-t-20">{{suggest.avoid.title}}</view>
         </view>
       </view>
     </view>
 
     <view class="mini-size">
-      <view class="fl-bet-cen con-box meal">
+      <view class="fl-bet-cen con-box meal" bindtap="gotoMeal">
         <view class="fl-col">
           <view class="look-txt">食材</view>
-          <view class="meal-con">幸运水果：火龙果</view>
+          <view class="meal-con">幸运水果：{{meals.name}}</view>
         </view>
-        <image src='../../images/round-pic.png' class="meal-pic"></image>
+        <image src='{{meals.img}}' class="meal-pic"></image>
       </view>
-      <view class="fl-bet-cen con-box">
+      <view class="fl-bet-cen con-box" bindtap="gotoLiving">
         <view class="fl-col">
           <view class="look-txt">起居</view>
-          <view class="meal-con">早睡早起精神好</view>
+          <view class="meal-con">{{living.title}}</view>
         </view>
-        <image src='../../images/round-pic.png' class="meal-pic"></image>
+        <image src='{{living.img}}' class="meal-pic"></image>
       </view>
     </view>
   </view>
@@ -76,16 +76,13 @@
         <image class="detail" src="../../images/next.png"></image>
       </view>
     </view>
-    <view wx:for="{{articleList}}" wx:key="id" >
-      <view class="article-item">
+    <view wx:for="{{articleList}}" wx:key="id">
+      <view class="article-item" bindtap="detailsArticle" data-artid="{{item._id}}">
         <view class="art-text">
             <view class="art-title">{{item.title}}</view>
             <view class="art-date">阅读量：{{item.lookCount}}</view>
         </view>
-        <!-- <view > -->
-          <image src="{{item.img}}" class="art-img"/>
-        <!-- </view> -->
-        
+        <image src="{{item.img}}" class="art-img"/>
       </view>
     </view>
   </view>

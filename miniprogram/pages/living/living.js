@@ -1,18 +1,27 @@
-// pages/toboo/toboo.js
+
+import {
+  getHomeData,
+} from '../../api/api.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    living: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getHomeData({}).then(res => {
+      this.setData({
+        living: res.living,
+      })
+      console.log("首页数据",res);
+    })
   },
 
   /**

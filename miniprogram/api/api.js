@@ -27,6 +27,7 @@ export function getHomeData (data){  // 获取体质测试列表
 		data
 	});
 }
+
 // 获取个人档案
 export function getPhysicalInfo (data){  // 获取体质测试列表
 	data.openId =  openId;
@@ -66,6 +67,16 @@ export function getRecoArticle(data){
 		data
 	})
 }
+// 获取推文
+export function getArtDetails(data){
+	data.openId =  openId;
+	data.userId = userId;	
+	return request({
+		url: "/articles/detail",
+		data
+	})
+}
+
 
 // 获取体质测试题目
 export function getTestQuestion(data){

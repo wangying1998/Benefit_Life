@@ -1,2 +1,20 @@
-<!--pages/toboo/toboo.wxml-->
-<text>消息通知</text>
+<view class="">
+      <view class="date">
+          <view class="date-day">30</view>
+          <text class="date-year">2020年3月</text>
+          <view class="date-week">星期五</view>
+          <view class="date-nongli">己亥年十一月 初七</view>
+      </view>
+      <view class="suggest-content">
+        <view class="title">
+          <view class="suit-txt fl-cen-cen">宜</view>
+          <text class="suit-title">{{should.title}}</text>
+        </view>
+        <view class="look-txt">{{should.detail}}</view>
+        <view class="title">
+          <view class="taboo-txt fl-cen-cen">忌</view>
+          <view class="vertical-txt">{{avoid.title}}</view>
+        </view>
+        <view class="look-txt">{{avoid.detail}}</view>
+      </view>
+</view>

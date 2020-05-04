@@ -1,0 +1,27 @@
+<view >
+    <image src="{{meals.img}}" class="meal-img"/>
+    <view class="meal-name">{{meals.name}}</view>
+    <view class="meal-desc">{{meals.desc}}</view>
+    <view>
+        <view class="desc-item">
+            <view class="list-circle"></view>
+            <text class="item-title">适合</text>
+            <view class="item-desc">{{meals.suitable}}</view>
+        </view>
+         <view class="desc-item">
+            <view class="list-circle"></view>
+            <text class="item-title">食材禁忌</text>
+            <view class="item-desc">{{meals.taboo}}</view>
+        </view>
+        <view class="desc-item">
+            <view class="list-circle"></view>
+            <text class="item-title">功效</text>
+            <view class="item-desc">{{meals.efficacy}}</view>
+        </view>
+        <view class="desc-item">
+            <view class="list-circle"></view>
+            <text class="item-title">食物详情</text>
+            <view class="item-desc">{{meals.details}}</view>
+        </view>
+    </view>
+</view>
