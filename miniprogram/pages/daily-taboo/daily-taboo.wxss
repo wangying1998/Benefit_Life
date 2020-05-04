@@ -1,8 +1,7 @@
 page {
     font-size: 28rpx;
-    /* background: url(../../images/bg2.png) center no-repeat; */
+    
 }
-
 /* 日期 */
 .date {
     margin: 0 auto;

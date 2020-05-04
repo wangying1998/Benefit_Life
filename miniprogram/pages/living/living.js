@@ -20,7 +20,7 @@ Page({
       this.setData({
         living: res.living,
       })
-      console.log("首页数据",res);
+      console.log("起居",res.living);
     })
   },
 

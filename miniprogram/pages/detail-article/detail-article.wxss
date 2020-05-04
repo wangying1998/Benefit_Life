@@ -1,1 +1,20 @@
-/* pages/toboo/toboo.wxss */
+page {
+    padding: 40rpx;
+}
+.art-content {
+    color: #333333;
+    font-size: 26rpx;
+    width: 670rpx;
+}
+.art-content image {
+    max-width: 670rpx;
+}
+/* .pho {
+    display: block;
+    width: 670rpx !important;
+    height: 330rpx;
+    border-radius: 20rpx;
+  } */
+  image {
+      width: 100rpx;
+  }

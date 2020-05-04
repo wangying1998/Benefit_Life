@@ -8,24 +8,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: {}
+    detailArt: {},
+    content: ''
   },
   getDetail (id) {
+    var that = this;
     let param = {
       id: id,
     }
     getArtDetails(param).then(res => {
       this.setData({
-        detail: res,
+        detailArt: res.data[0],
+        content: res.data[0].content
       })
-      console.log("时令详细",res);
+      console.log("时令推文详细",res);
+      let info = that.data.content
+      .replace(/<p([\s\w"=\/\.:;]+)((?:(style="[^"]+")))/ig, '<p')
+      .replace(/<p>/ig, '<p style="font-size: 15Px; line-height: 25Px;">')
+      .replace(/<img([\s\w"-=\/\.:;]+)((?:(height="[^"]+")))/ig, '<img$1')
+      .replace(/<img([\s\w"-=\/\.:;]+)((?:(width="[^"]+")))/ig, '<img$1')
+      .replace(/<img([\s\w"-=\/\.:;]+)((?:(style="[^"]+")))/ig, '<img$1')
+      .replace(/<img([\s\w"-=\/\.:;]+)((?:(alt="[^"]+")))/ig, '<img$1')
+      .replace(/<img([\s\w"-=\/\.:;]+)/ig, '<img$1 style="width: 100%; border-radius: 8Px;"');
+      // this.setData({
+      //   content: info,
+      // })
+      console.log("11",info);
+      console.log("2",that.data.content);
     })
+
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.artid);
     this.getDetail(options.artid);
   },
 

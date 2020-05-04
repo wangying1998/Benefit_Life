@@ -13,7 +13,12 @@ Page({
   data: {
     RecoArticle: [],
   },
-
+  detailsArticle (e) {
+    let query = e.currentTarget.dataset['artid'];
+    wx.navigateTo({
+      url: `/pages/detail-article/detail-article?artid=${query}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
