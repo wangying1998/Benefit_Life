@@ -60,7 +60,7 @@
     url:
         /home/should_avoid
     param:
-        无
+        id: 宜忌id
 【搜索】？
 
 - 动态

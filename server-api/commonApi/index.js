@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
 			return returnHomeData(data);
 		case '/articles':
 			return getAllArticles(data);
-		case '/article/detail':
+		case '/articles/detail':
 			return getArtDetail(data);
 	// 个人档案
 		case '/home/physicalinfo':
@@ -317,16 +317,14 @@ async function getArtDetail(data){		// 获取推文详情
 		result = await db.collection('articles').where({
 			_id: data.id
 		}).get();
-
 		let like_result = await db.collection('user_like').where({
 			likeId: data.id,
 			userId: data.userId
 		}).get();
-
 		if(like_result.data.length){
-			result[0].isLike = true;	// 动态喜欢标识
+			result.data[0].isLike = true;	// 动态喜欢标识
 		}else{
-			result[0].isLike = false;	// 动态喜欢标识
+			result.data[0].isLike = false;	// 动态喜欢标识
 		}
 	}
 	return result;
@@ -342,33 +340,32 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 		db.collection('slides_list').get().then(res=>{
 			result.slideList = res.data;
 		}),
-		// 宜
+		// 宜忌
 		db.collection('suggest').where({
-			class: 1,
-			physical: GLOBAL_USER.data[0].physical
+			physical: GLOBAL_USER.data[0].physical || '平和质'
 		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
-			result.should = res.data[index];
+			result.suggest = res.data[index];
 		}),
-		// 忌
-		db.collection('suggest').where({
-			class: 0,
-			physical: GLOBAL_USER.data[0].physical
-		}).get().then(res=>{
-			let index = Math.floor(Math.random()*res.data.length);
-			result.avoid = res.data[index];
-		}),
+		// // 忌
+		// db.collection('suggest').where({
+		// 	class: 0,
+		// 	physical: GLOBAL_USER.data[0].physical || '平和质'
+		// }).get().then(res=>{
+		// 	let index = Math.floor(Math.random()*res.data.length);
+		// 	result.avoid = res.data[index];
+		// }),
 		// 水果
 		db.collection('food').where({
-			class: 1,
-			physical: GLOBAL_USER.data[0].physical
+			class: '1',
+			physical: GLOBAL_USER.data[0].physical || '平和质'
 		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
-			result.meals = res.data[index, res.data];
+			result.meals = res.data[index];
 		}),
 		// 起居
 		db.collection('living').where({
-			physical: GLOBAL_USER.data[0].physical
+			physical: GLOBAL_USER.data[0].physical || '平和质'
 		}).get().then(res=>{
 			let index = Math.floor(Math.random()*res.data.length);
 			result.living = res.data[index];
@@ -378,6 +375,7 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 			result.articleList = res.data.slice(0,5);
 		})
 	]);
+	console.log(result)
 	return result;
 }
 
@@ -395,31 +393,27 @@ async function returnPhysicalInfo(data){
 }
 
 async function shouldOrAvoid(data){				// 每日宜忌详情
-	let result = {};
-	let GLOBAL_USER = await db.collection('user').where({
-		_id: data.userId
-	}).get();
+	// let result = {};
+	// let GLOBAL_USER = await db.collection('user').where({
+	// 	_id: data.userId
+	// }).get();
 	// 宜
-	await Promise.all([
-		// 宜
-		db.collection('suggest').where({
-			class: 1,
-			physical: GLOBAL_USER.data[0].physical
-		}).get().then(res=>{
-			let index = Math.floor(Math.random()*res.data.length);
-			result.should = res.data[index];
-		}),
+	// await Promise.all([
+		// 宜忌
+		return await db.collection('suggest').where({
+			_id: data.id
+		}).get();
 		// 忌
-		db.collection('suggest').where({
-			class: 0,
-			physical: GLOBAL_USER.data[0].physical
-		}).get().then(res=>{
-			let index = Math.floor(Math.random()*res.data.length);
-			result.avoid = res.data[index];
-		}),
-	]);
+		// db.collection('suggest').where({
+		// 	class: 0,
+		// 	physical: GLOBAL_USER.data[0].physical
+		// }).get().then(res=>{
+		// 	let index = Math.floor(Math.random()*res.data.length);
+		// 	result.avoid = res.data[index];
+		// }),
+	// ]);
 
-	return result;
+	// return result;
 }
 
 async function returnArticleList(data){			// 首页 时令好文列表
