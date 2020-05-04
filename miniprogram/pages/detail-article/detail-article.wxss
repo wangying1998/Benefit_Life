@@ -1,6 +1,32 @@
 page {
     padding: 40rpx;
 }
+.art-title {
+    color: #333333;
+    font-size: 30rpx;
+}
+.all-art {
+    display: flex;
+    justify-content: space-between;
+    width: 670rpx;
+    margin: 10rpx 0 20rpx 0;
+}
+.look-count {
+    color: #999;
+    font-size: 24rpx;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.look-img {
+    width: 26rpx;
+    height: 26rpx;
+    margin-right: 15rpx;
+}
+.art-date {
+    color: #999;
+    font-size: 24rpx;
+}
 .art-content {
     color: #333333;
     font-size: 26rpx;
@@ -9,12 +35,16 @@ page {
 .art-content image {
     max-width: 670rpx;
 }
-/* .pho {
-    display: block;
-    width: 670rpx !important;
-    height: 330rpx;
-    border-radius: 20rpx;
-  } */
-  image {
-      width: 100rpx;
-  }
+/* 点赞 */
+.tip-like {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    color: #888;
+    margin: 0 auto;
+}
+.tip-like image {
+    width: 30rpx;
+    height: 30rpx;
+}
+

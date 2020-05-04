@@ -81,3 +81,34 @@
   text-align: center;
   margin: 0 5rpx 5rpx 0;
 }
+
+/* 文章 */
+
+.article-item {
+  background-color: #fff;
+  margin-bottom: 20rxp;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1rpx solid #F1F1F1;
+  align-items: center;
+}
+.art-text {
+  line-height: 60rpx;
+  padding: 0 20rpx;
+  
+}
+.art-title{
+  background-color: #fff;
+  font-size: 26rpx;
+}
+.art-date {
+  color: #999999;
+  font-size: 22rpx;
+}
+.article-item image {
+  width: 183rpx;
+  height: 102rpx;
+  padding-right: 20rpx;
+}

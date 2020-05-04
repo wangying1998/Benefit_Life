@@ -2,7 +2,8 @@
 
 import {
   getSquareList,
-  clickLick
+  clickLick,
+  disLick
 } from '../../api/api.js'
 
 Page({
@@ -14,8 +15,6 @@ Page({
     squareList: {},
     userInfo: {},
   },
-  
-
   getData() {
     let that = this;
     getSquareList({}).then(res => {
@@ -43,7 +42,7 @@ Page({
   // 点赞
   gotoLike: function(e) {
     var param = {
-      likeId: e.currentTarget.dataset['likeId'],
+      likeId: e.currentTarget.dataset.id,
       class: 1
     }
     clickLick(param).then(res => {
@@ -53,6 +52,18 @@ Page({
 			console.log("点赞是否成功",res);
 		})
     
+  },
+  // 取消点赞
+  goDislike: function(e) {
+
+    console.log("取消点赞1",e,e.currentTarget.dataset.id)
+    var param = {
+      id: e.currentTarget.dataset['id'],
+      class: 1
+    }
+    disLick(param).then(res => {
+      console.log("取消点赞",res);
+    })
   },
   // 去消息通知
   gotoNotice: function() {
@@ -73,14 +84,6 @@ Page({
 
     
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -90,49 +93,27 @@ Page({
       userInfo: wx.getStorageSync('userInfo'),
   })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom:function(){
-    // 分页请求
+  // onReachBottom:function(){
+  //   // 分页请求
     
-    console.log('上拉触底事件');
-    let that = this;
-    // if (this.data.loading) return;  
-    // this.setData({ loading: true });  
-    if (!that.data.hasMoreData) {
-      that.setData({
-        loadMore: true, //加载中  
-        loadAll: false //是否加载完所有数据
-      });
+  //   console.log('上拉触底事件');
+  //   let that = this;
+  //   // if (this.data.loading) return;  
+  //   // this.setData({ loading: true });  
+  //   if (!that.data.hasMoreData) {
+  //     that.setData({
+  //       loadMore: true, //加载中  
+  //       loadAll: false //是否加载完所有数据
+  //     });
 
-      //加载更多，这里做下延时加载
-      setTimeout(function() {
-        that.getData()
-      }, 2000)
-    }
+  //     //加载更多，这里做下延时加载
+  //     setTimeout(function() {
+  //       that.getData()
+  //     }, 2000)
+  //   }
     // this.updateRefreshIcon.call(this);
     // var list = this.data.squareList.concat([{message: '土生土长',viewid:'0',time:util.formatTime(new Date),greeting:'hello'}]);
     // getSquareList(param).then(res => {
@@ -143,27 +124,27 @@ Page({
 		// 	console.log("动态",res.list);
     // })
     
-  },
+  // },
   /**
  * 旋转刷新图标
  */
-updateRefreshIcon: function () {
-  var deg = 0;
-  console.log('旋转开始了.....')
-  var animation = wx.createAnimation({
-    duration: 1000
-  });
+// updateRefreshIcon: function () {
+//   var deg = 0;
+//   console.log('旋转开始了.....')
+//   var animation = wx.createAnimation({
+//     duration: 1000
+//   });
 
-  var timer = setInterval( ()=> {
-    if (!this.data.loading)
-      clearInterval(timer);
-    animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
-    deg += 360;
-    this.setData({
-      refreshAnimation: animation.export()
-    })
-  }, 2000);
-},
+//   var timer = setInterval( ()=> {
+//     if (!this.data.loading)
+//       clearInterval(timer);
+//     animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
+//     deg += 360;
+//     this.setData({
+//       refreshAnimation: animation.export()
+//     })
+//   }, 2000);
+// },
 
 
 

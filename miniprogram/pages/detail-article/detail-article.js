@@ -1,5 +1,7 @@
 import {
-  getArtDetails
+  getArtDetails,
+  clickLick,
+  disLick
 } from '../../api/api.js'
 
 Page({
@@ -21,7 +23,7 @@ Page({
         detailArt: res.data[0],
         content: res.data[0].content
       })
-      console.log("时令推文详细",res);
+      console.log("时令推文详细",res.data[0]);
       let info = that.data.content
       .replace(/<p([\s\w"=\/\.:;]+)((?:(style="[^"]+")))/ig, '<p')
       .replace(/<p>/ig, '<p style="font-size: 15Px; line-height: 25Px;">')
@@ -33,11 +35,37 @@ Page({
       // this.setData({
       //   content: info,
       // })
-      console.log("11",info);
-      console.log("2",that.data.content);
+      // console.log("11",info);
+      // console.log("2",that.data.content);
     })
 
     
+  },
+  // 点赞
+  gotoLike: function(e) {
+    var param = {
+      likeId: e.currentTarget.dataset.id,
+      class: 1
+    }
+    clickLick(param).then(res => {
+      // this.setData({
+      // 	squareList: res,
+      // })
+      console.log("点赞",res);
+    })
+    
+  },
+  // 取消点赞
+  goDislike: function(e) {
+
+    console.log("取消点赞1",e,e.currentTarget.dataset.id)
+    var param = {
+      id: e.currentTarget.dataset['id'],
+      class: 1
+    }
+    disLick(param).then(res => {
+      console.log("取消点赞",res);
+    })
   },
   /**
    * 生命周期函数--监听页面加载

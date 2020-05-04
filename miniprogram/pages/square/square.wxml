@@ -41,10 +41,10 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item._id}}"
+                    <image bindtap="gotoLike" wx:if="{{!item.isLike}}" data-id="{{item._id}}"
                     class="send" src="../../images/no-collect.png"></image>
-                    <image bindtap="gotoLike" wx:else="{{}}"
-					class="send" src="../../images/collect.png"></image>
+                    <image bindtap="goDislike" data-id="{{item._id}}"
+					class="send" src="../../images/collect.png" wx:else></image>
 				</view>
 			</view>
 			<!-- 内容 -->

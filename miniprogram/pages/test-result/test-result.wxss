@@ -1,0 +1,81 @@
+
+page {
+    font-size: 28rpx;
+}
+.phy-narbar {
+    padding-left: 40rpx;
+}
+.p-my {
+    color: #888;
+    margin-right: 15rpx;
+}
+.p-name {
+    color: #23A257;
+    font-size: 46rpx;
+}
+.both {
+    margin: 30rpx 0 20rpx 0;
+}
+.both-result {
+    color: #FF9100; 
+}
+.p-jianyou {
+    color: #333;
+    margin-right: 15rpx;
+}
+.p-reason {
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    padding: 0 40rpx;
+    border-bottom: 1px solid #F1F1F1;
+}
+.question {
+    color: #23A257;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    
+    
+}
+.question image {
+    width: 30rpx;
+    height: 30rpx;
+
+}
+.question-left {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.question-left image{
+    margin-right: 10rpx;
+}
+
+.explain {
+    color: #888;
+    font-size: 26rpx;
+}
+.explain-list {
+    display: flex;
+    align-items: center;
+    padding: 8rpx 0
+}
+.dot {
+    background: #23A257;
+    width: 8rpx;
+    height: 8rpx;
+    border-radius: 100%;
+    margin-right: 10rpx;
+}
+.list-content {
+    width: 650rpx;
+}
+.btn {
+    color: #fff;
+    background-color: #23A257;
+    width: 300rpx;
+    height: 40rpx;
+}

@@ -24,6 +24,7 @@ Page({
       shouldToDo: '',
       RecoArticle: [],
       physicalInfo: '',
+      personalInfo: {}
     },
     getHomeData() {
       this.setData({
@@ -43,31 +44,42 @@ Page({
         console.log("tuijianwenzhang ",this.data.articleList);
       })
       getMyinfo({}).then(res => {
-        // this.setData({
-        //   : res,
-        // })
-        console.log("首页个人信息", res);
+        this.setData({
+          personalInfo: res.data[0],
+        })
+        console.log("首页个人信息", this.data.personalInfo);
       })
 
  
     },
-    // 获取个人档案
-    getPhysicalInfo() {
-      getPhysicalInfo({}).then(res => {
-        this.setData({
-          physicalInfo: res,
-        })
-        console.log("个人档案", res);
-      })
-    },
-    // 点击查看体质测试
-    gotoFile() {
+    // // 获取个人档案
+    // getPhysicalInfo() {
+    //   getPhysicalInfo({}).then(res => {
+    //     this.setData({
+    //       physicalInfo: res,
+    //     })
+    //     console.log("个人档案", res);
+    //   })
+    // },
+     // 点击查看体质测试
+     gotoFile() {
+      var that = this;
       wx.getSetting({
         success: function(res) {
           if (res.authSetting['scope.userInfo']) {
-            wx.navigateTo({
-              url: '/pages/physique/physique',
-            })
+            console.log("124");
+
+            if(that.data.personalInfo.physical) {
+              console.log("ballalal");
+              wx.navigateTo({
+                url: '/pages/test-result/test-result',
+              })
+            } else {
+              console.log("testtest");
+              wx.navigateTo({
+                url: '/pages/physique/physique',
+              })
+            }
           } else {
             wx.navigateTo({
               url: '/pages/login/login',
@@ -109,6 +121,6 @@ Page({
     },
     onShow: function () {
       this.getHomeData();
-      this.getPhysicalInfo();
+      // this.getPhysicalInfo();
     },
   })

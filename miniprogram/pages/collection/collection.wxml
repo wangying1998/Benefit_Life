@@ -1,3 +1,4 @@
+
 <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">动态</view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">文章</view>
@@ -8,7 +9,6 @@
 	 class="square-list"
 	 wx:for="{{activityList}}"
 	 wx:key="id"
-	 bindtap="gotoDetails"
 	>
 		<view class="dynamic-item">
 			<view class="perInfo">
@@ -24,10 +24,10 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item._id}}"
+                    <image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item.likeId}}"
                     class="send" src="../../images/no-collect.png"></image>
-                    <image bindtap="gotoLike" wx:else="{{}}"
-					class="send" src="../../images/collect.png"></image>
+                    <image bindtap="goDislike" data-id="{{item.likeId}}"
+					class="send" src="../../images/collect.png" wx:else></image>
 				</view>
 			</view>
 			<!-- 内容 -->
@@ -42,10 +42,19 @@
 				</view>
 			</view>
 		</view>
-
 		</view>
     </swiper-item>
     <swiper-item>
-        <view>文章</view>
+        <!-- <view>
+			<view wx:for="{{articleList}}" wx:key="id" bindtap="detailsArticle" data-artId="{{item._id}}">
+				<view class="article-item">
+					<view class="art-text">
+						<view class="art-title">{{item.title}}</view>
+						<view class="art-date">阅读量：{{item.lookCount}}</view>
+					</view>
+					<image src="{{item.img}}" class="art-img"/>
+				</view>
+			</view>
+		</view> -->
     </swiper-item>
 </swiper>

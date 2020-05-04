@@ -1,14 +1,24 @@
-<import src="../../wxParse/wxParse.wxml" />
-
 <wxs module="filter" src="./detail-article.wxs" />
 
 <view >
-    <view >{{detailArt.title}}</view>
-    <view >
-        <view >{{detailArt.likeCount}}</view>
-        <view class="release-date">{{filter.formatTime(detailArt.create_time,'M月D日h:m')}}</view>
+    <view class="art-title">{{detailArt.title}}</view>
+    <view class="all-art">
+        <view class="look-count">
+            <image src="../../images/look.png" class="look-img"/>
+            <view >{{detailArt.likeCount}}</view>
+        </view>
+        <view class="art-date">{{filter.formatTime(detailArt.create_time,'M月D日h:m')}}</view>
     </view>
     <view class="art-content">
         <rich-text nodes="{{content}}" ></rich-text>
+    </view>
+    <view class="tip-like">
+        <text class="haddle-like">点赞</text>
+        <view>
+            <image bindtap="gotoLike" wx:if="{{!detailArt.isLike}}" data-likeId="{{detailArt._id}}"
+                class="send" src="../../images/no-collect.png"></image>
+            <image bindtap="goDislike" data-id="{{detailArt._id}}"
+			class="send" src="../../images/collect.png" wx:else></image>
+		</view>
     </view>
 </view>
