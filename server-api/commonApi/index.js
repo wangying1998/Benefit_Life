@@ -319,7 +319,7 @@ async function getArtDetail(data){		// 获取推文详情
 		}).get();
 		await db.collection('articles').doc(data.id).update({
 			data: {
-				lookCount: _.inc(1)
+				lookCount: db.command.inc(1)
 			}
 		})
 		let like_result = await db.collection('user_like').where({
@@ -591,20 +591,20 @@ async function likeSomthing(data){
 
 async function dislikeSomthing(data){		// 不喜欢动态/推文
 	if(data.class == 1){// 喜欢推文
-		await db.collection('articles').doc(data.likeId).update({
+		await db.collection('articles').doc(data.id).update({
 			data: {
 				likeCount: db.command.inc(-1)
 			}
 		})
 	}else if(data.class == 0){
-		await db.collection('user_activity').doc(data.likeId).update({
+		await db.collection('user_activity').doc(data.id).update({
 			data: {
 				likeCount: db.command.inc(-1)
 			}
 		})
 	}
 	return await db.collection('user_like').where({
-		_id: data.likeId,
+		_id: data.id,
 		class: data.class,
 		userId: data.userId
 	}).remove();
