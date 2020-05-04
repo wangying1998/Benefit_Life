@@ -571,13 +571,13 @@ async function likeSomthing(data){
 	if(data.class == 1){// 喜欢推文
 		await db.collection('articles').doc(data.likeId).update({
 			data: {
-				likeCount: _.inc(1)
+				likeCount: db.command.inc(1)
 			}
 		})
 	}else if(data.class == 0){
 		await db.collection('user_activity').doc(data.likeId).update({
 			data: {
-				likeCount: _.inc(1)
+				likeCount: db.command.inc(1)
 			}
 		})
 	}
@@ -593,18 +593,18 @@ async function dislikeSomthing(data){		// 不喜欢动态/推文
 	if(data.class == 1){// 喜欢推文
 		await db.collection('articles').doc(data.likeId).update({
 			data: {
-				likeCount: _.inc(-1)
+				likeCount: db.command.inc(-1)
 			}
 		})
 	}else if(data.class == 0){
 		await db.collection('user_activity').doc(data.likeId).update({
 			data: {
-				likeCount: _.inc(-1)
+				likeCount: db.command.inc(-1)
 			}
 		})
 	}
-	return await db.collection('user_like').doc({
-		_id: data.id,
+	return await db.collection('user_like').where({
+		_id: data.likeId,
 		class: data.class,
 		userId: data.userId
 	}).remove();
