@@ -4,6 +4,7 @@
 	 wx:for="{{squareList}}"
 	 wx:key="id"
 	 bindtap="gotoDetails"
+	 wx:for-index="index"
 	>
 		<view class="dynamic-item">
 			<!-- 个人信息+时间 -->
@@ -20,25 +21,27 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{false}}" data-id="{{item._id}}"
-                    class="send" src="../../images/no-collect.png"></image>
-                    <image bindtap="gotoLike" wx:else="{{}}"
-					class="send" src="../../images/collect.png"></image>
+					<image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
+					data-curIndex="{{index}}"
+                    class="send" src="../../images/collect.png"></image>
+					<image bindtap="gotoLike" wx:else="{{}}"
+					data-id="{{item._id}}"
+					data-curIndex="{{index}}"
+					class="send" src="../../images/no-collect.png"></image>
 				</view>
 			</view>
 			<!-- 内容 -->
 			<view bindtap="detailDynamic" data-id="{{item._id}}">
 				<!-- 文字 -->
 				<view class="dynamic-copywriting">
-					{{item.content}}
+					{{item.content}}就是不知道是什么极速的话 iv哎哦呼呼速度 v 好是建瓯 v 和速度和 v 吧
 				</view>
 				<!-- 图片 -->
 				<view wx:if="{{item.imgs.length != 0}}" class="content-img" >
 					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id"></image>
 				</view>
+				
 			</view>
 			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
-		<!-- </view> -->
-
 		</view>
 	</view>

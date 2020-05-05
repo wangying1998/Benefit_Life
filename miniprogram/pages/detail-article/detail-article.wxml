@@ -3,10 +3,17 @@
 <view >
     <view class="art-title">{{detailArt.title}}</view>
     <view class="all-art">
-        <view class="look-count">
-            <image src="../../images/look.png" class="look-img"/>
-            <view >{{detailArt.likeCount}}</view>
+        <view class="art-count">
+            <view class="look-count">
+                <image src="../../images/look.png" class="look-img"/>
+                <view >{{detailArt.lookCount}}</view>
+            </view>
+            <view class="look-count">
+                <image src="../../images/zan.png" class="look-img"/>
+                <view >{{detailArt.likeCount}}</view>
+            </view>
         </view>
+        
         <view class="art-date">{{filter.formatTime(detailArt.create_time,'M月D日h:m')}}</view>
     </view>
     <view class="art-content">
@@ -14,11 +21,11 @@
     </view>
     <view class="tip-like">
         <text class="haddle-like">点赞</text>
-        <view>
-            <image bindtap="gotoLike" wx:if="{{!detailArt.isLike}}" data-likeId="{{detailArt._id}}"
+        <!-- <view> -->
+            <image bindtap="gotoLike" wx:if="{{!detailArt.isLike}}" data-id="{{detailArt._id}}"
                 class="send" src="../../images/no-collect.png"></image>
             <image bindtap="goDislike" data-id="{{detailArt._id}}"
 			class="send" src="../../images/collect.png" wx:else></image>
-		</view>
+		<!-- </view> -->
     </view>
 </view>

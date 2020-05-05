@@ -5,13 +5,15 @@
         <view class="head-tip">以下问题请根据你最近三个月的身体感受回答，孕妇及16岁以下人群不建议使用本测试题。</view> 
     </view>
     <view class="body-question">
-        <view class="question-item" wx:for="{{testList}}" wx:key="id" wx:for-item="question"> 
-            <view class="question">{{question.id}}.{{question.question}}</view>
+        <view class="question-item" wx:for="{{testList}}" wx:key="id" 
+            wx:for-index="dataListindex"
+            wx:for-item="question"> 
+            <view class="question">{{dataListindex+1}}.{{question.question}}</view>
             <view class="select">
                 <view class="" 
-                    class="select-button {{idx == item.score & quesIndex == question.id?'selected':''}}"
+                    class="select-button {{idx == item.score && currentIndex == dataListindex?'selected':''}}"
                     wx:for="{{selectButton}}" wx:key="id" bindtap="clickAnswer" 
-                    data-current="{{question.id}}"
+                    data-curindex="{{dataListindex}}"
                     data-score="{{item.score}}"
                     data-order = "{{question.id}}"
                     >

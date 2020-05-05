@@ -1,7 +1,7 @@
 import {
   getArtDetails,
-  clickLick,
-  disLick
+  clickLike,
+  disLike
 } from '../../api/api.js'
 
 Page({
@@ -43,35 +43,46 @@ Page({
   },
   // 点赞
   gotoLike: function(e) {
+    var that = this;
+    var art = that.data.detailArt;
+    art.isLike = !art.isLike
+    this.setData({
+      detailArt: art
+    })
     var param = {
       likeId: e.currentTarget.dataset.id,
-      class: 1
+      class: 0 // 推文
     }
-    clickLick(param).then(res => {
-      // this.setData({
-      // 	squareList: res,
-      // })
-      console.log("点赞",res);
+    clickLike(param).then(res => {
+      console.log("推文点赞",res);
     })
     
   },
   // 取消点赞
   goDislike: function(e) {
-
-    console.log("取消点赞1",e,e.currentTarget.dataset.id)
+    var that = this;
+    var art = that.data.detailArt;
+    art.isLike = !art.isLike;
+    this.setData({
+      detailArt: art
+    })
     var param = {
       id: e.currentTarget.dataset['id'],
-      class: 1
+      class: 0
     }
-    disLick(param).then(res => {
-      console.log("取消点赞",res);
+    disLike(param).then(res => {
+      console.log("推文取消点赞",res);
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: "文章详情"
+    })
     this.getDetail(options.artid);
+    
   },
 
   /**

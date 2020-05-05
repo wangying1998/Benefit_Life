@@ -56,6 +56,12 @@ Page({
         url: '/pages/physique/physique',
       })
     },
+    onLoad: function () {
+      wx.setNavigationBarTitle({
+        title: "个人档案"
+      })
+    },
+
     onShow: function () {
       this.getPhysicalInfo();
     },

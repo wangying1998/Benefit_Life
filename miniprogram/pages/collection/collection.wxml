@@ -24,7 +24,8 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item.likeId}}"
+					<image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item.likeId}}"
+						data-class="{{item.class}}"
                     class="send" src="../../images/no-collect.png"></image>
                     <image bindtap="goDislike" data-id="{{item.likeId}}"
 					class="send" src="../../images/collect.png" wx:else></image>

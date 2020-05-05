@@ -16,7 +16,7 @@
 			</view>
 		</view>
 		<view class="tip">
-			<image bindtap="gotoNotice" class="notice" src="../../images/mobile.png" />
+			<!-- <image bindtap="gotoNotice" class="notice" src="../../images/mobile.png" /> -->
 			<image bindtap="gotoSend" class="send" src="../../images/send.png" />
 		</view>
 	</view>
@@ -25,6 +25,7 @@
 	 wx:for="{{squareList}}"
 	 wx:key="id"
 	 bindtap="gotoDetails"
+	 wx:for-index="index"
 	>
 		<view class="dynamic-item">
 			<!-- 个人信息+时间 -->
@@ -41,10 +42,13 @@
 					</view>
 				</view>
 				<view>
-                    <image bindtap="gotoLike" wx:if="{{!item.isLike}}" data-id="{{item._id}}"
-                    class="send" src="../../images/no-collect.png"></image>
-                    <image bindtap="goDislike" data-id="{{item._id}}"
-					class="send" src="../../images/collect.png" wx:else></image>
+                    <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
+					class="like" src="../../images/collect.png"
+					data-curIndex="{{index}}"
+					></image>
+					<image bindtap="gotoLike" data-id="{{item._id}}"
+					data-curIndex="{{index}}"
+					class="like" src="../../images/no-collect.png" wx:else></image>
 				</view>
 			</view>
 			<!-- 内容 -->

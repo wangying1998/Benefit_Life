@@ -1,9 +1,6 @@
 page {
     font-size: 28rpx;
 }
-/* .nav-bar {
-    background-color: #fff;
-} */
 .search{
     width: 76%;
     /* border-radius: 100%; */
@@ -86,6 +83,10 @@ page {
     font-size: 24rpx;
 }
 .send {
+    width: 50rpx;
+    height: 50rpx;
+}
+.like {
     width: 35rpx;
     height: 35rpx;
 }

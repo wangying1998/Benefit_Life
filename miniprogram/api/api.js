@@ -178,7 +178,7 @@ export function getMyLike(data){
 }
 
 // 点赞/喜欢
-export function clickLick(data){
+export function clickLike(data){
 	data.openId =  openId;
 	data.userId = userId;	
 	return request({
@@ -187,7 +187,7 @@ export function clickLick(data){
 	})
 }
 // 取消点赞
-export function disLick(data){
+export function disLike(data){
 	data.openId =  openId;
 	data.userId = userId;	
 	return request({

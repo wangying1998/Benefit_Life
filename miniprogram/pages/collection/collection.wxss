@@ -84,7 +84,7 @@
 
 /* 文章 */
 
-.article-item {
+/* .article-item {
   background-color: #fff;
   margin-bottom: 20rxp;
   text-align: left;
@@ -111,4 +111,4 @@
   width: 183rpx;
   height: 102rpx;
   padding-right: 20rpx;
-}
+} */

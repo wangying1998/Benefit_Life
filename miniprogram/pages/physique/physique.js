@@ -17,6 +17,9 @@ Page({
     scoreArr: {
       answer: []
     },
+    questionFlag: [],
+    sign: true,
+    currentIndex: '', // 当前操作
     selectButton: [
       {
         score: 1,
@@ -65,20 +68,70 @@ Page({
 		getTestQuestion({}).then(res => {
 			this.setData({
         testList: res.data,
-
-			})
+      })
+      var listArr = [];
+      for(let i = 0; i<res.data.length; i++) {
+        var obj = {}
+        obj.id= res.data[i].id;
+        obj.flag = false;
+        listArr.push(obj);
+      }
+      this.setData({
+        questionFlag: listArr
+      })
+      console.log(listArr);
 			console.log("体质测试题目",res.data);
 		})
   },
   clickAnswer: function (e) {
+    console.log("控制一下",e.target.dataset.curindex);
+    console.log("控制一下2",e.target.dataset)
+    this.setData({
+      currentIndex: e.target.dataset.curindex
+   });
     let that = this;
     var scoreArr = this.data.scoreArr;
-    var  scoreObj = {id: e.target.dataset.order, score: e.target.dataset.score};
-    scoreArr.answer.push(scoreObj);
+    var index = e.currentTarget.dataset.order;
+    for(var i = 0; i<scoreArr.answer.length;i++) {
+      if(scoreArr.answer[i].id == index) {
+        scoreArr.answer[i].score = e.target.dataset.score;
+        this.setData({
+          sign: false
+        });
+        break;
+      }else {
+        this.setData({
+          sign: true
+        })
+      }
+    }
+    if(that.data.sign) {
+      var scoreObj = {id: e.target.dataset.order, score: e.target.dataset.score};
+      scoreArr.answer.push(scoreObj);
+    }
+
+    
+    // if (Object.keys({id:1,score:2})) {
+    //   return false // 如果为空,返回false
+    // }
+    // if (list[index]) {
+    //   var isLike = list[index].isLike;
+    //   if (isLike !== undefined) {
+    //     if (isLike) {
+    //       list[index].isLike = false;
+    //     } else {
+    //       list[index].isLike = true;
+    //     }
+    //     this.setData({
+    //       squareList: list
+    //     })
+    //   }
+    // }
     this.setData({
        idx: e.target.dataset.score,
        quesIndex: e.target.dataset.order,
-       scoreArr: scoreArr
+       scoreArr: scoreArr,
+       currentIndex: e.target.dataset.curIndex
     });
     console.log(e.target.dataset.score,e.target.dataset.order);
     console.log("分数",that.data.scoreArr);
@@ -105,6 +158,7 @@ Page({
    */
   onLoad: function (options) {
     this.fitnessTestQuestions();
+    console.log("这里这里",Object.keys({id:1,score:2}));
   },
 
   /**

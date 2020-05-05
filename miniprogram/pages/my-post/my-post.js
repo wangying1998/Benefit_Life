@@ -3,7 +3,9 @@
 import {
   getSquareList,
   getUserSquareList,
-  deleteDynamic
+  deleteDynamic,
+  clickLike,
+  disLike
 } from '../../api/api.js'
 
 
@@ -24,28 +26,56 @@ Page({
         squareList: res[0].actList,
         myInfo: res[0],
       })
-      // wx.setNavigationBarTitle({
-      //   title: res.data[0].name//页面标题为路由参数
-      // })
+      
 			console.log("我的动态",res);
 		})
 
   },
-  goDelete() {
-    deleteDynamic({}).then(res => {
-			this.setData({
-				squareList: res,
-			})
-			console.log("删除动态",res);
+  // 删除
+  goDelete(e) {
+    let param = {
+      id: e.currentTarget.dataset['id']
+    }
+    deleteDynamic(param).then(res => {
+      console.log("删除动态",res);
+      if(res.stats.removed === 1) {
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success',
+          duration: 2000
+        })
+      }else {
+        wx.showToast({
+          title: '删除失败',
+          icon: 'fail',
+          duration: 2000
+        })
+      }
 		})
   },
   // 点赞
   gotoLike: function(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.curindex;
+    var list = that.data.squareList;
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        this.setData({
+          squareList: list
+        })
+      }
+    }
     var param = {
-      likeId: e.currentTarget.dataset['id'],
+      likeId: e.currentTarget.dataset.id,
       class: 1
     }
-    clickLick(param).then(res => {
+    clickLike(param).then(res => {
       // this.setData({
       // 	squareList: res,
       // })
@@ -55,13 +85,27 @@ Page({
   },
   // 取消点赞
   goDislike: function(e) {
-
-    console.log("取消点赞1",e,e.currentTarget.dataset.id)
+    var that = this;
+    var index = e.currentTarget.dataset.curindex;
+    var list = that.data.squareList;
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        this.setData({
+          squareList: list
+        })
+      }
+    }
     var param = {
-      id: e.currentTarget.dataset['id'],
+      id: e.currentTarget.dataset.id,
       class: 1
     }
-    disLick(param).then(res => {
+    disLike(param).then(res => {
       console.log("取消点赞",res);
     })
   },
@@ -75,29 +119,18 @@ Page({
     
   // },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
+  onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: "我的动态"
+    })
+  },  
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     this.getData();
-    wx.getUserInfo({
-      success: function(res) {
-        var userInfo = res.userInfo //用户基本信息
-        var nickName = userInfo.nickName //用户名
-        var avatarUrl = userInfo.avatarUrl //头像链接
-        var gender = userInfo.gender //性别 0：未知、1：男、2：女
-        var province = userInfo.province //所在省
-        var city = userInfo.city //所在市
-        var country = userInfo.country //所在国家
-      }
-    })
   },
 
   /**
@@ -120,18 +153,4 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

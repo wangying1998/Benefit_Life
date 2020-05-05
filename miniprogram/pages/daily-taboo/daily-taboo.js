@@ -29,8 +29,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      // 每日宜忌
-      this.getShouldAvoid(options.id);
+    wx.setNavigationBarTitle({
+      title: "每日宜忌"
+    })
+    this.getShouldAvoid(options.id);
   },
 
   /**

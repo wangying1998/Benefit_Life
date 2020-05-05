@@ -2,8 +2,8 @@
 
 import {
   getSquareList,
-  clickLick,
-  disLick
+  clickLike,
+  disLike
 } from '../../api/api.js'
 
 Page({
@@ -14,6 +14,7 @@ Page({
   data: {
     squareList: {},
     userInfo: {},
+    currentIndex: '',
   },
   getData() {
     let that = this;
@@ -41,11 +42,30 @@ Page({
   },
   // 点赞
   gotoLike: function(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.curindex;
+    var list = that.data.squareList;
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        this.setData({
+          squareList: list
+        })
+      }
+    }
     var param = {
       likeId: e.currentTarget.dataset.id,
       class: 1
     }
-    clickLick(param).then(res => {
+    this.setData({
+      currentIndex: e.currentTarget.dataset.id
+    })
+    clickLike(param).then(res => {
 			// this.setData({
 			// 	squareList: res,
 			// })
@@ -55,13 +75,27 @@ Page({
   },
   // 取消点赞
   goDislike: function(e) {
-
-    console.log("取消点赞1",e,e.currentTarget.dataset.id)
+    var that = this;
+    var index = e.currentTarget.dataset.curindex;
+    var list = that.data.squareList;
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        this.setData({
+          squareList: list
+        })
+      }
+    }
     var param = {
       id: e.currentTarget.dataset['id'],
       class: 1
     }
-    disLick(param).then(res => {
+    disLike(param).then(res => {
       console.log("取消点赞",res);
     })
   },

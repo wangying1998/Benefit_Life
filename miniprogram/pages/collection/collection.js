@@ -1,8 +1,8 @@
 
 import {
   getMyLike,
-  clickLick,
-  disLick
+  clickLike,
+  disLike
 } from '../../api/api.js'
 
 Page({
@@ -19,18 +19,20 @@ Page({
     getMyLike({}).then(res => {
       this.setData({
         activityList: res.activity,// 动态
-        articleList: res.article[0], //文章
+        articleList: res.article, //文章
       })
       console.log("我喜欢的",res.activity);
     })
   },
   // 点赞
   gotoLike: function(e) {
+    var index  = e.currentTarget.dataset['id'];
+
     var param = {
-      likeId: e.currentTarget.dataset['id'],
+      likeId: index,
       class: 1
     }
-    clickLick(param).then(res => {
+    clickLike(param).then(res => {
       // this.setData({
       // 	squareList: res,
       // })
@@ -46,14 +48,16 @@ Page({
       id: e.currentTarget.dataset['id'],
       class: 1
     }
-    disLick(param).then(res => {
+    disLike(param).then(res => {
       console.log("取消点赞",res);
     })
   },
 
   onLoad: function() {
 
-      var that = this;
+    wx.setNavigationBarTitle({
+      title: "我喜欢的"
+    })
 
       /**
        * 获取当前设备的宽高
