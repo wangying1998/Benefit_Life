@@ -604,7 +604,7 @@ async function dislikeSomthing(data){		// 不喜欢动态/推文
 		})
 	}
 	return await db.collection('user_like').where({
-		_id: data.id,
+		likeId: data.id,
 		class: data.class,
 		userId: data.userId
 	}).remove();
