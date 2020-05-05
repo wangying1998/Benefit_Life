@@ -1,19 +1,19 @@
 <!--pages/home/my-physique/physique.wxml-->
 <view>
     <view class="body-head">
-        <image class="head-icon" src="../../images/test.png"></image>
+        <image class="head-icon" src="../../images/wode2.png"></image>
         <view class="head-tip">以下问题请根据你最近三个月的身体感受回答，孕妇及16岁以下人群不建议使用本测试题。</view> 
     </view>
     <view class="body-question">
         <view class="question-item" wx:for="{{testList}}" wx:key="id" 
-            wx:for-index="dataListindex"
+            wx:for-index="dataListIndex"
             wx:for-item="question"> 
-            <view class="question">{{dataListindex+1}}.{{question.question}}</view>
+            <view class="question">{{dataListIndex+1}}.{{question.question}}</view>
             <view class="select">
                 <view class="" 
-                    class="select-button {{idx == item.score && currentIndex == dataListindex?'selected':''}}"
+                    class="select-button {{ question.id == quesIndex && idx == item.score ?'selected':''}}"
                     wx:for="{{selectButton}}" wx:key="id" bindtap="clickAnswer" 
-                    data-curindex="{{dataListindex}}"
+                    data-curindex="{{dataListIndex}}"
                     data-score="{{item.score}}"
                     data-order = "{{question.id}}"
                     >

@@ -7,8 +7,8 @@ import {
 
 Page({
   data: {
-      // winWidth: 0,
-      // winHeight: 0,
+      winWidth: 0,
+      winHeight: 0,
       currentTab: 0,
       currentid: '',
       activityList: {},
@@ -21,7 +21,7 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
-      console.log("我喜欢的",res.activity);
+      console.log("我喜欢的",res.article);
     })
   },
   // 点赞
@@ -54,7 +54,7 @@ Page({
   },
 
   onLoad: function() {
-
+    var that  = this;
     wx.setNavigationBarTitle({
       title: "我喜欢的"
     })
@@ -62,15 +62,15 @@ Page({
       /**
        * 获取当前设备的宽高
        */
-      // wx.getSystemInfo( {
-      //     success: function( res ) {
-      //         that.setData( {
-      //             winWidth: res.windowWidth,
-      //             winHeight: res.windowHeight
-      //         });
-      //     }
+      wx.getSystemInfo( {
+          success: function( res ) {
+              that.setData( {
+                  winWidth: res.windowWidth,
+                  winHeight: res.windowHeight
+              });
+          }
 
-      // });
+      });
       
   },
     
@@ -87,6 +87,13 @@ Page({
               currentTab: e.target.dataset.current
           })
       }
+  },
+  // 文章详情
+  detailsArticle (e) {
+    let query = e.currentTarget.dataset['artid'];
+    wx.navigateTo({
+      url: `/pages/detail-article/detail-article?artid=${query}`,
+    })
   },
 
   bindChange: function( e ) {

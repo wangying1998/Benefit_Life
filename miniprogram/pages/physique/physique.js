@@ -84,12 +84,22 @@ Page({
 		})
   },
   clickAnswer: function (e) {
-    console.log("控制一下",e.target.dataset.curindex);
-    console.log("控制一下2",e.target.dataset)
-    this.setData({
-      currentIndex: e.target.dataset.curindex
-   });
+    var curIndex = e.target.dataset.curindex;
     let that = this;
+    this.setData({
+      currentIndex: curIndex
+   });
+    var list = that.data.questionFlag;
+    
+    if (list[curIndex]) {
+      // var flag = list[curIndex].flag;
+      
+        list[curIndex].flag = e.target.dataset.score;
+        this.setData({
+          questionFlag: list
+        })
+        console.log("flag",curIndex,list[curIndex].flag);
+    }
     var scoreArr = this.data.scoreArr;
     var index = e.currentTarget.dataset.order;
     for(var i = 0; i<scoreArr.answer.length;i++) {
@@ -109,49 +119,31 @@ Page({
       var scoreObj = {id: e.target.dataset.order, score: e.target.dataset.score};
       scoreArr.answer.push(scoreObj);
     }
-
-    
-    // if (Object.keys({id:1,score:2})) {
-    //   return false // 如果为空,返回false
-    // }
-    // if (list[index]) {
-    //   var isLike = list[index].isLike;
-    //   if (isLike !== undefined) {
-    //     if (isLike) {
-    //       list[index].isLike = false;
-    //     } else {
-    //       list[index].isLike = true;
-    //     }
-    //     this.setData({
-    //       squareList: list
-    //     })
-    //   }
-    // }
     this.setData({
        idx: e.target.dataset.score,
        quesIndex: e.target.dataset.order,
        scoreArr: scoreArr,
        currentIndex: e.target.dataset.curIndex
     });
-    console.log(e.target.dataset.score,e.target.dataset.order);
     console.log("分数",that.data.scoreArr);
     
   },
-  // sendTestAnswer() {
-  //   let param = {
-
-  //   }
-  //   getTestQuestion({}).then(res => {
-	// 		console.log("体质测试题目",res);
-	// 	})
-  // },
   submitTest() {
     var that = this;
     let param = that.data.scoreArr;
     console.log("分数信息",param);
-    sendTestAnswer(param).then(res => {
-			console.log("提交体质测试题目",res);
-		})
+    if(param.answer.length < that.data.testList.length) {
+      wx.showToast({
+        title: '请回答全部题目',
+        icon: 'none',
+        duration: 1500,
+      });
+    }else {
+      sendTestAnswer(param).then(res => {
+        console.log("提交体质测试题目",res);
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载

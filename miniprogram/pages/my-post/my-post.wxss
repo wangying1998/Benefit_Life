@@ -3,7 +3,6 @@ page {
 }
 .square-list {
   background-color: #fff;
-  border: 1px solid green;
 }
 .tip {
   margin-left: 50rpx;
@@ -71,7 +70,6 @@ page {
   /* float: right; */
   color: #999;
   font-size: 20rpx;
-  border: 1px solid red;
   margin-top: 30rpx;
   text-align: right;
   

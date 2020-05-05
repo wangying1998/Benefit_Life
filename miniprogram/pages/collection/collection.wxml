@@ -46,16 +46,16 @@
 		</view>
     </swiper-item>
     <swiper-item>
-        <!-- <view>
-			<view wx:for="{{articleList}}" wx:key="id" bindtap="detailsArticle" data-artId="{{item._id}}">
+        <view>
+			<view wx:for="{{articleList}}" wx:key="id" bindtap="detailsArticle" data-artId="{{item.likeId}}">
 				<view class="article-item">
 					<view class="art-text">
-						<view class="art-title">{{item.title}}</view>
-						<view class="art-date">阅读量：{{item.lookCount}}</view>
+						<view class="art-title">{{item.article[0].title}}</view>
+						<view class="art-date">阅读量：{{item.article[0].lookCount}}</view>
 					</view>
-					<image src="{{item.img}}" class="art-img"/>
+					<image src="{{item.article[0].img}}" class="art-img"/>
 				</view>
 			</view>
-		</view> -->
+		</view>
     </swiper-item>
 </swiper>
