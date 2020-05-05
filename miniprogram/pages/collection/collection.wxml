@@ -23,13 +23,29 @@
 						<view class="release-date">{{filter.formatTime(item.activity[0].create_time,'M月D日h:m')}}</view>
 					</view>
 				</view>
+				<!-- 目前没有返回isLike -->
 				<view>
-					<image bindtap="gotoLike" wx:if="{{item.isLike}}" data-likeId="{{item.likeId}}"
+					<image bindtap="gotoLike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
 						data-class="{{item.class}}"
+						data-type="1"
                     class="send" src="../../images/no-collect.png"></image>
-                    <image bindtap="goDislike" data-id="{{item.likeId}}"
+					<image bindtap="goDislike" data-id="{{item.likeId}}"
+					data-class="{{item.class}}"
 					class="send" src="../../images/collect.png" wx:else></image>
 				</view>
+				<!-- <view>
+                    <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
+					class="send" src="../../images/collect.png"
+					data-curIndex="{{index}}"
+					data-authId="{{item.userId}}"
+					data-class="{{item.class}}"
+					></image>
+					<image bindtap="gotoLike" data-id="{{item.likeId}}"
+					data-authId="{{item.userId}}"
+					data-curIndex="{{index}}"
+					data-class="{{item.class}}"
+					class="send" src="../../images/no-collect.png" wx:else></image>
+				</view> -->
 			</view>
 			<!-- 内容 -->
 			<view bindtap="detailDynamic" data-id="{{item._id}}">

@@ -5,6 +5,9 @@ import {
   clickLike,
   disLike
 } from '../../api/api.js'
+import {
+	getSessionData,
+} from '../../utils/session';
 
 Page({
 
@@ -60,11 +63,13 @@ Page({
     }
     var param = {
       likeId: e.currentTarget.dataset.id,
-      class: 1
+      class: 1,
+      authId: e.currentTarget.dataset.authid,
     }
     this.setData({
       currentIndex: e.currentTarget.dataset.id
     })
+    console.log("点赞参数",e.currentTarget.dataset)
     clickLike(param).then(res => {
 			// this.setData({
 			// 	squareList: res,

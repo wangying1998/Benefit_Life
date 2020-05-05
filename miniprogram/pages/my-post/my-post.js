@@ -73,12 +73,10 @@ Page({
     }
     var param = {
       likeId: e.currentTarget.dataset.id,
-      class: 1
+      class: 1,
+      authId: e.currentTarget.dataset.authid,
     }
     clickLike(param).then(res => {
-      // this.setData({
-      // 	squareList: res,
-      // })
       console.log("点赞",res);
     })
     
@@ -103,7 +101,7 @@ Page({
     }
     var param = {
       id: e.currentTarget.dataset.id,
-      class: 1
+      class: 1,
     }
     disLike(param).then(res => {
       console.log("取消点赞",res);

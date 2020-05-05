@@ -27,6 +27,7 @@
 					<image bindtap="gotoLike" wx:else="{{}}"
 					data-id="{{item._id}}"
 					data-curIndex="{{index}}"
+					data-authId="{{item.userId}}"
 					class="send" src="../../images/no-collect.png"></image>
 				</view>
 			</view>

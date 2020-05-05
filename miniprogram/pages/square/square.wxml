@@ -45,8 +45,10 @@
                     <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
 					class="like" src="../../images/collect.png"
 					data-curIndex="{{index}}"
+					data-authId="{{item.userId}}"
 					></image>
 					<image bindtap="gotoLike" data-id="{{item._id}}"
+					data-authId="{{item.userId}}"
 					data-curIndex="{{index}}"
 					class="like" src="../../images/no-collect.png" wx:else></image>
 				</view>

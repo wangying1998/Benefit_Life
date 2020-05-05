@@ -1,4 +1,7 @@
 // miniprogram/pages/tabs/my/my.js
+import {
+  getMyinfo
+} from '../../api/api.js'
 
 
 Page({
@@ -54,9 +57,7 @@ Page({
         })
         break;
       case 'physique':
-        wx.navigateTo({
-          url: '/pages/physique/physique',
-        })
+        this.getInfo();
         break;
       case 'feedback':
         wx.navigateTo({
@@ -73,19 +74,22 @@ Page({
     }
     
   },
-  // updateBaseinfo(){
-	// 	let params = {
-	// 		nickName: '没错就是我了',
-	// 		avatar: "头像"
-	// 	};
-	// 	updateBaseinfo(params).then(res=>{
-	// 		this.setData({
-	// 			userInfo: res.userInfo,
-	// 		})
-	// 		console.log(22222222,res);
-	// 		// res.data
-	// 	})
-  // },
+  getInfo: function () {
+		getMyinfo({}).then(res => {
+      console.log("我的体质",res);
+      if(res.data[0].physical) {
+        wx.navigateTo({
+          url: '/pages/test-result/test-result',
+        })
+      }else {
+        wx.navigateTo({
+          url: '/pages/physique/physique',
+        })
+      }
+      
+      
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载
@@ -113,7 +117,6 @@ Page({
    */
   onShow: function () {
     // 点击查看体质测试
-
       wx.getSetting({
         success: function(res) {
           if (!res.authSetting['scope.userInfo']) {
@@ -127,39 +130,4 @@ Page({
         userInfo: wx.getStorageSync('userInfo'),
     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

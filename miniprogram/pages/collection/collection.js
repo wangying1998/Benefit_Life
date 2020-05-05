@@ -4,6 +4,7 @@ import {
   clickLike,
   disLike
 } from '../../api/api.js'
+// import { isRegExp } from 'util';
 
 Page({
   data: {
@@ -21,16 +22,44 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
-      console.log("我喜欢的",res.article);
+      console.log("我喜欢的",res);
     })
   },
   // 点赞
   gotoLike: function(e) {
-    var index  = e.currentTarget.dataset['id'];
-
+    var that = this;
+    var index  = e.currentTarget.dataset.id;
+    var type = e.currentTarget.dataset.class;
+    var list = [];
+    if(type) {
+      list = that.data.activityList;
+    }else {
+      list = that.data.articleList;
+    }
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        if(type) {
+          this.setData({
+            activityList: list
+          })
+        }else {
+          this.setData({
+            articleList: list
+          })
+        }
+        
+      }
+    }
     var param = {
       likeId: index,
-      class: 1
+      class: type,
+      authId: e.currentTarget.dataset.authid,
     }
     clickLike(param).then(res => {
       // this.setData({
@@ -42,11 +71,40 @@ Page({
   },
   // 取消点赞
   goDislike: function(e) {
-
+    var that = this;
+    var index  = e.currentTarget.dataset.id;
+    var type = e.currentTarget.dataset.class;
+    var list = [];
+    if(type) {
+      list = that.data.activityList;
+    }else {
+      list = that.data.articleList;
+    }
+    if (list[index]) {
+      var isLike = list[index].isLike;
+      if (isLike !== undefined) {
+        if (isLike) {
+          list[index].isLike = false;
+        } else {
+          list[index].isLike = true;
+        }
+        if(type) {
+          this.setData({
+            activityList: list
+          })
+        }else {
+          this.setData({
+            articleList: list
+          })
+        }
+        
+      }
+    }
     console.log("取消点赞1",e,e.currentTarget.dataset.id)
     var param = {
-      id: e.currentTarget.dataset['id'],
-      class: 1
+      id: e.currentTarget.dataset.id,
+      class: e.currentTarget.dataset.class,
+      authId: e.currentTarget.dataset.authid,
     }
     disLike(param).then(res => {
       console.log("取消点赞",res);

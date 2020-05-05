@@ -141,6 +141,9 @@ Page({
     }else {
       sendTestAnswer(param).then(res => {
         console.log("提交体质测试题目",res);
+        wx.navigateTo({
+          url: '/pages/test-result/test-result',
+        })
       })
     }
     
