@@ -48,7 +48,7 @@
 				</view>
 			</view>
 			<!-- 内容 -->
-			<view bindtap="detailDynamic" data-id="{{item._id}}">
+			<view bindtap="detailDynamic" data-id="{{item.activity[0]._id}}">
 				<!-- 文字 -->
 				<view class="dynamic-copywriting">
 					{{item.activity[0].content}}

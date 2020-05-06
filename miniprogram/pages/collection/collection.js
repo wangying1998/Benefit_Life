@@ -19,9 +19,10 @@ Page({
   getMyLike() {
     getMyLike({}).then(res => {
       this.setData({
-        activityList: res.activity,// 动态
-        articleList: res.article, //文章
+        activityList: res.activity.reverse(),// 动态
+        articleList: res.article.reverse(), //文章
       })
+      console.log(res);
     })
   },
   // 点赞
@@ -147,9 +148,10 @@ Page({
       url: `/pages/detail-article/detail-article?artid=${query}`,
     })
   },
+  
   // 动态详情
   detailDynamic: function(e) {
-    let query = e.currentTarget.dataset['id'];
+    let query = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
     })

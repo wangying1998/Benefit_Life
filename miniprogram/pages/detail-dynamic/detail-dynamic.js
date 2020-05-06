@@ -25,7 +25,9 @@ Page({
 			this.setData({
 				detailDyna: res[0],
       })
-		})
+      console.log("动态详情",res[0])
+    })
+    
 
   },
   /**

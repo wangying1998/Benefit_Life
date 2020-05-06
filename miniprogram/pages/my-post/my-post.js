@@ -24,7 +24,7 @@ Page({
   getData() {
     getUserSquareList({}).then(res => {
 			this.setData({
-        squareList: res[0].actList,
+        squareList: res[0].actList.reverse(),
         myInfo: res[0],
       })
       console.log("我发布的全部动态",res);

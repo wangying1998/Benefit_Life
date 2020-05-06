@@ -43,7 +43,6 @@ Page({
         })
         for (let i = 0; i < res.tempFilePaths.length; i++) {
           imgs.push(res.tempFilePaths[i])
-          
         }
         console.log(res.tempFilePaths);
         that.setData({
@@ -52,6 +51,7 @@ Page({
         }
       }
     }) 
+    
   },
   deleteImg(e){
     let _index = e.currentTarget.dataset.index;
@@ -64,14 +64,12 @@ Page({
   //发布按钮事件
   goSend: function(){
     var that = this;
-    var user_id = wx.getStorageSync('userid');
     wx.showLoading({
       title: '上传中',
     })
-    let value = wx.getStorageSync('userInfo');
-    // // 发布动态上传图片
+    that.img_upload();
     
-    that.img_upload()
+    
   },
 
   //图片上传，现在没有接口
@@ -93,27 +91,29 @@ img_upload: function () {
           this.setData({
             imgsId: imagesArr
           });
-          if (that.data.imgsId.length == imagesArr.length){  //长度相同，说明已经循环完成 
-            let params = {
-              content: that.data.content,
-              imgs: that.data.imgsId
-            };
-            sendDynamic(params).then(res => {
-              wx.showToast({
-                title: '发布成功',
-                icon: 'success',
-                duration: 1500,
-                mask: false,
-                complete: ()=>{
-                  
-                }
-              });
-              wx.navigateBack();   
-            })
-            
-          }  
+          if (that.data.imgsId.length == imgs.length){  //长度相同，说明已经循环完成 
+              // 发布动态上传图片
+              let params = {
+                content: that.data.content,
+                imgs: that.data.imgsId
+              };
+              sendDynamic(params).then(res => {
+                wx.showToast({
+                  title: '发布成功',
+                  icon: 'success',
+                  duration: 1500,
+                  mask: false,
+                  complete: ()=>{
+                    
+                  }
+                });
+                wx.navigateBack();   
+              })
+          }
       }) 
     }
+    
+
   },
     
     

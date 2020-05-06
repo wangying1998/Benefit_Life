@@ -21,8 +21,9 @@ Page({
   getData() {
     getSquareList({}).then(res => {
 			this.setData({
-				squareList: res.list,
+				squareList: res.list.reverse(),
       })
+      
       console.log("全部动态",res);
 		})
   },
