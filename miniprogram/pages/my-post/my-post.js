@@ -17,6 +17,7 @@ Page({
   data: {
     squareList: {},
     userInfo: {},
+    myInfo: {},
   },
   
 
@@ -26,6 +27,7 @@ Page({
         squareList: res[0].actList,
         myInfo: res[0],
       })
+      console.log("我发布的全部动态",res);
 		})
 
   },

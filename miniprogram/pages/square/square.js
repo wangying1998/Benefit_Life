@@ -16,15 +16,14 @@ Page({
    */
   data: {
     squareList: {},
-    userInfo: {},
     currentIndex: '',
   },
   getData() {
-    let that = this;
     getSquareList({}).then(res => {
 			this.setData({
 				squareList: res.list,
-			})
+      })
+      console.log("全部动态",res);
 		})
   },
   // },
@@ -120,9 +119,6 @@ Page({
    */
   onShow: function () {
     this.getData();
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-  })
   },
   /**
    * 页面上拉触底事件的处理函数

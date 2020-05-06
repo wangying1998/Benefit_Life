@@ -35,7 +35,7 @@
 			<view bindtap="detailDynamic" data-id="{{item._id}}">
 				<!-- 文字 -->
 				<view class="dynamic-copywriting">
-					{{item.content}}就是不知道是什么极速的话 iv哎哦呼呼速度 v 好是建瓯 v 和速度和 v 吧
+					{{item.content}}
 				</view>
 				<!-- 图片 -->
 				<view wx:if="{{item.imgs.length != 0}}" class="content-img" >

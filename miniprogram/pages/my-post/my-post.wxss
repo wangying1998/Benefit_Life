@@ -62,9 +62,11 @@ page {
   padding: 20rpx;
 }
 .content-img image{
-  width: 215rpx;
-  height: 150rpx;
+  width: 210rpx;
+  height: 210rpx;
   text-align: center;
+  margin: 0 5rpx 0 0;
+  border-radius: 14rpx;
 }
 .opt-delete {
   /* float: right; */

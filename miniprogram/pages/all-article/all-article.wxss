@@ -25,5 +25,6 @@
   .article-item image {
     width: 183rpx;
     height: 102rpx;
-    padding-right: 20rpx;
+    border-radius: 14rpx;
+    margin-right: 20rpx;
   }
