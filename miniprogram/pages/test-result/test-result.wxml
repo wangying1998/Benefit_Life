@@ -5,7 +5,7 @@
         <text class="p-name">{{physicalInfo.name}}</text>
         <view class="both">
             <text class="p-jianyou">兼有</text>
-            <text class="both-result">{{physicalInfo.both}}</text>
+            <text class="both-result">{{physicalInfo.both}}徐瑞婷、组瑞婷、徐瑞婷、徐瑞婷、徐瑞婷、徐瑞婷</text>
         </view>
     </view>
     

@@ -17,7 +17,7 @@
     border: 1rpx solid #F1F1F1
 }
 .item-title {
-  color: #299939;
+  color: #23A257;
   
 }
 .meal-name {

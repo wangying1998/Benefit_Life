@@ -14,12 +14,11 @@ Page({
   },
   getDiseaseList() {		// 获取调养数据
     // 返回改成数组
-    // 带图片一起返回？？分类的名字加一个字段
 		getDiseaseList({}).then(res => {
 			this.setData({
 				diseaseList: res,
-			})
-			console.log("调养",res);
+      })
+      console.log("调养数据",res);
 		})
 		
 	},

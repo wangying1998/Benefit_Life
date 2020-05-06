@@ -4,6 +4,7 @@ page {
     font-size: 26rpx;
     background-color: #fff;
 }
+
 .recuperate {
     margin: 30rpx 16rpx;
     border-bottom: 1px solid #E8E7E7;

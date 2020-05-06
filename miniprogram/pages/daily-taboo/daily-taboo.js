@@ -22,7 +22,6 @@ Page({
         avoid: res.data[0].avoid,
         should: res.data[0].should
       })
-      console.log("适宜", res);
     })
   },
   /**

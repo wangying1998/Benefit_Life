@@ -40,8 +40,6 @@ Page({
           meals: res.meals,
           suggest: res.suggest
         })
-        console.log("首页数据",res);
-        console.log("tuijianwenzhang ",this.data.articleList);
       })
       getMyinfo({}).then(res => {
         this.setData({
@@ -67,10 +65,8 @@ Page({
       wx.getSetting({
         success: function(res) {
           if (res.authSetting['scope.userInfo']) {
-            console.log("124");
 
             if(that.data.personalInfo.physical) {
-              console.log("ballalal");
               wx.navigateTo({
                 url: '/pages/test-result/test-result',
               })

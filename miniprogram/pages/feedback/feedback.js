@@ -19,7 +19,6 @@ Page({
   },
   sumbitFeedback() {
     Feedback({}).then(res => {
-      console.log("反馈成功",res);
       // 目前是没成功的状态，发布动态不成功
       wx.navigateBack();
     })

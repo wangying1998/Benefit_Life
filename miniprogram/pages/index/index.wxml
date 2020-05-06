@@ -1,5 +1,3 @@
-<import src="../../wxParse/wxParse.wxml" />
-
 
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
@@ -24,27 +22,28 @@
     <view class="left-box fl-bet-cen" bindtap="goDailytaboo" data-id="{{suggest._id}}">
       <view>
         <view class="date-flex">
-          <view class="date" bindtap="">30</view>
-          <text class="mini-size date-color">2020/03</text>
+          <view class="date" bindtap="">6</view>
+          <text class="mini-size date-color">2020/05</text>
         </view>
         <view class="fl-cen-cen mr-t-20">
           <view class="align-r">
             <view>己亥年</view>
-            <view style="margin-top: 10rpx;">十一月 初七</view>
+            <view style="margin-top: 10rpx;">四月 十四</view>
           </view>
           <view class="date-line"></view>
         </view>
       </view>
-      <view class="flex">
-        <view class="fl-col-cen">
-          <view class="suit-txt fl-cen-cen">宜</view>
-          <view class="look-txt vertical-txt mr-t-20">{{suggest.should.title}}</view>
+
+      <view class="mod-text">	
+            <view class="suitable flex-taboo">	
+              <view class="suit-txt fl-cen-cen">宜</view>	
+              <view class="vertical-txt look-txt">{{suggest.should.title}}</view>	
+            </view>	
+            <view class="diet flex-taboo">	
+              <view class="taboo-txt fl-cen-cen">忌</view>	
+              <view class="vertical-txt diet-txt">{{suggest.avoid.title}}</view>	
+            </view>	
         </view>
-        <view class="fl-col-cen date-color mr-l-20">
-          <view class="taboo-txt fl-cen-cen">忌</view>
-          <view class="vertical-txt mr-t-20">{{suggest.avoid.title}}</view>
-        </view>
-      </view>
     </view>
 
     <view class="mini-size">

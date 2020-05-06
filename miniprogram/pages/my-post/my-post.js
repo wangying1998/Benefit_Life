@@ -26,8 +26,6 @@ Page({
         squareList: res[0].actList,
         myInfo: res[0],
       })
-      
-			console.log("我的动态",res);
 		})
 
   },
@@ -37,7 +35,6 @@ Page({
       id: e.currentTarget.dataset['id']
     }
     deleteDynamic(param).then(res => {
-      console.log("删除动态",res);
       if(res.stats.removed === 1) {
         wx.showToast({
           title: '删除成功',
@@ -77,7 +74,6 @@ Page({
       authId: e.currentTarget.dataset.authid,
     }
     clickLike(param).then(res => {
-      console.log("点赞",res);
     })
     
   },
@@ -104,7 +100,6 @@ Page({
       class: 1,
     }
     disLike(param).then(res => {
-      console.log("取消点赞",res);
     })
   },
   /**

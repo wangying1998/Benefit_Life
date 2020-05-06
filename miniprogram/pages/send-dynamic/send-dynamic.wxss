@@ -35,6 +35,8 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #F1F1F1;
 }
 
 .delete-btn {
@@ -50,7 +52,13 @@
   line-height: 30px;
 }
 .btn-release {
-  background-color: #23A257;
-  width: 1000rpx;
+  /* background-color: #23A257; */
+  width: 250rpx;
+  height: 80rpx;
   color: #fff;
+  background: linear-gradient(#FF6F00, #FF9100);
+  border-radius: 40rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80rpx;
 }

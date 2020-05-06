@@ -25,7 +25,6 @@ Page({
 			this.setData({
 				squareList: res.list,
 			})
-			console.log("动态",res.list);
 		})
   },
   // },
@@ -35,9 +34,7 @@ Page({
     })
   },
   detailDynamic: function(e) {
-    console.log(e);
     let query = e.currentTarget.dataset['id'];
-    console.log("query",query);
     wx.navigateTo({
       url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
     })
@@ -69,12 +66,7 @@ Page({
     this.setData({
       currentIndex: e.currentTarget.dataset.id
     })
-    console.log("点赞参数",e.currentTarget.dataset)
     clickLike(param).then(res => {
-			// this.setData({
-			// 	squareList: res,
-			// })
-			console.log("点赞是否成功",res);
 		})
     
   },
@@ -83,6 +75,7 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.curindex;
     var list = that.data.squareList;
+    
     if (list[index]) {
       var isLike = list[index].isLike;
       if (isLike !== undefined) {
@@ -101,7 +94,6 @@ Page({
       class: 1
     }
     disLike(param).then(res => {
-      console.log("取消点赞",res);
     })
   },
   // 去消息通知

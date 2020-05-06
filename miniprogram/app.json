@@ -18,8 +18,7 @@
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
-
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "益生活",
     "navigationBarTextStyle": "black",
     
@@ -56,7 +55,7 @@
 
     ],
     "color": "#99daa2",
-    "selectedColor": "#299939"
+    "selectedColor": "#23A257"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

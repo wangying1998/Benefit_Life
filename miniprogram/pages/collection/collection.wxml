@@ -24,7 +24,7 @@
 					</view>
 				</view>
 				<!-- 目前没有返回isLike -->
-				<view>
+				<!-- <view>
 					<image bindtap="gotoLike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
 						data-class="{{item.class}}"
 						data-type="1"
@@ -32,8 +32,8 @@
 					<image bindtap="goDislike" data-id="{{item.likeId}}"
 					data-class="{{item.class}}"
 					class="send" src="../../images/collect.png" wx:else></image>
-				</view>
-				<!-- <view>
+				</view> -->
+				<view>
                     <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
 					class="send" src="../../images/collect.png"
 					data-curIndex="{{index}}"
@@ -45,7 +45,7 @@
 					data-curIndex="{{index}}"
 					data-class="{{item.class}}"
 					class="send" src="../../images/no-collect.png" wx:else></image>
-				</view> -->
+				</view>
 			</view>
 			<!-- 内容 -->
 			<view bindtap="detailDynamic" data-id="{{item._id}}">

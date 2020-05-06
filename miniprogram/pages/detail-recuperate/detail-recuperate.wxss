@@ -3,13 +3,19 @@ page {
     font-size: 28rpx;
     
 }
+.all-recu {
+    background-color: #fff;
+}
 .title-img {
     text-align: center;
+    padding-top: 20rpx;
 }
 .det-img {
     width: 60rpx;
     height: 60rpx;
-    
+}
+.text-content {
+    line-height: 50rpx;
 }
 .title {
     font-weight: bold; 
@@ -31,6 +37,8 @@ page {
 .text-other {
     color: #4F4F4F;
     margin: 20rpx;
+    line-height: 40rpx;
+
 }
 .footer {
     text-align: center;

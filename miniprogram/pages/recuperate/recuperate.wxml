@@ -1,4 +1,4 @@
-<view>
+<view class="all-recu">
   <view wx:for="{{diseaseList}}" wx:key="id" class="recuperate">
     <view class="class-name">
       <image class="icon-menu" src="../../images/caidan.png"></image>

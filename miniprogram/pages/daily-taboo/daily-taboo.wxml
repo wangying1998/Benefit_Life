@@ -1,4 +1,5 @@
-<view class="taboo">
+<view class="taboo" >
+      <image src="../../images/bg2.png" class="taboo-bg"/>
       <view class="date">
           <view class="date-day">30</view>
           <text class="date-year">2020年3月</text>

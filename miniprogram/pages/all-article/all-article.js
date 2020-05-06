@@ -40,9 +40,9 @@ Page({
           WxParse.wxParseTemArray("relayArr", 'content', relayArr.length, that);
         }
       }
-      console.log("是啥",relayArr);
-      console.log("这里", WxParse.wxParseTemArray("relayArr", 'content', relayArr.length, that))
-      console.log("推荐文章", res.data);
+      // console.log("是啥",relayArr);
+      // console.log("这里", WxParse.wxParseTemArray("relayArr", 'content', relayArr.length, that))
+      // console.log("推荐文章", res.data);
     })
 
   },

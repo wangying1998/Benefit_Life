@@ -16,7 +16,7 @@ page {
     margin-bottom: 20rpx;
 }
 .living-title {
-    color: #299939;
+    color: #23A257;
     text-align: center;
     padding: 20rpx 0;
 }

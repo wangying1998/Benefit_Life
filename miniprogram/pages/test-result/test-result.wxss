@@ -4,6 +4,7 @@ page {
 }
 .phy-narbar {
     padding-left: 40rpx;
+    padding-top: 20rpx;
 }
 .p-my {
     color: #888;
@@ -18,6 +19,8 @@ page {
 }
 .both-result {
     color: #FF9100; 
+    padding-right: 20rpx;
+    line-height: 36rpx;
 }
 .p-jianyou {
     color: #333;
@@ -25,18 +28,18 @@ page {
 }
 .p-reason {
     background-color: #fff;
-    margin-bottom: 20rpx;
-    padding: 0 40rpx;
+    /* margin-bottom: 20rpx; */
+    
     border-bottom: 1px solid #F1F1F1;
 }
 .question {
+    padding: 0 40rpx;
     color: #23A257;
     display: flex;
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-    
-    
+    border-bottom: 1px solid #F1F1F1;
 }
 .question image {
     width: 30rpx;
@@ -57,6 +60,8 @@ page {
 .explain {
     color: #888;
     font-size: 26rpx;
+    padding: 0 40rpx;
+    line-height: 32rpx;
 }
 .explain-list {
     display: flex;
@@ -78,4 +83,5 @@ page {
     background-color: #23A257;
     width: 300rpx;
     height: 40rpx;
+    margin-top: 30rpx;
 }

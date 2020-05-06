@@ -13,7 +13,6 @@ Page({
   },
   update: function () {
     let value = wx.getStorageSync('userInfo');
-    console.log("value",value)
       // 每日宜忌
       let params = {
           nickName: value.nickName,
@@ -23,7 +22,6 @@ Page({
         this.setData({
           shouldToDo: res,
         })
-        console.log("修改本人资料",res);
       })
   },
   /**

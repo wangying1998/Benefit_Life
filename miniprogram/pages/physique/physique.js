@@ -79,8 +79,6 @@ Page({
       this.setData({
         questionFlag: listArr
       })
-      console.log(listArr);
-			console.log("体质测试题目",res.data);
 		})
   },
   clickAnswer: function (e) {

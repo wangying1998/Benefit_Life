@@ -13,7 +13,7 @@ Page({
     personalList: [
       {
         id: 'collection',
-        icon: '../../images/collection.png',
+        icon: '../../images/like.png',
         text: '我喜欢的',
       },
       {
@@ -76,7 +76,6 @@ Page({
   },
   getInfo: function () {
 		getMyinfo({}).then(res => {
-      console.log("我的体质",res);
       if(res.data[0].physical) {
         wx.navigateTo({
           url: '/pages/test-result/test-result',
@@ -99,8 +98,11 @@ Page({
     // wx.getStorage({
     //   key: 'userInfo',
     //   success (res) {
-    //     this.userInfo = res.data
-    //     
+    //     this.userInfo = res.data;
+    //     console.log("头像信息")
+    //     // this.setData({
+    //     //   userInfo: res.data
+    //     // })
     //   }
     // })
   },

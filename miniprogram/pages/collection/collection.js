@@ -22,7 +22,6 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
-      console.log("我喜欢的",res);
     })
   },
   // 点赞
@@ -30,6 +29,7 @@ Page({
     var that = this;
     var index  = e.currentTarget.dataset.id;
     var type = e.currentTarget.dataset.class;
+    var index  = e.currentTarget.dataset.curindex;
     var list = [];
     if(type) {
       list = that.data.activityList;
@@ -62,17 +62,13 @@ Page({
       authId: e.currentTarget.dataset.authid,
     }
     clickLike(param).then(res => {
-      // this.setData({
-      // 	squareList: res,
-      // })
-      console.log("点赞",res);
     })
     
   },
   // 取消点赞
   goDislike: function(e) {
     var that = this;
-    var index  = e.currentTarget.dataset.id;
+    var index  = e.currentTarget.dataset.curindex;
     var type = e.currentTarget.dataset.class;
     var list = [];
     if(type) {
@@ -82,7 +78,7 @@ Page({
     }
     if (list[index]) {
       var isLike = list[index].isLike;
-      if (isLike !== undefined) {
+      if (isLike) {
         if (isLike) {
           list[index].isLike = false;
         } else {
@@ -100,14 +96,12 @@ Page({
         
       }
     }
-    console.log("取消点赞1",e,e.currentTarget.dataset.id)
     var param = {
       id: e.currentTarget.dataset.id,
       class: e.currentTarget.dataset.class,
       authId: e.currentTarget.dataset.authid,
     }
     disLike(param).then(res => {
-      console.log("取消点赞",res);
     })
   },
 
@@ -152,6 +146,14 @@ Page({
     wx.navigateTo({
       url: `/pages/detail-article/detail-article?artid=${query}`,
     })
+  },
+  // 动态详情
+  detailDynamic: function(e) {
+    let query = e.currentTarget.dataset['id'];
+    wx.navigateTo({
+      url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
+    })
+    
   },
 
   bindChange: function( e ) {

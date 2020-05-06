@@ -51,6 +51,7 @@ page {
 
 .square-list {
     /* margin: */
+    /* margin-bottom: 20rpx; */
 }
 .dynamic-item {
     /* display: flex; */
@@ -105,10 +106,11 @@ page {
     padding: 20rpx;
 }
 .content-img image{
-    width: 100%;
-    height: 350rpx;
+    width: 670rpx;
+    height: 670rpx;
     text-align: center;
     margin: 0 5rpx 5rpx 0;
+    border-radius: 14rpx;
 }
 
 

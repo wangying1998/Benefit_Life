@@ -1,5 +1,4 @@
 
-@import "../../wxParse/wxParse.wxss";
 .container{
   background-color: #fff;
 }
@@ -20,7 +19,7 @@
 .line {
   width: 6rpx;
   height: 30rpx;
-  background: #299939;
+  background: #23A257;
 }
 .archives {
   height: 80rpx;
@@ -37,9 +36,8 @@
   border-radius: 50%;
 }
 .look-txt {
-  color: #299939;
+  color: #23A257;
   margin-right: 5rpx;
-
 }
 .detail {
   height: 26rpx;
@@ -88,6 +86,36 @@ image {
   text-align: right;
   margin-right: 15rpx;
 }
+
+/* 每日宜忌 */
+
+.flex-taboo {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+}
+
+.mod-text {	
+  writing-mode: vertical-lr;
+}
+.vertical-txt {
+  /* line-height: 0rpx; */
+}
+.look-txt {
+  color: #23A257;
+}
+.mod-text .suitable {	
+  display: flex;
+  margin-right: 30rpx;
+}
+
+.mod-text .diet {	
+  display: flex;
+}
+.diet-txt {
+  color: #888; 
+}
 .mr-l-20{
   margin-left: 20rpx;
 }
@@ -95,9 +123,11 @@ image {
   width: 45rpx;
   height: 45rpx;
   border-radius: 50%;
-  background-color: #299939;
+  background-color: #23A257;
   color: #fff;
   padding: 10rpx;
+  margin-bottom: 10rpx;
+  
 }
 .taboo-txt{
   width: 45rpx;
@@ -105,11 +135,10 @@ image {
   padding: 10rpx;
   border: #888888 1px solid;
   border-radius: 50%;
+  margin-bottom: 10rpx;
+  line-height: 30rpx;
+  color: #888;
 }
-.vertical-txt{
-  writing-mode: vertical-lr;
-}
-
 .con-box{
   width: 350rpx;
   height: 125rpx;
@@ -128,13 +157,14 @@ image {
 }
 
 .title{
-  color: #299939;
+  color: #23A257;
 }
 .living {
   border-top: 1px solid rgb(196, 196, 196);
 }
 /* 时令好文 */
 .article-item {
+  width: 100%;
   background-color: #fff;
   margin-bottom: 20rxp;
   text-align: left;
@@ -160,5 +190,6 @@ image {
 .article-item image {
   width: 183rpx;
   height: 102rpx;
-  padding-right: 20rpx;
+  border-radius: 14rpx;
+  margin-right: 20rpx;
 }

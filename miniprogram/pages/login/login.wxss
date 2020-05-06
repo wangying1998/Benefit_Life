@@ -37,5 +37,5 @@
   .line {
     width: 6rpx;
     height: 30rpx;
-    background: #299939;
+    background: #23A257;
   }

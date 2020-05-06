@@ -23,7 +23,6 @@ Page({
       this.setData({
         living: res.living,
       })
-      console.log("起居",res.living);
     })
   },
 
