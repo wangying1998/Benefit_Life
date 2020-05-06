@@ -74,5 +74,8 @@ page {
   font-size: 20rpx;
   margin-top: 30rpx;
   text-align: right;
-  
+  width: 100rpx;
+  border: 1px solid green;
+  position: relative;
+  right: 30rpx;
 }
