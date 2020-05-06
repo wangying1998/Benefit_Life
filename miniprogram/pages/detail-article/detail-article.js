@@ -23,7 +23,6 @@ Page({
         detailArt: res.data[0],
         content: res.data[0].content
       })
-      console.log("时令推文详细",res.data[0]);
       let info = that.data.content
       .replace(/<p([\s\w"=\/\.:;]+)((?:(style="[^"]+")))/ig, '<p')
       .replace(/<p>/ig, '<p style="font-size: 15Px; line-height: 25Px;">')
@@ -35,8 +34,6 @@ Page({
       // this.setData({
       //   content: info,
       // })
-      // console.log("11",info);
-      // console.log("2",that.data.content);
     })
 
     
@@ -54,7 +51,6 @@ Page({
       class: 0 // 推文
     }
     clickLike(param).then(res => {
-      console.log("推文点赞",res);
     })
     
   },
@@ -71,7 +67,6 @@ Page({
       class: 0
     }
     disLike(param).then(res => {
-      console.log("推文取消点赞",res);
     })
   },
   /**

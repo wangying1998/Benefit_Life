@@ -76,7 +76,6 @@ Page({
   },
   getInfo: function () {
 		getMyinfo({}).then(res => {
-      console.log("我的体质",res);
       if(res.data[0].physical) {
         wx.navigateTo({
           url: '/pages/test-result/test-result',

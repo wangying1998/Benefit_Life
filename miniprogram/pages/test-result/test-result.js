@@ -22,7 +22,6 @@ Page({
         this.setData({
           physicalInfo: res.data[0],
         })
-        console.log("个人档案", this.data.physicalInfo);
       })
     },
     showMeans:function(){

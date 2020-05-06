@@ -22,7 +22,6 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
-      console.log("我喜欢的",res);
     })
   },
   // 点赞
@@ -65,7 +64,6 @@ Page({
       // this.setData({
       // 	squareList: res,
       // })
-      console.log("点赞",res);
     })
     
   },
@@ -100,14 +98,13 @@ Page({
         
       }
     }
-    console.log("取消点赞1",e,e.currentTarget.dataset.id)
     var param = {
       id: e.currentTarget.dataset.id,
       class: e.currentTarget.dataset.class,
       authId: e.currentTarget.dataset.authid,
     }
     disLike(param).then(res => {
-      console.log("取消点赞",res);
+      
     })
   },
 

@@ -19,7 +19,6 @@ Page({
 			this.setData({
 				diseaseList: res,
 			})
-			console.log("调养",res);
 		})
 		
 	},

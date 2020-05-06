@@ -73,7 +73,6 @@ Page({
 			this.setData({
 				shouldToDo: res,
 			})
-      console.log("发布动态成功了吗",res);
       // 目前是没成功的状态，发布动态不成功
       wx.navigateBack();
       // wx.navigateTo({
@@ -100,7 +99,6 @@ Page({
             'user': 'test'
         },
         success: function (res) {
-              console.log('上传成功');
               //把上传成功的图片的地址放入数组中
               imgs_ok.push(res.data)
               //如果全部传完，则可以将图片路径保存到数据库
@@ -134,7 +132,6 @@ Page({
             }
           },
           fail: function (res) {
-            console.log('上传失败')
           }
         })
       }

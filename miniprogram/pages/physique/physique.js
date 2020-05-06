@@ -79,8 +79,6 @@ Page({
       this.setData({
         questionFlag: listArr
       })
-      console.log(listArr);
-			console.log("体质测试题目",res.data);
 		})
   },
   clickAnswer: function (e) {
@@ -98,7 +96,6 @@ Page({
         this.setData({
           questionFlag: list
         })
-        console.log("flag",curIndex,list[curIndex].flag);
     }
     var scoreArr = this.data.scoreArr;
     var index = e.currentTarget.dataset.order;
@@ -125,13 +122,11 @@ Page({
        scoreArr: scoreArr,
        currentIndex: e.target.dataset.curIndex
     });
-    console.log("分数",that.data.scoreArr);
     
   },
   submitTest() {
     var that = this;
     let param = that.data.scoreArr;
-    console.log("分数信息",param);
     if(param.answer.length < that.data.testList.length) {
       wx.showToast({
         title: '请回答全部题目',
@@ -140,7 +135,6 @@ Page({
       });
     }else {
       sendTestAnswer(param).then(res => {
-        console.log("提交体质测试题目",res);
         wx.navigateTo({
           url: '/pages/test-result/test-result',
         })
@@ -153,7 +147,6 @@ Page({
    */
   onLoad: function (options) {
     this.fitnessTestQuestions();
-    console.log("这里这里",Object.keys({id:1,score:2}));
   },
 
   /**

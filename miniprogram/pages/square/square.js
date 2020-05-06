@@ -25,7 +25,6 @@ Page({
 			this.setData({
 				squareList: res.list,
 			})
-			console.log("动态",res.list);
 		})
   },
   // },
@@ -35,9 +34,7 @@ Page({
     })
   },
   detailDynamic: function(e) {
-    console.log(e);
     let query = e.currentTarget.dataset['id'];
-    console.log("query",query);
     wx.navigateTo({
       url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
     })
@@ -69,12 +66,10 @@ Page({
     this.setData({
       currentIndex: e.currentTarget.dataset.id
     })
-    console.log("点赞参数",e.currentTarget.dataset)
     clickLike(param).then(res => {
 			// this.setData({
 			// 	squareList: res,
 			// })
-			console.log("点赞是否成功",res);
 		})
     
   },
@@ -101,7 +96,6 @@ Page({
       class: 1
     }
     disLike(param).then(res => {
-      console.log("取消点赞",res);
     })
   },
   // 去消息通知
@@ -138,7 +132,6 @@ Page({
   // onReachBottom:function(){
   //   // 分页请求
     
-  //   console.log('上拉触底事件');
   //   let that = this;
   //   // if (this.data.loading) return;  
   //   // this.setData({ loading: true });  
@@ -160,7 +153,6 @@ Page({
     //     loading: false,
 		// 		squareList: res.list,
 		// 	})
-		// 	console.log("动态",res.list);
     // })
     
   // },
@@ -169,7 +161,6 @@ Page({
  */
 // updateRefreshIcon: function () {
 //   var deg = 0;
-//   console.log('旋转开始了.....')
 //   var animation = wx.createAnimation({
 //     duration: 1000
 //   });

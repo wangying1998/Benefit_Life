@@ -23,7 +23,6 @@ Page({
       this.setData({
         meals: res.meals,
       })
-      console.log("食材",res);
     })
   },
 

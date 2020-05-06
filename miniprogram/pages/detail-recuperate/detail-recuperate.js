@@ -20,7 +20,6 @@ Page({
 			this.setData({
 				diseaseDetail: res,
 			})
-      console.log("调养详情",res);
       wx.setNavigationBarTitle({
         title: res.data[0].name//页面标题为路由参数
       })

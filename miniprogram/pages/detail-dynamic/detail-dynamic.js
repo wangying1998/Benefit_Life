@@ -28,7 +28,6 @@ Page({
       // wx.setNavigationBarTitle({
       //   title: res.data[0].name//页面标题为路由参数
       // })
-			console.log("动态详情",res);
 		})
 
   },
@@ -38,7 +37,6 @@ Page({
   onLoad: function (options) {
    
     this.getData(options.id);
-    console.log("详情ID");
 
     
   },

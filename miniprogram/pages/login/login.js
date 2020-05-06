@@ -29,8 +29,6 @@ Page({
         if (e.detail.userInfo) {
             //用户按了允许授权按钮
             
-            console.log("用户的信息如下：");
-            console.log(e.detail.userInfo);
             wx.setStorage({
               key: "userInfo",
               data: e.detail.userInfo
@@ -43,7 +41,6 @@ Page({
 
             }
             updateBaseinfo(param).then(res => {
-              console.log(res); 
             })
             wx.navigateBack();
               

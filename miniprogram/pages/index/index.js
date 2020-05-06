@@ -40,14 +40,11 @@ Page({
           meals: res.meals,
           suggest: res.suggest
         })
-        console.log("首页数据",res);
-        console.log("tuijianwenzhang ",this.data.articleList);
       })
       getMyinfo({}).then(res => {
         this.setData({
           personalInfo: res.data[0],
         })
-        console.log("首页个人信息", this.data.personalInfo);
       })
 
  
@@ -58,7 +55,6 @@ Page({
     //     this.setData({
     //       physicalInfo: res,
     //     })
-    //     console.log("个人档案", res);
     //   })
     // },
      // 点击查看体质测试
@@ -67,15 +63,12 @@ Page({
       wx.getSetting({
         success: function(res) {
           if (res.authSetting['scope.userInfo']) {
-            console.log("124");
 
             if(that.data.personalInfo.physical) {
-              console.log("ballalal");
               wx.navigateTo({
                 url: '/pages/test-result/test-result',
               })
             } else {
-              console.log("testtest");
               wx.navigateTo({
                 url: '/pages/physique/physique',
               })
