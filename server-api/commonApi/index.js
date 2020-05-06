@@ -615,18 +615,7 @@ async function returnLikeList(data){		// 我喜欢的动态/推文
 		article: [],
 		activity: []
 	};
-	// 动态
-	// result.article = await db.collection('user_like').where({
-	// 	userId: data.userId,
-	// 	class: 1
-	// }).get();
-	// // 文章
-	// result.activity = await db.collection('user_like').where({
-	// 	userId: data.userId,
-	// 	class: 0
-	// }).get();
-	// return result;
-
+	
 	let art_like = await db.collection('user_like').aggregate()
 		.lookup({
 			from: 'articles',
@@ -641,15 +630,16 @@ async function returnLikeList(data){		// 我喜欢的动态/推文
 		})
 		.end()
 		.catch(err => console.error(err));
-		if(art_like.list && art_like.list.length){
-			art_like.list.forEach(ele => {
-				if(ele.article.length){
-					if(ele.userId == data.userId){
-						result.article.push(ele)
-					}
+	if(art_like.list && art_like.list.length){
+		art_like.list.forEach(ele => {
+			ele.isLike = true;
+			if(ele.article.length){
+				if(ele.userId == data.userId){
+					result.article.push(ele)
 				}
-			});
-		}
+			}
+		});
+	}
 	let act_like = await db.collection('user_like').aggregate()
 		.lookup({
 			from: 'user_activity',
@@ -658,21 +648,22 @@ async function returnLikeList(data){		// 我喜欢的动态/推文
 			as: 'activity',
 		}).lookup({
 			from: 'user',
-			localField: 'userId',
+			localField: 'authId',
 			foreignField: '_id',
 			as: 'userInfo'
 		})
 		.end()
 		.catch(err => console.error(err));
-		if(act_like.list && act_like.list.length){
-			act_like.list.forEach(ele => {
-				if(ele.activity.length){
-					if(ele.userId == data.userId){
-						result.activity.push(ele)
-					}
+	if(act_like.list && act_like.list.length){
+		act_like.list.forEach(ele => {
+			ele.isLike = true;
+			if(ele.activity.length){
+				if(ele.userId == data.userId){
+					result.activity.push(ele)
 				}
-			});
-		}
+			}
+		});
+	}
 
 		return result;
 }
