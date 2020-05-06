@@ -1,6 +1,6 @@
-<!--pages/toboo/toboo.wxml-->
-<view>
-    <view class="phy-narbar">
+<!-- pages/toboo/toboo.wxml -->
+<view class="container">
+    <view class="title-size">
         <text class="p-my">我的体质是：</text>
         <text class="p-name">{{physicalInfo.name}}</text>
         <view class="both">
@@ -8,102 +8,38 @@
             <text class="both-result">{{physicalInfo.both}}</text>
         </view>
     </view>
-    
-    <view >
-         <view class="p-reason">
-            <view class="question" bindtap="showMeans">
-                <view class="question-left">
-                    <image src="../../images/yiwen.png" />
-                    <view>{{physicalInfo.means.question}}</view>
-                </view>
-                <image src="../../images/unfold.png" class="unfold"/>
-            </view>
-            <view class="explain" 
-                wx:for="{{physicalInfo.means.explain}}" wx:key="id"
-                wx:if="{{hideMeans}}" 
-            >
-                <view class="explain-list">
-                    <view class="dot"></view>
-                    <view class="list-content">{{item.content}}</view>
-                </view>
-                
-            </view>
+</view>
+<van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
+    <van-collapse-item title="{{ physicalInfo.means.question }}">
+        <view wx:for="{{physicalInfo.means.explain}}" wx:key="_id" class="content">
+            {{(index+1)+'. '+item.content}}
         </view>
-        <view class="p-reason">
-            <view class="question" bindtap="showReason">
-                <view class="question-left">
-                    <image src="../../images/yiwen.png" />
-                    <view>{{physicalInfo.reason.question}}</view>
-                </view>
-                <image src="../../images/unfold.png" class="unfold"/>
-            </view>
-            <view class="explain" 
-            wx:for="{{physicalInfo.reason.explain}}" wx:key="id"
-            wx:if="{{hideReason}}"
-            >
-                <view class="explain-list">
-                    <view class="dot"></view>
-                    <view class="list-content">{{item.content}}</view>
-                </view>
-            </view>
+    </van-collapse-item>
+    <van-collapse-item title="{{ physicalInfo.reason.question }}">
+        <view wx:for="{{physicalInfo.reason.explain}}" wx:key="_id" class="content">
+            {{(index+1)+'. '+item.content}}
         </view>
-        <view class="p-reason">
-            <view class="question" bindtap="showBother">
-                <view class="question-left">
-                    <image src="../../images/yiwen.png" />
-                    <view>{{physicalInfo.bother.question}}</view>
-                </view>
-                <image src="../../images/unfold.png" class="unfold"/>
-            </view>
-            <view class="explain" 
-                wx:for="{{physicalInfo.bother.explain}}" wx:key="id"
-                wx:if="{{hideBother}}"
-            >
-                <view class="explain-list">
-                    <view class="dot"></view>
-                    <view class="list-content">{{item.content}}</view>
-                </view>
-            </view>
+    </van-collapse-item>
+    <van-collapse-item title="{{ physicalInfo.bother.question }}">
+        <view wx:for="{{physicalInfo.bother.explain}}" wx:key="_id" class="content">
+            {{(index+1)+'. '+item.content}}
         </view>
-        <view class="p-reason">
-            <view class="question" bindtap="showAlert">
-                <view class="question-left">
-                    <image src="../../images/yiwen.png" />
-                    <view>{{physicalInfo.alert.question}}</view>
-                </view>
-                <image src="../../images/unfold.png" class="unfold"/>
-            </view>
-            <view class="explain" 
-                wx:for="{{physicalInfo.alert.explain}}" wx:key="id"
-                wx:if="{{hideAlert}}"
-            >
-                <view class="explain-list">
-                    <view class="dot"></view>
-                    <view class="list-content">{{item.content}}</view>
-                </view>
-            </view>
+    </van-collapse-item>
+    <van-collapse-item title="{{ physicalInfo.alert.question }}">
+        <view wx:for="{{physicalInfo.alert.explain}}" wx:key="_id" class="content">
+            {{(index+1)+'. '+item.content}}
         </view>
-        <view class="p-reason">
-            <view class="question" bindtap="showImprove">
-                <view class="question-left">
-                    <image src="../../images/yiwen.png" />
-                    <view>{{physicalInfo.improve.question}}</view>
-                </view>
-                <image src="../../images/unfold.png" class="unfold"/>
+    </van-collapse-item>
+    <van-collapse-item title="{{ physicalInfo.improve.question }}">
+        <view wx:for="{{physicalInfo.improve.explain}}" wx:key="_id" class="content">
+            <view wx:if="{{ item.question }}">
+                <view>{{ '- ' + item.question }}</view>
+                <view wx:for="{{item.solution}}" wx:key="id">{{ (index+1)+'.'+item.content }}</view>
             </view>
-            <view class="explain" 
-                wx:for="{{physicalInfo.improve.explain}}" wx:key="id"
-                wx:if="{{hideImprove}}"
-            >
-                <view class="explain-list">
-                    <view class="dot"></view>
-                    <view>{{item.question}}</view>
-                </view>
-                <view wx:for="{{item.solution}}" wx:key = "id" wx:for-item="solution">
-                    {{solution.content}}
-                </view>
-            </view>
+            <view wx:else>{{(index+1)+'. '+item.content}}</view>
         </view>
-    </view>
-    <button class='btn' bindtap='reTest'>重新测试</button>
+    </van-collapse-item>
+</van-collapse>
+<view class="btn_box">
+    <view class='retest_btn' bindtap='reTest'>重新测试</view>
 </view>

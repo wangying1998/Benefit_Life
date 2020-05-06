@@ -1,9 +1,8 @@
-
-page {
-    font-size: 28rpx;
+page{
+    background-color: #fff;
 }
-.phy-narbar {
-    padding-left: 40rpx;
+.container{
+    background-color: #fff;
 }
 .p-my {
     color: #888;
@@ -11,13 +10,15 @@ page {
 }
 .p-name {
     color: #23A257;
-    font-size: 46rpx;
+    font-size: 50rpx;
 }
-.both {
-    margin: 30rpx 0 20rpx 0;
+.both{
+    padding: 30rpx 0 50rpx 0;
 }
 .both-result {
-    color: #FF9100; 
+    color: #FF9100;
+    font-size: 36rpx;
+    line-height: 1.8;
 }
 .p-jianyou {
     color: #333;
@@ -26,56 +27,21 @@ page {
 .p-reason {
     background-color: #fff;
     margin-bottom: 20rpx;
-    padding: 0 40rpx;
     border-bottom: 1px solid #F1F1F1;
 }
-.question {
+.van-cell__title {
     color: #23A257;
-    display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    
-    
+    font-size: 32rpx;
 }
-.question image {
-    width: 30rpx;
-    height: 30rpx;
-
+.content{
+    line-height: 2;
 }
-.question-left {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    height: 80rpx;
-    line-height: 80rpx;
-}
-.question-left image{
-    margin-right: 10rpx;
-}
-
-.explain {
-    color: #888;
-    font-size: 26rpx;
-}
-.explain-list {
-    display: flex;
-    align-items: center;
-    padding: 8rpx 0
-}
-.dot {
-    background: #23A257;
-    width: 8rpx;
-    height: 8rpx;
-    border-radius: 100%;
-    margin-right: 10rpx;
-}
-.list-content {
-    width: 650rpx;
-}
-.btn {
+.retest_btn {
     color: #fff;
     background-color: #23A257;
     width: 300rpx;
-    height: 40rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 80rpx;
+    margin: 50rpx 223rpx 100rpx;
 }

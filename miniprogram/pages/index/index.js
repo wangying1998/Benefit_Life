@@ -49,7 +49,7 @@ Page({
 
  
     },
-    // // 获取个人档案
+    // 获取个人档案
     // getPhysicalInfo() {
     //   getPhysicalInfo({}).then(res => {
     //     this.setData({
@@ -63,7 +63,6 @@ Page({
       wx.getSetting({
         success: function(res) {
           if (res.authSetting['scope.userInfo']) {
-
             if(that.data.personalInfo.physical) {
               wx.navigateTo({
                 url: '/pages/test-result/test-result',

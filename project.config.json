@@ -31,13 +31,30 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
 			"list": [
 				{
 					"id": -1,
 					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"pathName": "pages/databaseGuide/databaseGuide",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人档案",
+					"pathName": "pages/test-result/test-result",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "每日宜忌",
+					"pathName": "pages/daily-taboo/daily-taboo",
+					"scene": null
 				}
 			]
 		}

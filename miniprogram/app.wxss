@@ -62,6 +62,11 @@ page {
 	flex-direction: column;
 	align-items: center;
 }
+.fl-col-bet-cen{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 /* 字号 */
 .large-size{
 	font-size: 32rpx;
@@ -84,4 +89,7 @@ view {
 }
 .mr-t-20{
 	margin-top: 20rpx;
+}
+.radius{
+	border-radius: 14rpx;
 }

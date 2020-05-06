@@ -1,3 +1,4 @@
+<image src="../../images/bg2.png" class="bg_pic"/>
 <view class="taboo">
       <view class="date">
           <view class="date-day">30</view>

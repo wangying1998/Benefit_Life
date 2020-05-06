@@ -13,13 +13,13 @@
     "pages/taboo/taboo",
     "pages/notice/notice",
     "pages/send-dynamic/send-dynamic",
-    "pages/detail-dynamic/detail-dynamic"
-
+    "pages/detail-dynamic/detail-dynamic",
+    "pages/test-result/test-result"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#ffffff",
 
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "益生活",
     "navigationBarTextStyle": "black",
     
@@ -57,6 +57,10 @@
     ],
     "color": "#99daa2",
     "selectedColor": "#299939"
+  },
+  "usingComponents": {
+    "van-collapse": "../dist/collapse/index",
+    "van-collapse-item": "../dist/collapse-item/index"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

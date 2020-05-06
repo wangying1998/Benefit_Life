@@ -20,9 +20,9 @@ App({
 
     if (getSessionData().openId) {
       handleLogin().then(res => {
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
+        // wx.switchTab({
+        //   url: '/pages/index/index',
+        // })
       })
       wx.getSetting({
         success: res => {

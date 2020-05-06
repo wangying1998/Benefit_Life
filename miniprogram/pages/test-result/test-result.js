@@ -10,15 +10,23 @@ Page({
     data: {
       personalInfo: {},
       physicalInfo: {},
+      active1: [0],
       hideMeans: true,
       hideAlert: false,
       hideImprove: false,
       hideBother: false,
       hideReason: true,
     },
+    onChange(event) {
+      const { key } = event.currentTarget.dataset;
+      this.setData({
+        [key]: event.detail
+      });
+    },
     // 获取个人档案
     getPhysicalInfo() {
       getPhysicalInfo({}).then(res => {
+        console.log(res.data[0])
         this.setData({
           physicalInfo: res.data[0],
         })
