@@ -8,7 +8,7 @@
       <view  wx:for="{{item.data}}" wx:key="id" >
         <view class="recu-item" bindtap="gotoRecuDetail" data-index="{{item._id}}" >
           <view class="item-img">
-            <image class="icon-recu" src="../../images/ganmao.png"></image>
+            <image class="icon-recu" src="{{item.img || '../../images/ganmao.png'}}"></image>
           </view>
           <label class='item_content'>{{item.name}}</label>
         </view>
