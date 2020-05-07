@@ -1,6 +1,4 @@
 <import src="../../wxParse/wxParse.wxml" />
-
-
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
     <block wx:for="{{slideList}}" wx:key="id">
