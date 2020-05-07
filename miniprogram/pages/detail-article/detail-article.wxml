@@ -1,6 +1,6 @@
+<import src="../../wxParse/wxParse.wxml"/>
 <wxs module="filter" src="./detail-article.wxs" />
-
-<view >
+<view class="container content-size">
     <view class="art-title">{{detailArt.title}}</view>
     <view class="all-art">
         <view class="art-count">
@@ -17,7 +17,8 @@
         <view class="art-date">{{filter.formatTime(detailArt.create_time,'M月D日h:m')}}</view>
     </view>
     <view class="art-content">
-        <rich-text nodes="{{content}}" ></rich-text>
+        <!-- <rich-text nodes="{{content}}" ></rich-text> -->
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
     </view>
     <view class="tip-like">
         <text class="haddle-like">点赞</text>

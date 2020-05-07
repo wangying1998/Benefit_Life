@@ -55,6 +55,18 @@
 					"name": "每日宜忌",
 					"pathName": "pages/daily-taboo/daily-taboo",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "食材",
+					"pathName": "pages/meal/meal",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "起居",
+					"pathName": "pages/living/living",
+					"scene": null
 				}
 			]
 		}

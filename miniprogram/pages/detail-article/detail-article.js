@@ -3,6 +3,7 @@ import {
   clickLike,
   disLike
 } from '../../api/api.js'
+var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
 
@@ -20,20 +21,9 @@ Page({
     }
     getArtDetails(param).then(res => {
       this.setData({
-        detailArt: res.data[0],
-        content: res.data[0].content
+        detailArt: res.data[0]
       })
-      let info = that.data.content
-      .replace(/<p([\s\w"=\/\.:;]+)((?:(style="[^"]+")))/ig, '<p')
-      .replace(/<p>/ig, '<p style="font-size: 15Px; line-height: 25Px;">')
-      .replace(/<img([\s\w"-=\/\.:;]+)((?:(height="[^"]+")))/ig, '<img$1')
-      .replace(/<img([\s\w"-=\/\.:;]+)((?:(width="[^"]+")))/ig, '<img$1')
-      .replace(/<img([\s\w"-=\/\.:;]+)((?:(style="[^"]+")))/ig, '<img$1')
-      .replace(/<img([\s\w"-=\/\.:;]+)((?:(alt="[^"]+")))/ig, '<img$1')
-      .replace(/<img([\s\w"-=\/\.:;]+)/ig, '<img$1 style="width: 100%; border-radius: 8Px;"');
-      // this.setData({
-      //   content: info,
-      // })
+      WxParse.wxParse('content' , 'html', res.data[0].content, this, 5);
     })
 
     

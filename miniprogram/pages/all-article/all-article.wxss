@@ -1,29 +1,32 @@
-
+/* 时令好文 */
+.article{
+  margin-bottom: 20rpx;
+}
 .article-item {
-    background-color: #fff;
-    margin-bottom: 20rxp;
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: 1rpx solid #F1F1F1;
-    align-items: center;
-  }
-  .art-text {
-    line-height: 60rpx;
-    padding: 0 20rpx;
-    
-  }
-  .art-title{
-    background-color: #fff;
-    font-size: 26rpx;
-  }
-  .art-date {
-    color: #999999;
-    font-size: 22rpx;
-  }
-  .article-item image {
-    width: 183rpx;
-    height: 102rpx;
-    padding-right: 20rpx;
-  }
+  background-color: #fff;
+  border-top: 1rpx solid #F1F1F1;
+  padding: 20rpx 30rpx;
+}
+.art-text {
+  height: 120rpx;
+  padding: 10rpx 0;
+}
+.art-title{
+  background-color: #fff;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+.art-date {
+  color: #999999;
+  font-size: 22rpx;
+}
+.article-item image {
+  width: 200rpx;
+  height: 120rpx;
+}
+.down{
+  color: #ddd;
+  font-size: 24rpx;
+  text-align: center;
+  margin: 60rpx 0;
+}

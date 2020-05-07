@@ -1,16 +1,14 @@
-<view>
+<view class="container mini-size">
   <view wx:for="{{diseaseList}}" wx:key="id" class="recuperate">
     <view class="class-name">
       <image class="icon-menu" src="../../images/caidan.png"></image>
-      <text>{{item.class}}</text>
+      <text class="title-size">{{item.class}}</text>
     </view>
-    <view class="question"  >
-      <view  wx:for="{{item.data}}" wx:key="id" >
-        <view class="recu-item" bindtap="gotoRecuDetail" data-index="{{item._id}}" >
-          <view class="item-img">
-            <image class="icon-recu" src="{{item.img}}"></image>
-          </view>
-          <label class='item_content'>{{item.name}}</label>
+    <view class="question">
+      <view  wx:for="{{item.data}}" wx:key="id" class="recu_box">
+        <view class="recu-item fl-col-cen" bindtap="gotoRecuDetail" data-index="{{item._id}}" >
+          <image class="icon-recu" src="{{item.img}}"></image>
+          <view>{{item.name}}</view>
         </view>
       </view> 
     </view>

@@ -47,17 +47,7 @@ Page({
         personalInfo: res.data[0],
       })
     })
-
-
   },
-  // 获取个人档案
-  // getPhysicalInfo() {
-  //   getPhysicalInfo({}).then(res => {
-  //     this.setData({
-  //       physicalInfo: res,
-  //     })
-  //   })
-  // },
   // 点击查看体质测试
   gotoFile() {
     var that = this;
@@ -117,7 +107,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHomeData();
     this.setData({
       lunar: calendar.solar2lunar()   // 阴历转换
     })
@@ -134,7 +123,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getHomeData();
   },
 
   /**

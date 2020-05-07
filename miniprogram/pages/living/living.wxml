@@ -1,21 +1,17 @@
-<view class="living">
-	<image src="../../images/shou.png" class="living-img" />
-	<view class="living-content">
-		<view class="item-content">
-            <view class="living-title">-{{living.title}}-</view>
-            <view class="content">
-                <rich-text nodes="{{living.content}}"/>
-            </view>
-			
-		</view>
-		<view>
-			<view class="solution">
-				<image src="../../images/yiwen.png" class="why-img" />
-				<view class="mthond living-title">解决方法</view>
-			</view>
-			<rich-text nodes="{{living.steps}}" class="content" />
+<image src="{{living.img}}" class="living-img" />
+<view class="container">
+	<view class="box">
+		<view class="living-title">-{{living.title}}-</view>
+		<view class="content content-size">
+			<rich-text nodes="{{living.content}}"/>
 		</view>
 	</view>
-
+	<!-- <view>
+		<view class="solution">
+			<image src="../../images/yiwen.png" class="why-img" />
+			<view class="mthond living-title">解决方法</view>
+		</view>
+		<rich-text nodes="{{living.steps}}" class="content" />
+	</view> -->
 </view>
 

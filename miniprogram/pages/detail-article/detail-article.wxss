@@ -1,5 +1,6 @@
-page {
-    padding: 40rpx;
+@import "/wxParse/wxParse.wxss";
+.container{
+    background-color: #FFF;
 }
 .art-title {
     color: #333333;
@@ -32,12 +33,18 @@ page {
     font-size: 24rpx;
 }
 .art-content {
-    color: #333333;
-    font-size: 26rpx;
-    width: 670rpx;
+    line-height: 1.8;
+    color: rgb(79, 79, 79);
+    text-indent: 2em;
+}
+.art-content view{
+    margin: 20rpx 0;
 }
 .art-content image {
-    max-width: 670rpx;
+    width: 100%!important;
+    display: block;
+    border-radius: 14rpx;
+    margin: 30rpx 0;
 }
 /* 点赞 */
 .tip-like {
@@ -53,4 +60,3 @@ page {
     height: 30rpx;
     margin-left: 10rpx;
 }
-
