@@ -10,27 +10,27 @@
     </view>
 </view>
 <van-collapse value="{{ active1 }}" data-key="active1" bind:change="onChange">
-    <van-collapse-item title="{{ physicalInfo.means.question }}">
+    <van-collapse-item title="{{ physicalInfo.means.question }}" icon="question">
         <view wx:for="{{physicalInfo.means.explain}}" wx:key="_id" class="content">
             {{(index+1)+'. '+item.content}}
         </view>
     </van-collapse-item>
-    <van-collapse-item title="{{ physicalInfo.reason.question }}">
+    <van-collapse-item title="{{ physicalInfo.reason.question }}" icon="question">
         <view wx:for="{{physicalInfo.reason.explain}}" wx:key="_id" class="content">
             {{(index+1)+'. '+item.content}}
         </view>
     </van-collapse-item>
-    <van-collapse-item title="{{ physicalInfo.bother.question }}">
+    <van-collapse-item title="{{ physicalInfo.bother.question }}" icon="question">
         <view wx:for="{{physicalInfo.bother.explain}}" wx:key="_id" class="content">
             {{(index+1)+'. '+item.content}}
         </view>
     </van-collapse-item>
-    <van-collapse-item title="{{ physicalInfo.alert.question }}">
+    <van-collapse-item title="{{ physicalInfo.alert.question }}" icon="question">
         <view wx:for="{{physicalInfo.alert.explain}}" wx:key="_id" class="content">
             {{(index+1)+'. '+item.content}}
         </view>
     </van-collapse-item>
-    <van-collapse-item title="{{ physicalInfo.improve.question }}">
+    <van-collapse-item title="{{ physicalInfo.improve.question }}" icon="question">
         <view wx:for="{{physicalInfo.improve.explain}}" wx:key="_id" class="content">
             <view wx:if="{{ item.question }}">
                 <view>{{ '- ' + item.question }}</view>

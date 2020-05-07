@@ -1,4 +1,3 @@
-<import src="../../wxParse/wxParse.wxml" />
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
     <block wx:for="{{slideList}}" wx:key="id">
@@ -22,13 +21,13 @@
     <view class="left-box fl-bet-cen" bindtap="goDailytaboo" data-id="{{suggest._id}}">
       <view style="white-space: nowrap;">
         <view class="date-flex">
-          <view class="date" bindtap="">30</view>
-          <text class="mini-size date-color">2020/03</text>
+          <view class="date" bindtap="">{{ lunar.cDay>9 ? lunar.cDay : ('0'+lunar.cDay) }}</view>
+          <text class="mini-size date-color">{{ lunar.cYear +'/'+ ( lunar.cMonth>9 ? lunar.cMonth : '0'+lunar.cMonth ) }}</text>
         </view>
         <view class="fl-cen-cen mr-t-20">
           <view class="align-r">
-            <view>己亥年</view>
-            <view style="margin-top: 10rpx;">十一月 初七</view>
+            <view>{{ lunar.gzYear + '年' }}</view>
+            <view style="margin-top: 10rpx;">{{ lunar.IMonthCn + ' ' +lunar.IDayCn }}</view>
           </view>
           <view class="date-line"></view>
         </view>

@@ -31,6 +31,10 @@ Page({
    */
   onLoad: function (options) {
     this.getShouldAvoid(options.id);
+    this.setData({
+      lunar: calendar.solar2lunar()   // 阴历转换
+    })
+    console.log(this.data.lunar)
   },
 
   /**

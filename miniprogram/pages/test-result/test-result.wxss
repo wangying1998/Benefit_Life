@@ -45,3 +45,7 @@ page{
     border-radius: 80rpx;
     margin: 50rpx 223rpx 100rpx;
 }
+.van-icon-question:before{
+    color: #FF9100;
+    font-size: 36rpx;
+}
