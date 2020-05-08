@@ -1,7 +1,7 @@
 /* pages/toboo/toboo.wxss */
-page {
-    font-size: 28rpx;
-    
+.container {
+    background-color: #fff;
+    border-top: #f0f0f0 1px solid;
 }
 .title-img {
     text-align: center;
@@ -9,32 +9,33 @@ page {
 .det-img {
     width: 60rpx;
     height: 60rpx;
-    
+    margin: 50rpx 0 40rpx;
+}
+.text-desc {
+    color: #4F4F4F;
 }
 .title {
     font-weight: bold; 
     color: #23A257;
-    border: 1px solid rgba(196, 196, 196,0.6);
+    border-bottom: 1px solid #f0f0f0;
     display: flex;
     justify-items: center;
-    padding: 10rpx 5rpx;
+    padding-bottom: 10rpx;
+    margin-top: 40rpx;
 }
 .title image {
     width: 40rpx;
     height: 40rpx;
-    margin: 0 10rpx;
-}
-.text-desc {
-    color: #4F4F4F; 
-    margin: 20rpx;
+    margin-right: 10rpx;
 }
 .text-other {
     color: #4F4F4F;
-    margin: 20rpx;
+    margin: 20rpx 0;
+    line-height: 1.8;
 }
 .footer {
     text-align: center;
-    margin: 30rpx auto;
+    padding: 30rpx;
 }
 .footer image{
     width: 60rpx;

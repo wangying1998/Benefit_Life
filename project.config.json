@@ -48,24 +48,34 @@
 					"id": -1,
 					"name": "个人档案",
 					"pathName": "pages/test-result/test-result",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "每日宜忌",
 					"pathName": "pages/daily-taboo/daily-taboo",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "食材",
 					"pathName": "pages/meal/meal",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "起居",
 					"pathName": "pages/living/living",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "调养详情",
+					"pathName": "pages/detail-recuperate/detail-recuperate",
 					"scene": null
 				}
 			]

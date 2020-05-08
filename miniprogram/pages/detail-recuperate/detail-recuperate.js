@@ -18,7 +18,7 @@ Page({
     // var that = this;
 		getDiseaseDetail(param).then(res => {
 			this.setData({
-				diseaseDetail: res,
+				diseaseDetail: res.data[0],
 			})
       wx.setNavigationBarTitle({
         title: res.data[0].name//页面标题为路由参数

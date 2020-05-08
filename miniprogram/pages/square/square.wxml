@@ -8,10 +8,10 @@
 			<view class="df search_arr">
 				<icon class="searchcion" size='18' type='search' />
 				<input
-				 class="sousuo"
-				 disabled
-				 placeholder="搜索"
-				 bindtap='search'
+					class="sousuo"
+					disabled
+					placeholder="搜索"
+					bindtap='search'
 				/>
 			</view>
 		</view>
@@ -21,20 +21,20 @@
 		</view>
 	</view>
 	<view
-	 class="square-list"
-	 wx:for="{{squareList}}"
-	 wx:key="id"
-	 bindtap="gotoDetails"
-	 wx:for-index="index"
+		class="square-list"
+		wx:for="{{squareList}}"
+		wx:key="id"
+		bindtap="gotoDetails"
+		wx:for-index="index"
 	>
 		<view class="dynamic-item">
 			<!-- 个人信息+时间 -->
 			<view class="perInfo">
 				<view class="info">
 					<image
-					 class="release-avatar"
-					 src="{{item.userInfo[0].avatar}}"
-					 mode="cover"
+						class="release-avatar"
+						src="{{item.userInfo[0].avatar}}"
+						mode="cover"
 					/>
 					<view class="">
 						<view class="release-name">{{item.userInfo[0].nickName}}</view>
