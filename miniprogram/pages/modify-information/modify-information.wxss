@@ -1,4 +1,14 @@
 .tip-intro {
-  margin: 30px;
+  padding: 30px;
   text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  text-align: left; 
+}
+.taboo-bg {
+  width:100%;
+  height:100%;
+  position:absolute;
+  z-index: -1;
 }

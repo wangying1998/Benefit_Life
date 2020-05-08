@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    diseaseDetail: {}
   },
   getDiseaseDetail(id) {		// 获取调养数据
     let param = {
@@ -19,7 +19,8 @@ Page({
 		getDiseaseDetail(param).then(res => {
 			this.setData({
 				diseaseDetail: res,
-			})
+      })
+      console.log("调养详情",res);
       wx.setNavigationBarTitle({
         title: res.data[0].name//页面标题为路由参数
       })

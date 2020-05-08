@@ -43,6 +43,8 @@
 				</view>
 				
 			</view>
-			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
+			<view class="opt-delete" >
+				<view class="delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
+			</view>
 		</view>
 	</view>

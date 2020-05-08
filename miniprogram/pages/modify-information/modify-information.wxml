@@ -1,4 +1,5 @@
-<view class="tip-intro">
+<view class="tip-intro" >
+    <image src="../../images/bg2.png" class="taboo-bg"/>
     <view >
         1.本小程序测试结果来自《中医体质分类与判定》，这是中华中医药学会于2009年4月9日颁布的国家标准。
         该文件是我国第一部指导和规范中医体质研究及应用文件，旨在为体质辨识及与中医体质相关疾病的防治、

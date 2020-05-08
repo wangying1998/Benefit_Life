@@ -21,33 +21,33 @@ Page({
   chooseimage:function(){
     var that = this;
     wx.chooseImage({
-      count: 1, // 默认9 
+      count: 3, // 默认9 
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有 
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
       success: function (res) {
         if (res.tempFilePaths.length>0){
           //图如果满了3张，不显示加图
-          if (that.data.count >= 3){
+          if (that.data.count >= 3 || res.tempFilePaths.length==3){
               that.setData({
                 hideAdd: 1
               })
-            } else{
+            }else{
               that.setData({
                 hideAdd: 0
-              })
+              })  
           }
-        //把每次选择的图push进数组
-        let imgs = that.data.imgs;
-        that.setData({
-          count: that.data.count+res.tempFilePaths.length
-        })
-        for (let i = 0; i < res.tempFilePaths.length; i++) {
-          imgs.push(res.tempFilePaths[i])
-        }
-        console.log(res.tempFilePaths);
-        that.setData({
-          imgs: imgs
-        })
+          //把每次选择的图push进数组
+          let imgs = that.data.imgs;
+          that.setData({
+            count: that.data.count+res.tempFilePaths.length
+          })
+          for (let i = 0; i < res.tempFilePaths.length; i++) {
+            imgs.push(res.tempFilePaths[i])
+          }
+          that.setData({
+            imgs: imgs
+          })
+        
         }
       }
     }) 
@@ -57,8 +57,13 @@ Page({
     let _index = e.currentTarget.dataset.index;
     let imgs = this.data.imgs;
     imgs.splice(_index,1);
+    if(imgs.length<3) {
       this.setData({
-        imgs
+        hideAdd: 0
+      })
+    }
+    this.setData({
+      imgs:imgs
     })
   },
   //发布按钮事件
@@ -82,7 +87,6 @@ img_upload: function () {
     for (let i = 0; i < imgs.length; i++) {
       console.log("时间戳",new Date().getTime());
       wx.cloud.uploadFile({
-        //cloudPath :路径解释上文已经解释过了
         cloudPath: 'ZJK_a/' + new Date().getTime() + imgs[i].match(/\.[^.]+?$/)[0], 
         filePath: imgs[i], // 文件路径 ，循环的当前临时路径 
       }).then(res => {   
