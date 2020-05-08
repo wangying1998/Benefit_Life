@@ -2,8 +2,11 @@
 <view >
     <view class="my-info">
         <image class='edit-icon' src="../../images/laba.png" bindtap="editInfo"></image>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <view class="nickname">{{userInfo.nickName}}</view>
+        
+        <image bindtap="bindViewTap" wx:if="{{userInfo.avatarUrl}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <image bindtap="bindViewTap" wx:else class="userinfo-avatar" src="../../images/nomal-img.jpg" mode="cover"></image>
+        <view class="nickname" wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</view>
+        <view class="nickname" wx:else>欢迎来到益生活</view>
     </view>
     <view>
       <block class="my-items" wx:for="{{personalList}}" wx:key="id" >

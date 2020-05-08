@@ -2,7 +2,8 @@
 <view class="all-recu">
     <!-- 数据返回的层级太深，可以修改简单一点，因为是详情只有一个 -->
     <view class="title-img">
-        <image src="../../images/ganmao.png" class="det-img"></image>
+        <image src="{{diseaseDetail.data[0].img}}" class="det-img"></image>
+        {{iseaseDetail.data[0].img}}
     </view>
     <view class="text-desc">
         <rich-text nodes="{{diseaseDetail.data[0].desc}}" class="text-content"></rich-text>

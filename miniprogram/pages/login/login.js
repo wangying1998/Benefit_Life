@@ -76,7 +76,22 @@ Page({
   onShow: function () {
 
   },
+  onHide: function() {
+    
+  },
+
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    console.log("卸载");
+    // wx.reLaunch({
+    //   url: '/pages/index/index',
+    // })
+  },
 
  
+
   
 })

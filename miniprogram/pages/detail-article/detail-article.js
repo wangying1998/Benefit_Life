@@ -19,7 +19,7 @@ Page({
       id: id,
     }
     getArtDetails(param).then(res => {
-      this.setData({
+      that.setData({
         detailArt: res.data[0],
         content: res.data[0].content
       })
@@ -39,16 +39,40 @@ Page({
   gotoLike: function(e) {
     var that = this;
     var art = that.data.detailArt;
-    art.isLike = !art.isLike
-    this.setData({
-      detailArt: art
-    })
-    var param = {
-      likeId: e.currentTarget.dataset.id,
-      class: 0 // 推文
-    }
-    clickLike(param).then(res => {
-    })
+    art.isLike = !art.isLike;
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showModal({
+            title: '授权',
+            content: '此功能需要您授权用户信息',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '去授权',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+              }
+            },
+          });
+        }else {
+          that.setData({
+            detailArt: art
+          })
+          var param = {
+            likeId: e.currentTarget.dataset.id,
+            class: 0 // 推文
+          }
+          clickLike(param).then(res => {
+          })
+        } 
+      } 
+    });
+    
     
   },
   // 取消点赞
@@ -56,7 +80,7 @@ Page({
     var that = this;
     var art = that.data.detailArt;
     art.isLike = !art.isLike;
-    this.setData({
+    that.setData({
       detailArt: art
     })
     var param = {

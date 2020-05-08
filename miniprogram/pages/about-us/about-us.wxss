@@ -12,3 +12,8 @@
   position:absolute;
   z-index: -1;
 }
+.tip-intro view {
+  margin-bottom: 20rpx;
+  line-height: 45rpx;
+
+}

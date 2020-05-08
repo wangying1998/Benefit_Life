@@ -3,7 +3,6 @@
 import {
   getDiseaseList,
 } from '../../api/api.js'
-var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
 

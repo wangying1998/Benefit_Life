@@ -45,29 +45,53 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.curindex;
     var list = that.data.squareList;
-    if (list[index]) {
-      var isLike = list[index].isLike;
-      if (isLike !== undefined) {
-        if (isLike) {
-          list[index].isLike = false;
-        } else {
-          list[index].isLike = true;
-        }
-        this.setData({
-          squareList: list
-        })
-      }
-    }
-    var param = {
-      likeId: e.currentTarget.dataset.id,
-      class: 1,
-      authId: e.currentTarget.dataset.authid,
-    }
-    this.setData({
-      currentIndex: e.currentTarget.dataset.id
-    })
-    clickLike(param).then(res => {
-		})
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showModal({
+            title: '授权',
+            content: '此功能需要您授权用户信息',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '去授权',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+              }
+            },
+          });
+        }else {
+          if (list[index]) {
+            var isLike = list[index].isLike;
+            if (isLike !== undefined) {
+              if (isLike) {
+                list[index].isLike = false;
+              } else {
+                list[index].isLike = true;
+              }
+              that.setData({
+                squareList: list
+              })
+            }
+          }
+          var param = {
+            likeId: e.currentTarget.dataset.id,
+            class: 1,
+            authId: e.currentTarget.dataset.authid,
+          }
+          that.setData({
+            currentIndex: e.currentTarget.dataset.id
+          })
+          clickLike(param).then(res => {
+          })
+        } 
+      } 
+    });
+    
     
   },
   // 取消点赞
