@@ -1,6 +1,7 @@
 
 <wxs module="filter" src="./detail-dynamic.wxs" />
-<view
+<view class="container content-size">
+	<view
 	 class="square-list"
 	 wx:key="id"
 	 bindtap="gotoDetails"
@@ -34,9 +35,9 @@
 				</view>
 				<!-- 图片 -->
 				<view wx:if="{{detailDyna.imgs.length != 0}}" class="content-img" >
-					<image src="{{item}}" wx:for="{{detailDyna.imgs}}" wx:key="id"></image>
+					<image src="{{item}}" wx:for="{{detailDyna.imgs}}" wx:key="id" class="radius"></image>
 				</view>
 			</view>
-
 		</view>
 	</view>
+</view>

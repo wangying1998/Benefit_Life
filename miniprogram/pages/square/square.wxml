@@ -3,69 +3,39 @@
 <wxs module="filter" src="./square.wxs" />
 
 <view>
-	<view class='page_row'>
-		<view class="search" bindtap="gotoSearch">
-			<view class="df search_arr">
-				<icon class="searchcion" size='18' type='search' />
-				<input
-					class="sousuo"
-					disabled
-					placeholder="搜索"
-					bindtap='search'
-				/>
-			</view>
-		</view>
-		<view class="tip">
-			<!-- <image bindtap="gotoNotice" class="notice" src="../../images/mobile.png" /> -->
-			<image bindtap="gotoSend" class="send" src="../../images/send.png" />
-		</view>
-	</view>
-	<view
-		class="square-list"
-		wx:for="{{squareList}}"
-		wx:key="id"
-		bindtap="gotoDetails"
-		wx:for-index="index"
-	>
-		<view class="dynamic-item">
-			<!-- 个人信息+时间 -->
-			<view class="perInfo">
-				<view class="info">
-					<image
-						class="release-avatar"
-						src="{{item.userInfo[0].avatar}}"
-						mode="cover"
-					/>
-					<view class="">
-						<view class="release-name">{{item.userInfo[0].nickName}}</view>
-						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
-					</view>
-				</view>
+	<image bindtap="gotoSend" class="send" src="../../images/send.png" />
+	<view class="dynamic-item" wx:for="{{squareList}}" wx:key="id" wx:for-index="index">
+		<!-- 个人信息+时间 -->
+		<view class="perInfo">
+			<view class="info">
+				<image class="release-avatar" src="{{item.userInfo[0].avatar}}" mode="cover" />
 				<view>
-                    <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
+					<view class="release-name">{{item.userInfo[0].nickName}}</view>
+					<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
+				</view>
+			</view>
+			<view>
+				<image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
 					class="like" src="../../images/collect.png"
 					data-curIndex="{{index}}"
 					data-authId="{{item.userId}}"
-					></image>
-					<image bindtap="gotoLike" data-id="{{item._id}}"
+				></image>
+				<image bindtap="gotoLike" data-id="{{item._id}}"
 					data-authId="{{item.userId}}"
 					data-curIndex="{{index}}"
 					class="like" src="../../images/no-collect.png" wx:else></image>
-				</view>
 			</view>
-			<!-- 内容 -->
-			<view bindtap="detailDynamic" data-id="{{item._id}}">
-				<!-- 文字 -->
-				<view class="dynamic-copywriting">
-					{{item.content}}
-				</view>
-				<!-- 图片 -->
-				<view wx:if="{{item.imgs.length != 0}}" class="content-img" >
-					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id"></image>
-				</view>
+		</view>
+		<!-- 内容 -->
+		<view data-id="{{item._id}}" bindtap="detailDynamic">
+			<!-- 文字 -->
+			<view class="dynamic-copywriting">
+				{{item.content}}
 			</view>
-		<!-- </view> -->
-
+			<!-- 图片 -->
+			<view wx:if="{{item.imgs.length != 0}}" class="content-img" >
+				<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id" class="radius"></image>
+			</view>
 		</view>
 	</view>
 	<view class="refresh-block" wx:if="{{loading}}">

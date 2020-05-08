@@ -46,15 +46,11 @@ page {
     margin-left: 10rpx;
 }
 
-.square-list {
-    /* margin: */
-}
 .dynamic-item {
     /* display: flex; */
     background-color: #fff;
-    margin: 16rpx;
-    padding: 16rpx;
-    
+    padding: 30rpx;
+    margin-top: 20rpx;
 }
 
 .perInfo {
@@ -69,8 +65,8 @@ page {
     align-items: center;
 }
 .release-avatar {
-    width: 70rpx;
-    height: 70rpx;
+    width: 80rpx;
+    height: 80rpx;
     border-radius: 100%;
     margin-right: 20rpx;
 }
@@ -81,14 +77,18 @@ page {
 .release-date {
     color: #999;
     font-size: 24rpx;
+    margin-top: 10rpx;
 }
 .send {
-    width: 50rpx;
-    height: 50rpx;
+    width: 90rpx;
+    height: 90rpx;
+    position: fixed;
+    bottom: 100rpx;
+    right: 30rpx;
 }
 .like {
-    width: 35rpx;
-    height: 35rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 .dynamic-copywriting {
     color: #333333;
@@ -102,14 +102,11 @@ page {
 .content-img {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 20rpx;
 }
 .content-img image{
-    width: 215rpx;
-    height: 150rpx;
-    text-align: center;
-    margin: 0 5rpx 5rpx 0;
+    width: 32%;
+    height: 180rpx;
+    margin: 20rpx 1%;
 }
 
 
