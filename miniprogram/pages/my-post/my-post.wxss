@@ -1,76 +1,65 @@
 page {
   font-size: 28rpx;
 }
-.square-list {
-  background-color: #fff;
-}
-.tip {
-  margin-left: 50rpx;
-}
-.tip image {
-  width: 45rpx;
-  height: 45rpx;
-  margin-left: 10rpx;
-}
 .dynamic-item {
-  /* background-color: #fff; */
-  margin: 16rpx;
-  padding: 16rpx;
-  
+    background-color: #fff;
+    padding: 30rpx;
+    margin-top: 20rpx;
+    position: relative;
 }
+
 .perInfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 670rpx;
-  margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 670rpx;
+    margin: 0 auto;
 }
 .perInfo .info {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .release-avatar {
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 100%;
-  margin-right: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
 }
 .release-name {
-  color: #333;
-  font-size: 28rpx;
+    color: #333;
+    font-size: 28rpx;
 }
 .release-date {
-  color: #999;
-  font-size: 24rpx;
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 10rpx;
 }
 .send {
-  width: 35rpx;
-  height: 35rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 .dynamic-copywriting {
-  color: #333333;
-  font-size: 26rpx;
-  line-height: 40rpx;
-  width: 670rpx;
-  margin: 0 auto;
+    color: #333333;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    width: 670rpx;
+    margin: 0 auto;
+    margin-top: 16rpx;
 }
 /* 动态图片 */
 .content-img {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 20rpx;
 }
 .content-img image{
-  width: 215rpx;
-  height: 150rpx;
-  text-align: center;
+  width: 32%;
+  height: 180rpx;
+  margin: 20rpx 1%;
 }
 .opt-delete {
-  /* float: right; */
   color: #999;
-  font-size: 20rpx;
+  font-size: 26rpx;
   margin-top: 30rpx;
-  text-align: right;
-  
+  position: relative;
+  left: 630rpx;
 }

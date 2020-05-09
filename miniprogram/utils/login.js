@@ -19,9 +19,10 @@ export function handleLogin() {
           // const data = {
           //   code: res.code
           // }
+          // 云开发 自动验证了 不用自己去验证
           
           goLogin().then(response => {
-            console.log("登陆接口的调用返回",response); //别注释掉了， 有时看偶发bug
+            console.log("登陆接口的调用返回",response); //别注释掉了
             const sessionData = {
               userId: response.data._id || response.data[0]._id,
               openId: response.openId || response.data[0].openId

@@ -1,31 +1,19 @@
 
-<view class="swiper-tab">
+<wxs module="filter" src="../detail-article/detail-article.wxs" />
+<view class="swiper-tab title-size">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">动态</view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">文章</view>
 </view>
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
     <swiper-item>
-        <view
-	 class="square-list"
-	 wx:for="{{activityList}}"
-	 wx:key="id"
-	>
-		<view class="dynamic-item">
+		<view class="dynamic-item mr-t-20 content-size" wx:for="{{activityList}}" wx:key="id">
 			<view class="perInfo">
-				<view class="info">
-					<image
-					 class="release-avatar"
-					 src="{{item.userInfo[0].avatar}}"
-					 mode="cover"
-					/>
-					<view class="">
+				<view class="info small-size">
+					<image class="release-avatar" src="{{item.userInfo[0].avatar}}" mode="cover"/>
 						<view class="release-name">{{item.userInfo[0].nickName}}</view>
-						<view class="release-date">{{filter.formatTime(item.activity[0].create_time,'M月D日h:m')}}</view>
-					</view>
 				</view>
-				<!-- 目前没有返回isLike -->
 				<view>
-					<image bindtap="gotoLike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
+					<image bindtap="gotoLike" wx:if="{{!item.isLike}}" data-id="{{item.likeId}}"
 						data-class="{{item.class}}"
 						data-type="1"
                     class="send" src="../../images/no-collect.png"></image>
@@ -33,45 +21,28 @@
 					data-class="{{item.class}}"
 					class="send" src="../../images/collect.png" wx:else></image>
 				</view>
-				<!-- <view>
-                    <image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item.likeId}}"
-					class="send" src="../../images/collect.png"
-					data-curIndex="{{index}}"
-					data-authId="{{item.userId}}"
-					data-class="{{item.class}}"
-					></image>
-					<image bindtap="gotoLike" data-id="{{item.likeId}}"
-					data-authId="{{item.userId}}"
-					data-curIndex="{{index}}"
-					data-class="{{item.class}}"
-					class="send" src="../../images/no-collect.png" wx:else></image>
-				</view> -->
 			</view>
-			<!-- 内容 -->
-			<view bindtap="detailDynamic" data-id="{{item._id}}">
-				<!-- 文字 -->
-				<view class="dynamic-copywriting">
-					{{item.activity[0].content}}
+			<view bindtap="detailDynamic" data-id="{{item._id}}" class="fl-bet-cen">
+				<view class="fl-col">
+					<view class="dynamic-copywriting">{{item.activity[0].content}}</view>
+					<view class="release-date">{{filter.formatTime(item.activity[0].create_time,'M月D日h:m')}}</view>
 				</view>
-				<!-- 图片 -->
 				<view wx:if="{{item.activity[0].imgs.length != 0}}" class="content-img" >
-					<image src="{{item}}" wx:for="{{item.activity[0].imgs}}" wx:key="id"></image>
+					<image src="{{item.activity[0].imgs[0]}}" class="radius"></image>
 				</view>
 			</view>
-		</view>
 		</view>
     </swiper-item>
     <swiper-item>
-        <view>
-			<view wx:for="{{articleList}}" wx:key="id" bindtap="detailsArticle" data-artId="{{item.likeId}}">
-				<view class="article-item">
-					<view class="art-text">
-						<view class="art-title">{{item.article[0].title}}</view>
-						<view class="art-date">阅读量：{{item.article[0].lookCount}}</view>
-					</view>
-					<image src="{{item.article[0].img}}" class="art-img"/>
+		<view class="article-item fl-bet-cen" wx:for="{{articleList}}" wx:key="id" bindtap="detailsArticle" data-artId="{{item.likeId}}">
+			<view class="art-text fl-col-bet-cen">
+				<view class="art-title">{{item.article[0].title}}</view>
+				<view class="flex" style="text-align: right">
+					<view class="art-date">阅读量：{{item.article[0].lookCount}}</view>
+					<view class="art-date" style="margin-left: 40rpx;">点赞量：{{item.article[0].likeCount}}</view>
 				</view>
 			</view>
+			<image src="{{item.article[0].img}}" class="art-img radius"/>
 		</view>
     </swiper-item>
 </swiper>

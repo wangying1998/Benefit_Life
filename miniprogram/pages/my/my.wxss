@@ -1,65 +1,58 @@
 /* miniprogram/pages/tabs/my/my.wxss */
-page {
-    font-size: 14px;
+.my_bg{
+    display: block;
+    width: 100%;
+    height: 600rpx;
+    opacity: 0.6;
 }
-
-.my-info {
-    width: 750rpx;
-    height: 374rpx;
-    background-color: #23A257;
+.content-list{
+    position: relative;
+    background-color: #fff;
 }
-
-
+.button_box{
+    background-color: wheat;
+    margin-top: 30rpx;
+    border-radius: 14rpx;
+}
+button{
+    font-weight: normal;
+    font-size: 30rpx;
+    background-color: transparent;
+}
+.my-info{
+    width: 100%;
+    position: absolute;
+    top: 180rpx;
+    left: 0;
+    z-index: 2;
+}
 .my-info image {
-    width: 105rpx;
-    height: 105rpx;
-    border-radius: 105rpx;
-    margin: 0rpx 321rpx 23rpx 321rpx;
+    width: 200rpx; 
+    height: 200rpx;
+    border-radius: 50%;
 }
-
 .my-info .nickname {
-    width: 150rpx;
-    margin: 0 auto; 
     text-align: center;
-    color: #fff;
-}
-.my-info .edit-icon {
-    width: 40rpx;
-    height: 40rpx;
-    margin: 30rpx 30rpx 0 ;
-    float: right;
+    margin-top: 30rpx;
+    font-size: 40rpx;
 }
 
-.headUrl {
-   /* background-color: #23A257; */
-}
 
 .detail {
-    width: 25rpx;
-    height: 25rpx;
+    width: 30rpx;
+    height: 30rpx;
 }
 .item-icon {
-    width: 35rpx;
-    height: 35rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 .item-content {
     color: rgb(124, 120, 120);
 }
 .item{
-    border-bottom: 1px solid rgba(196, 196, 196,0.6);
-    height: 75rpx;
-    width: 750rpx;
-    line-height: 75rpx;
+    line-height: 90rpx;
+    border-bottom: 1px solid #f0f0f0;
 }
-.item .item-icon {
-    vertical-align: middle;
-    margin: 0 30rpx 0 34rpx;
-
-}
-.item .item-content {
-    vertical-align: middle;
-    margin-right: 500rpx;
-}
-.item .detail {
-    vertical-align: middle;
+.item-icon{
+    margin-right: 20rpx;
 }

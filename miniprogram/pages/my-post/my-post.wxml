@@ -6,15 +6,14 @@
 	 bindtap="gotoDetails"
 	 wx:for-index="index"
 	>
-		<view class="dynamic-item">
-			<!-- 个人信息+时间 -->
+	<view class="dynamic-item">
 			<view class="perInfo">
 				<view class="info">
 					<image
 					 class="release-avatar"
 					 src="{{myInfo.avatar}}"
 					 mode="cover"
-					/>
+					></image>
 					<view class="">
 						<view class="release-name">{{myInfo.nickName}}</view>
 						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
@@ -31,17 +30,13 @@
 					class="send" src="../../images/no-collect.png"></image>
 				</view>
 			</view>
-			<!-- 内容 -->
-			<view bindtap="detailDynamic" data-id="{{item._id}}">
-				<!-- 文字 -->
+			<view>
 				<view class="dynamic-copywriting">
-					{{item.content}}就是不知道是什么极速的话 iv哎哦呼呼速度 v 好是建瓯 v 和速度和 v 吧
+					{{item.content}}
 				</view>
-				<!-- 图片 -->
 				<view wx:if="{{item.imgs.length != 0}}" class="content-img" >
-					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id"></image>
+					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id" class="radius"></image>
 				</view>
-				
 			</view>
 			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
 		</view>

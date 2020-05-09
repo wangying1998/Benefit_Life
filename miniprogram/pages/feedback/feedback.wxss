@@ -1,22 +1,21 @@
-page {
-  font-size: 28rpx;
-}
-.tip {
-  margin: 20rpx ;
-  color: rgb(83, 81, 81);
+.container{
+  background-color: #fff;
+  height: 100vh;
+  padding-top: 30rpx;
 }
 .text {
   width: 100%;
-  min-height: 150px;
-  border: 1px solid rgba(196, 196, 196,0.6);
-  padding: 10rpx;
-  background-color: #fff;
-  margin: 0 auto;
+  min-height: 70VH;
+  border: 1px solid #f0f0f0;
+  padding: 30rpx;
+  box-sizing: border-box;
 }
 .btn {
+  width: 300rpx;
+  line-height: 80rpx;
+  border-radius: 80rpx;
+  text-align: center;
+  margin: 30rpx auto 0;
   background-color: #23A257;
   color: #fff;
-  font-weight: 400;
-  height: 80rpx;
-  margin-top: 30rpx;
 }

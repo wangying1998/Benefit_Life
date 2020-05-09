@@ -1,6 +1,7 @@
 // miniprogram/pages/tabs/my/my.js
 import {
-  getMyinfo
+  getMyinfo,
+  updateBaseinfo
 } from '../../api/api.js'
 
 
@@ -14,7 +15,7 @@ Page({
       {
         id: 'collection',
         icon: '../../images/collection.png',
-        text: '我喜欢的',
+        text: '我的喜欢',
       },
       {
         id: 'my-post',
@@ -39,6 +40,34 @@ Page({
     ],
     userInfo: {},
   },
+  bindGetUserInfo(){
+    // 查看是否授权
+    wx.getSetting({
+      success: (res)=>{
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: (res)=> {
+              this.setData({
+                nickName: res.userInfo.nickName,
+                avatar: res.userInfo.avatarUrl
+              });
+              let user = wx.getStorageSync('user');
+              user.nickName = res.userInfo.nickName;
+              user.avatar = res.userInfo.avatarUrl;
+              wx.setStorageSync('user', user);
+                
+              updateBaseinfo({
+                nickName: res.userInfo.nickName,
+                avatar: res.userInfo.avatarUrl
+              });
+            }
+          })
+        }
+      }
+    });
+  },
+
   // 修改个人资料
   editInfo: function() {
     wx.navigateTo({
@@ -70,9 +99,7 @@ Page({
         })
         break;
       default:
-
     }
-    
   },
   getInfo: function () {
 		getMyinfo({}).then(res => {
@@ -94,14 +121,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    // wx.getStorage({
-    //   key: 'userInfo',
-    //   success (res) {
-    //     this.userInfo = res.data
-    //     
-    //   }
-    // })
+    this.bindGetUserInfo();
   },
 
   /**
@@ -115,18 +135,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 点击查看体质测试
-      wx.getSetting({
-        success: function(res) {
-          if (!res.authSetting['scope.userInfo']) {
-            wx.navigateTo({
-              url: '/pages/login/login',
-            })
-          } 
-        } 
-      });
-      this.setData({
-        userInfo: wx.getStorageSync('userInfo'),
-    })
+    
   },
 })

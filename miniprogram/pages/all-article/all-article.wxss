@@ -15,6 +15,10 @@
   background-color: #fff;
   font-size: 26rpx;
   line-height: 1.5;
+  width: 470rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .art-date {
   color: #999999;

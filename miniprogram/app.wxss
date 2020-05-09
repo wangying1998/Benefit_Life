@@ -69,7 +69,7 @@ page {
 }
 /* 字号 */
 .large-size{
-	font-size: 32rpx;
+	font-size: 34rpx;
 }
 .title-size{
 	font-size: 30rpx;
@@ -81,7 +81,7 @@ page {
 	font-size: 26rpx;
 }
 .mini-size{
-	font-size: 24rpx;
+	font-size: 26rpx;
 }
 /* 全局 */
 view {

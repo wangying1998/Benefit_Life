@@ -2,18 +2,20 @@
 
 .swiper-tab {
   width: 100%;
-  text-align: center;
-  line-height: 50rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+  background-color: #fff;
 }
-.swiper-tab-list {  
-  font-size: 28rpx;
+.swiper-tab-list {
   display: inline-block;
-  width: 30%;
-  color: #777777;
-}
-.on { 
+  text-align: center;
+  width: 50%;
   color: #23A257;
-  border-bottom: 3rpx solid #23A257;
+}
+.on {
+  color: #fff;
+  background-color: #23A257;
+  border-bottom: 3px solid #23A257;
 }
 
 .swiper-box { 
@@ -22,16 +24,11 @@
   width: 100%; 
   overflow: hidden;
 }
-/* .swiper-box view {
-  text-align: center;
-} */
 /* 动态 */
 .perInfo {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 670rpx;
-  margin: 0 auto;
 }
 .perInfo .info {
   display: flex;
@@ -39,9 +36,7 @@
 }
 .dynamic-item {
   background-color: #fff;
-  margin: 16rpx;
-  padding: 16rpx;
-  
+  padding: 30rpx 40rpx;
 }
 .release-avatar {
   width: 70rpx;
@@ -51,65 +46,54 @@
 }
 .release-name {
   color: #333;
-  font-size: 28rpx;
 }
 .release-date {
   color: #999;
+  margin-top: 20rpx;
   font-size: 24rpx;
 }
 .send {
-  width: 35rpx;
-  height: 35rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .dynamic-copywriting {
+  width: 450rpx;
   color: #333333;
-  font-size: 26rpx;
-  line-height: 40rpx;
-  width: 670rpx;
-  margin: 0 auto;
-  margin-top: 16rpx;
+  line-height: 1.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* 动态图片 */
-.content-img {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20rpx;
-}
 .content-img image{
-  width: 215rpx;
-  height: 150rpx;
-  text-align: center;
-  margin: 0 5rpx 5rpx 0;
+  width: 200rpx;
+  height: 130rpx;
 }
 
 /* 文章 */
-
 .article-item {
   background-color: #fff;
-  margin-bottom: 20rxp;
-  text-align: left;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  border: 1rpx solid #F1F1F1;
-  align-items: center;
+  margin-top: 20rpx;
+  padding: 20rpx 30rpx;
 }
 .art-text {
-  line-height: 60rpx;
-  padding: 0 20rpx;
-  
+  height: 120rpx;
+  padding: 10rpx 0;
 }
 .art-title{
   background-color: #fff;
   font-size: 26rpx;
+  line-height: 1.5;
+  width: 470rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .art-date {
   color: #999999;
   font-size: 22rpx;
 }
 .article-item image {
-  width: 183rpx;
-  height: 102rpx;
-  padding-right: 20rpx;
+  width: 200rpx;
+  height: 120rpx;
 }

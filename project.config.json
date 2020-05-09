@@ -76,6 +76,19 @@
 					"id": -1,
 					"name": "调养详情",
 					"pathName": "pages/detail-recuperate/detail-recuperate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的喜欢",
+					"pathName": "pages/collection/collection",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/feedback/feedback",
+					"pathName": "pages/feedback/feedback",
 					"scene": null
 				}
 			]

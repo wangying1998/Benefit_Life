@@ -1,6 +1,5 @@
 import {
   getHomeData,
-  getPhysicalInfo,
   getMyinfo
 } from '../../api/api.js'
 
@@ -18,28 +17,21 @@ Page({
     slideList: '', //轮播
     articleList: [], // 时令好文
     living: {}, // 起居
-    suggest: {},
-    should: {},
     meals: {},
     userInfo: {},
-    shouldToDo: '',
     RecoArticle: [],
-    physicalInfo: '',
     personalInfo: {}
   },
   getHomeData() {
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-    })
     // 获取首页数据
     getHomeData({}).then(res => {
       this.setData({
         slideList: res.slideList,
         articleList: res.articleList,
-        should: res.should,
         living: res.living,
         meals: res.meals,
-        suggest: res.suggest
+        should: res.suggest.should,
+        avoid: res.suggest.avoid
       })
     })
     getMyinfo({}).then(res => {
@@ -107,6 +99,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let user = wx.getStorageSync('user');
+    this.setData({
+      userInfo: user
+    })
     this.setData({
       lunar: calendar.solar2lunar()   // 阴历转换
     })

@@ -3,13 +3,13 @@
 <view class="container content-size">
     <view class="art-title">{{detailArt.title}}</view>
     <view class="all-art">
-        <view class="art-count">
-            <view class="look-count">
+        <view class="flex">
+            <view class="look-count fl-cen-cen">
                 <image src="../../images/look.png" class="look-img"/>
                 <view >{{detailArt.lookCount}}</view>
             </view>
-            <view class="look-count">
-                <image src="../../images/zan.png" class="look-img"/>
+            <view class="look-count fl-cen-cen">
+                <image src="../../images/no-collect.png" class="look-img"/>
                 <view >{{detailArt.likeCount}}</view>
             </view>
         </view>
@@ -21,12 +21,12 @@
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
     </view>
     <view class="tip-like">
-        <text class="haddle-like">点赞</text>
-        <!-- <view> -->
-            <image bindtap="gotoLike" wx:if="{{!detailArt.isLike}}" data-id="{{detailArt._id}}"
-                class="send" src="../../images/no-collect.png"></image>
-            <image bindtap="goDislike" data-id="{{detailArt._id}}"
-			class="send" src="../../images/collect.png" wx:else></image>
-		<!-- </view> -->
+        <view class="like_txt">
+            喜欢就点小心心呀~
+        </view>
+        <image bindtap="gotoLike" wx:if="{{!detailArt.isLike}}" data-id="{{detailArt._id}}"
+            class="send" src="../../images/no-collect.png"></image>
+        <image bindtap="goDislike" data-id="{{detailArt._id}}"
+        class="send" src="../../images/collect.png" wx:else></image>
     </view>
 </view>

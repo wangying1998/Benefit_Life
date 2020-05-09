@@ -2,7 +2,7 @@
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" class="swiper">
     <block wx:for="{{slideList}}" wx:key="id">
       <swiper-item>
-        <image src="{{item.imgUrl}}" class="slide-image" mode="aspectFill" />
+        <image src="{{item.imgUrl}}" class="slide-image" mode="aspectFill" style="display: block;"/>
       </swiper-item>
     </block>
   </swiper>
@@ -10,7 +10,7 @@
     <view class="fl-cen-cen">
       <view class="line"></view>
       <text class="title-size archive-txt">档案：</text>
-      <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl || '../../images/default-avatar.png'}}"></image>
+      <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatar || '../../images/default-avatar.png'}}"></image>
     </view>
     <view class="fl-cen-cen">
       <text class="look-txt mini-size">查看</text>
@@ -35,11 +35,15 @@
       <view class="flex suit-box">
         <view class="fl-col-cen suit">
           <view class="suit-txt fl-cen-cen">宜</view>
-          <view class="look-txt vertical-txt mr-t-20">{{suggest.should.title}}</view>
+          <view class="look-txt vertical-txt mr-t-20">
+            <view wx:for="{{should.title}}" wx:key="item">{{item}}</view>
+          </view>
         </view>
         <view class="fl-col-cen date-color mr-l-20 suit">
           <view class="taboo-txt fl-cen-cen">忌</view>
-          <view class="vertical-txt mr-t-20">{{suggest.avoid.title}}</view>
+          <view class="vertical-txt fle-col-cen">
+            <view wx:for="{{avoid.title}}" wx:key="item">{{item}}</view>
+          </view>
         </view>
       </view>
     </view>
