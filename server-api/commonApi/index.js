@@ -352,14 +352,6 @@ async function returnHomeData(data){			// 首页 档案中体质类别 + 每日�
 			let index = Math.floor(Math.random()*res.data.length);
 			result.suggest = res.data[index];
 		}),
-		// // 忌
-		// db.collection('suggest').where({
-		// 	class: 0,
-		// 	physical: GLOBAL_USER.data[0].physical || '平和质'
-		// }).get().then(res=>{
-		// 	let index = Math.floor(Math.random()*res.data.length);
-		// 	result.avoid = res.data[index];
-		// }),
 		// 水果
 		db.collection('food').where({
 			class: '1',

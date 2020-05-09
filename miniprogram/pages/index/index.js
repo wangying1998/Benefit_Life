@@ -42,26 +42,16 @@ Page({
   },
   // 点击查看体质测试
   gotoFile() {
-    var that = this;
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          if (that.data.personalInfo.physical) {
-            wx.navigateTo({
-              url: '/pages/test-result/test-result',
-            })
-          } else {
-            wx.navigateTo({
-              url: '/pages/physique/physique',
-            })
-          }
-        } else {
-          wx.navigateTo({
-            url: '/pages/login/login',
-          })
-        }
-      }
-    });
+    let info = this.data.personalInfo;
+    if(info.physical){
+      wx.navigateTo({
+        url: '/pages/test-result/test-result',
+      })
+    }else {
+      wx.navigateTo({
+        url: '/pages/physique/physique',
+      })
+    }
   },
   // 食材
   gotoMeal() {
