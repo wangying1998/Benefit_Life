@@ -1,5 +1,8 @@
 .page{
-  padding: 20px
+  padding: 20px;
+  height: 100vh;
+  background-color: #fff;
+  border-top: #f0f0f0 1px solid;
 }
 
 .intro {

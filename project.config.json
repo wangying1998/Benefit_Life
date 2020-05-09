@@ -90,6 +90,12 @@
 					"name": "pages/feedback/feedback",
 					"pathName": "pages/feedback/feedback",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/send-dynamic/send-dynamic",
+					"pathName": "pages/send-dynamic/send-dynamic",
+					"scene": null
 				}
 			]
 		}
