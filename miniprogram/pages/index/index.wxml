@@ -81,7 +81,7 @@
       <view class="article-item fl-bet-cen" bindtap="detailsArticle" data-artid="{{item._id}}">
         <view class="art-text fl-col-bet-cen">
             <view class="art-title">{{item.title}}</view>
-            <view class="flex" style="text-align: right">
+            <view class="flex small-size" style="text-align: right">
               <view class="art-date">阅读量：{{item.lookCount}}</view>
               <view class="art-date" style="margin-left: 40rpx;">点赞量：{{item.likeCount}}</view>
             </view>

@@ -118,6 +118,10 @@ image {
 }
 .meal-con{
   margin-top: 15rpx;
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .meal-pic {
   width: 90rpx;
@@ -155,7 +159,6 @@ image {
 }
 .art-date {
   color: #999999;
-  font-size: 22rpx;
 }
 .article-item image {
   width: 200rpx;

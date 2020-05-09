@@ -1,6 +1,6 @@
 <!--miniprogram/pages/tabs/my/my.wxml-->
 <image src="../../images/my_bg.jpg" class="my_bg"/>
-<view class="content-size">
+<view class="title-size">
     <view class="my-info fl-col-cen">
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatar || '../../images/default-avatar.png'}}" mode="cover"></image>
         <view class="nickname" wx:if="{{nickName}}">{{nickName || '昵称'}}</view>

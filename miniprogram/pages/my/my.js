@@ -31,12 +31,7 @@ Page({
         id: 'feedback',
         icon: '../../images/feedback.png',
         text: '意见反馈',
-      },
-      {
-        id: 'settings',
-        icon: '../../images/setting.png',
-        text: '我的设置',
-      },
+      }
     ],
     userInfo: {},
   },

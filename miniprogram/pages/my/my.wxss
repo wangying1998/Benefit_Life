@@ -50,7 +50,7 @@ button{
     color: rgb(124, 120, 120);
 }
 .item{
-    line-height: 90rpx;
+    line-height: 100rpx;
     border-bottom: 1px solid #f0f0f0;
 }
 .item-icon{
