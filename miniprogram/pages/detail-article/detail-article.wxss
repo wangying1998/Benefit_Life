@@ -4,7 +4,8 @@
 }
 .art-title {
     color: #333333;
-    line-height: 3;
+    padding-top: 30rpx 0;
+    line-height: 1.5;
     font-weight: bold;
     font-size: 40rpx;
 }

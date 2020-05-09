@@ -107,8 +107,6 @@ Page({
           url: '/pages/physique/physique',
         })
       }
-      
-      
     })
   },
   

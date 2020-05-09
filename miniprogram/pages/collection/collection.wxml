@@ -6,11 +6,11 @@
 </view>
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
     <swiper-item>
-		<view class="dynamic-item mr-t-20 content-size" wx:for="{{activityList}}" wx:key="id">
+		<view class="dynamic-item mr-t-20 content-size" wx:for="{{activityList}}">
 			<view class="perInfo">
 				<view class="info small-size">
-					<image class="release-avatar" src="{{item.userInfo[0].avatar}}" mode="cover"/>
-						<view class="release-name">{{item.userInfo[0].nickName}}</view>
+					<image class="release-avatar" src="{{item.userInfo[0].avatar || '../../images/defaule-avatar.png'}}" mode="cover"/>
+						<view class="release-name">{{item.userInfo[0].nickName || '默认昵称'}}</view>
 				</view>
 				<view>
 					<image bindtap="gotoLike" wx:if="{{!item.isLike}}" data-id="{{item.likeId}}"
@@ -22,7 +22,7 @@
 					class="send" src="../../images/collect.png" wx:else></image>
 				</view>
 			</view>
-			<view bindtap="detailDynamic" data-id="{{item._id}}" class="fl-bet-cen">
+			<view bindtap="detailDynamic" data-id="{{item.likeId}}" class="fl-bet-cen">
 				<view class="fl-col">
 					<view class="dynamic-copywriting">{{item.activity[0].content}}</view>
 					<view class="release-date">{{filter.formatTime(item.activity[0].create_time,'M月D日h:m')}}</view>

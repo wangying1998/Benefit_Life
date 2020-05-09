@@ -23,7 +23,7 @@ Page({
     let that = this;
     getSquareList({}).then(res => {
 			this.setData({
-				squareList: res.list,
+				squareList: res.list.reverse(),
 			})
 		})
   },
@@ -70,9 +70,6 @@ Page({
             currentIndex: e.currentTarget.dataset.id
           })
           clickLike(param).then(res => {
-            // this.setData({
-            // 	squareList: res,
-            // })
           })
         }
       }

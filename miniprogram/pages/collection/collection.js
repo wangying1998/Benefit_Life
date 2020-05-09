@@ -24,6 +24,12 @@ Page({
       })
     })
   },
+  detailDynamic: function(e) {
+    let query = e.currentTarget.dataset['id'];
+    wx.navigateTo({
+      url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
+    })
+  },
   // 点赞
   gotoLike: function(e) {
     var that = this;

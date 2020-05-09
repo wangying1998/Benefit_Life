@@ -3,7 +3,7 @@
 <view class="title-size">
     <view class="my-info fl-col-cen">
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatar || '../../images/default-avatar.png'}}" mode="cover"></image>
-        <view class="nickname" wx:if="{{nickName}}">{{nickName || '昵称'}}</view>
+        <view class="nickname" wx:if="{{nickName}}">{{nickName}}</view>
 		<view wx:else class="button_box">
 			<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
 				点击获取头像昵称

@@ -23,7 +23,7 @@ Page({
   getData() {
     getUserSquareList({}).then(res => {
 			this.setData({
-        squareList: res[0].actList,
+        squareList: res[0].actList.reverse(),
         myInfo: res[0],
       })
 		})
@@ -50,58 +50,65 @@ Page({
       }
 		})
   },
-  // 点赞
-  gotoLike: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.curindex;
-    var list = that.data.squareList;
-    if (list[index]) {
-      var isLike = list[index].isLike;
-      if (isLike !== undefined) {
-        if (isLike) {
-          list[index].isLike = false;
-        } else {
-          list[index].isLike = true;
-        }
-        this.setData({
-          squareList: list
-        })
-      }
-    }
-    var param = {
-      likeId: e.currentTarget.dataset.id,
-      class: 1,
-      authId: e.currentTarget.dataset.authid,
-    }
-    clickLike(param).then(res => {
+  detailDynamic: function(e) {
+    let query = e.currentTarget.dataset['id'];
+    wx.navigateTo({
+      url: `/pages/detail-dynamic/detail-dynamic?id=${query}`,
     })
     
   },
-  // 取消点赞
-  goDislike: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.curindex;
-    var list = that.data.squareList;
-    if (list[index]) {
-      var isLike = list[index].isLike;
-      if (isLike !== undefined) {
-        if (isLike) {
-          list[index].isLike = false;
-        } else {
-          list[index].isLike = true;
-        }
-        this.setData({
-          squareList: list
-        })
-      }
-    }
-    var param = {
-      id: e.currentTarget.dataset.id,
-      class: 1,
-    }
-    disLike(param).then(res => {
-    })
-  },
+  // 点赞
+  // gotoLike: function(e) {
+  //   var that = this;
+  //   var index = e.currentTarget.dataset.curindex;
+  //   var list = that.data.squareList;
+  //   if (list[index]) {
+  //     var isLike = list[index].isLike;
+  //     if (isLike !== undefined) {
+  //       if (isLike) {
+  //         list[index].isLike = false;
+  //       } else {
+  //         list[index].isLike = true;
+  //       }
+  //       this.setData({
+  //         squareList: list
+  //       })
+  //     }
+  //   }
+  //   var param = {
+  //     likeId: e.currentTarget.dataset.id,
+  //     class: 1,
+  //     authId: e.currentTarget.dataset.authid,
+  //   }
+  //   clickLike(param).then(res => {
+  //   })
+    
+  // },
+  // // 取消点赞
+  // goDislike: function(e) {
+  //   var that = this;
+  //   var index = e.currentTarget.dataset.curindex;
+  //   var list = that.data.squareList;
+  //   if (list[index]) {
+  //     var isLike = list[index].isLike;
+  //     if (isLike !== undefined) {
+  //       if (isLike) {
+  //         list[index].isLike = false;
+  //       } else {
+  //         list[index].isLike = true;
+  //       }
+  //       this.setData({
+  //         squareList: list
+  //       })
+  //     }
+  //   }
+  //   var param = {
+  //     id: e.currentTarget.dataset.id,
+  //     class: 1,
+  //   }
+  //   disLike(param).then(res => {
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
