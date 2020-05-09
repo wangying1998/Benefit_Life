@@ -15,7 +15,7 @@
 					 mode="cover"
 					></image>
 					<view class="">
-						<view class="release-name">{{detailDyna.userInfo[0]||'默认昵称'}}</view>
+						<view class="release-name">{{detailDyna.userInfo[0].nickName||'默认昵称'}}</view>
 						<view class="release-date">{{filter.formatTime(detailDyna.create_time,'M月D日h:m')}}</view>
 					</view>
 				</view>
