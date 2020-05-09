@@ -3,6 +3,7 @@ page{
 }
 .container{
     background-color: #fff;
+    padding-top: 30rpx;
 }
 .p-my {
     color: #888;

@@ -42,36 +42,41 @@ Page({
   },
   // 点赞
   gotoLike: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.curindex;
-    var list = that.data.squareList;
-    if (list[index]) {
-      var isLike = list[index].isLike;
-      if (isLike !== undefined) {
-        if (isLike) {
-          list[index].isLike = false;
-        } else {
-          list[index].isLike = true;
+    wx.getSetting({
+      success:(res)=>{
+        if (res.authSetting['scope.userInfo']) {
+          var that = this;
+          var index = e.currentTarget.dataset.curindex;
+          var list = that.data.squareList;
+          if (list[index]) {
+            var isLike = list[index].isLike;
+            if (isLike !== undefined) {
+              if (isLike) {
+                list[index].isLike = false;
+              } else {
+                list[index].isLike = true;
+              }
+              this.setData({
+                squareList: list
+              })
+            }
+          }
+          var param = {
+            likeId: e.currentTarget.dataset.id,
+            class: 1,
+            authId: e.currentTarget.dataset.authid,
+          }
+          this.setData({
+            currentIndex: e.currentTarget.dataset.id
+          })
+          clickLike(param).then(res => {
+            // this.setData({
+            // 	squareList: res,
+            // })
+          })
         }
-        this.setData({
-          squareList: list
-        })
       }
-    }
-    var param = {
-      likeId: e.currentTarget.dataset.id,
-      class: 1,
-      authId: e.currentTarget.dataset.authid,
-    }
-    this.setData({
-      currentIndex: e.currentTarget.dataset.id
     })
-    clickLike(param).then(res => {
-			// this.setData({
-			// 	squareList: res,
-			// })
-		})
-    
   },
   // 取消点赞
   goDislike: function(e) {

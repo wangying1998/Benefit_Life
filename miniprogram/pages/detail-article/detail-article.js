@@ -30,19 +30,24 @@ Page({
   },
   // 点赞
   gotoLike: function(e) {
-    var that = this;
-    var art = that.data.detailArt;
-    art.isLike = !art.isLike
-    this.setData({
-      detailArt: art
+    wx.getSetting({
+      success:(res)=>{
+        if (res.authSetting['scope.userInfo']) {
+          var that = this;
+          var art = that.data.detailArt;
+          art.isLike = !art.isLike
+          this.setData({
+            detailArt: art
+          })
+          var param = {
+            likeId: e.currentTarget.dataset.id,
+            class: 0 // 推文
+          }
+          clickLike(param).then(res => {
+          })
+        }
+      }
     })
-    var param = {
-      likeId: e.currentTarget.dataset.id,
-      class: 0 // 推文
-    }
-    clickLike(param).then(res => {
-    })
-    
   },
   // 取消点赞
   goDislike: function(e) {

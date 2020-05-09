@@ -1,6 +1,6 @@
 <!-- pages/toboo/toboo.wxml -->
 <view class="container">
-    <view class="title-size">
+    <view class="large-size">
         <text class="p-my">我的体质是：</text>
         <text class="p-name">{{physicalInfo.name}}</text>
         <view class="both">
