@@ -31,7 +31,8 @@ Page({
         living: res.living,
         meals: res.meals,
         should: res.suggest.should,
-        avoid: res.suggest.avoid
+        avoid: res.suggest.avoid,
+        suggest: res.suggest,
       })
     })
     getMyinfo({}).then(res => {
