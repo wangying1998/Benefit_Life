@@ -8,7 +8,7 @@
 		<!-- 个人信息+时间 -->
 		<view class="perInfo">
 			<view class="info">
-				<image class="release-avatar" src="{{item.userInfo[0].avatar || '../../images/defaule-avatar.png'}}" mode="cover" />
+				<image class="release-avatar" src="{{item.userInfo[0].avatar || '../../images/default-avatar.png'}}" mode="cover" />
 				<view>
 					<view class="release-name">{{item.userInfo[0].nickName || '默认昵称'}}</view>
 					<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>

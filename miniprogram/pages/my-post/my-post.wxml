@@ -10,7 +10,7 @@
 				<view class="info">
 					<image
 					 class="release-avatar"
-					 src="{{myInfo.avatar || '../../images/defaule-avatar.png'}}"
+					 src="{{myInfo.avatar || '../../images/default-avatar.png'}}"
 					 mode="cover"
 					></image>
 					<view class="">

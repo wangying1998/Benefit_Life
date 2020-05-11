@@ -22,7 +22,6 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
-      console.log(res.activity);
     })
   },
   detailDynamic: function(e) {
@@ -78,7 +77,6 @@ Page({
   goDislike: function(e) {
     var that = this;
     var index  = e.currentTarget.dataset.curindex;
-    console.log("index",index);
     var type = e.currentTarget.dataset.class;
     var list = [];
     if(type) {

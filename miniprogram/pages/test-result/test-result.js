@@ -26,7 +26,6 @@ Page({
     // 获取个人档案
     getPhysicalInfo() {
       getPhysicalInfo({}).then(res => {
-        console.log(res.data[0])
         this.setData({
           physicalInfo: res.data[0],
         })

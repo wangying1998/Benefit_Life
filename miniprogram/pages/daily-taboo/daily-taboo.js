@@ -34,7 +34,6 @@ Page({
     this.setData({
       lunar: calendar.solar2lunar()   // 阴历转换
     })
-    console.log(this.data.lunar)
   },
 
   /**

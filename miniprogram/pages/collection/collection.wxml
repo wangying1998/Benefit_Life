@@ -9,7 +9,7 @@
 		<view class="dynamic-item mr-t-20 content-size" wx:for="{{activityList}}">
 			<view class="perInfo">
 				<view class="info small-size">
-					<image class="release-avatar" src="{{item.userInfo[0].avatar || '../../images/defaule-avatar.png'}}" mode="cover"/>
+					<image class="release-avatar" src="{{item.userInfo[0].avatar || '../../images/default-avatar.png'}}" mode="cover"/>
 						<view class="release-name">{{item.userInfo[0].nickName || '默认昵称'}}</view>
 				</view>
 				<!-- <view>

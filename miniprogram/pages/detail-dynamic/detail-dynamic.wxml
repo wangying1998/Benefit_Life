@@ -11,7 +11,7 @@
 				<view class="info">
 					<image
 					 class="release-avatar"
-					 src="{{detailDyna.userInfo[0].avatar || '../../images/defaule-avatar.png'}}"
+					 src="{{detailDyna.userInfo[0].avatar || '../../images/default-avatar.png'}}"
 					 mode="cover"
 					></image>
 					<view class="">

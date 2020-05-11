@@ -86,7 +86,6 @@ img_upload: function () {
     //由于图片只能一张一张地上传，所以用循环
     if(imgs.length>0) {
       for (let i = 0; i < imgs.length; i++) {
-        console.log("时间戳",new Date().getTime());
         wx.cloud.uploadFile({
           cloudPath: 'ZJK_a/' + new Date().getTime() + imgs[i].match(/\.[^.]+?$/)[0], 
           filePath: imgs[i], // 文件路径 ，循环的当前临时路径 
