@@ -295,17 +295,17 @@ async function getPhysicalType(data){  // 接收答案-计算分数-返回体质
 
 	await db.collection('user').doc(data.userId).update({		// 更新用户体质
 		data: {
-			physical: result.main[0],
+			physical: result.main[0] || result.tendency[0],
 			both: result.both.join(',')
 		}
 	});
 
 	await db.collection('physical_feature').where({
-		name: result.main[0]
+		name: result.main[0] || result.tendency[0]
 	}).get().then(res=>{
 		result.main_feature = res.data;
 	});
-
+	
 	return result;
 }
 
