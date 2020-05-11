@@ -3,7 +3,7 @@
 	 class="square-list"
 	 wx:for="{{squareList}}"
 	 wx:key="id"
-	 wx:for-index="index" data-id="{{item._id}}" bindtap="detailDynamic"
+	 wx:for-index="index" data-id="{{item._id}}" 
 	>
 	<view class="dynamic-item">
 			<view class="perInfo">
@@ -17,7 +17,11 @@
 						<view class="release-name">{{myInfo.nickName || '默认昵称'}}</view>
 						<view class="release-date">{{filter.formatTime(item.create_time,'M月D日h:m')}}</view>
 					</view>
+					
 				</view>
+				<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">
+						删除
+					</view>
 				<!-- <view>
 					<image bindtap="goDislike" wx:if="{{item.isLike}}" data-id="{{item._id}}"
 					data-curIndex="{{index}}"
@@ -29,7 +33,7 @@
 					class="send" src="../../images/no-collect.png"></image>
 				</view> -->
 			</view>
-			<view>
+			<view bindtap="detailDynamic">
 				<view class="dynamic-copywriting">
 					{{item.content}}
 				</view>
@@ -37,6 +41,7 @@
 					<image src="{{item}}" wx:for="{{item.imgs}}" wx:key="id" class="radius"></image>
 				</view>
 			</view>
-			<view class="opt-delete" bindtap="goDelete" data-id="{{item._id}}">删除</view>
+			
 		</view>
+		
 	</view>

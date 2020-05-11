@@ -22,6 +22,7 @@ Page({
         activityList: res.activity,// 动态
         articleList: res.article, //文章
       })
+      console.log(res.activity);
     })
   },
   detailDynamic: function(e) {
@@ -33,7 +34,7 @@ Page({
   // 点赞
   gotoLike: function(e) {
     var that = this;
-    var index  = e.currentTarget.dataset.id;
+    var index  = e.currentTarget.dataset.curindex;
     var type = e.currentTarget.dataset.class;
     var list = [];
     if(type) {
@@ -62,7 +63,7 @@ Page({
       }
     }
     var param = {
-      likeId: index,
+      likeId: e.currentTarget.dataset.id,
       class: type,
       authId: e.currentTarget.dataset.authid,
     }
@@ -76,7 +77,8 @@ Page({
   // 取消点赞
   goDislike: function(e) {
     var that = this;
-    var index  = e.currentTarget.dataset.id;
+    var index  = e.currentTarget.dataset.curindex;
+    console.log("index",index);
     var type = e.currentTarget.dataset.class;
     var list = [];
     if(type) {

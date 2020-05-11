@@ -58,8 +58,4 @@ page {
 }
 .opt-delete {
   color: #999;
-  font-size: 26rpx;
-  margin-top: 30rpx;
-  position: relative;
-  left: 630rpx;
 }

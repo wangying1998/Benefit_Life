@@ -101,10 +101,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let user = wx.getStorageSync('user');
-    this.setData({
-      userInfo: user
-    })
+    // let user = wx.getStorageSync('user');
+    // this.setData({
+    //   userInfo: user
+    // })
     this.setData({
       lunar: calendar.solar2lunar()   // 阴历转换
     })
@@ -122,6 +122,10 @@ Page({
    */
   onShow: function () {
     this.getHomeData();
+    let user = wx.getStorageSync('user');
+    this.setData({
+      userInfo: user
+    })
   },
 
   /**
