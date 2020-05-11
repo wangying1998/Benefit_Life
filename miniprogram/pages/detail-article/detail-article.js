@@ -45,6 +45,10 @@ Page({
           }
           clickLike(param).then(res => {
           })
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
       }
     })

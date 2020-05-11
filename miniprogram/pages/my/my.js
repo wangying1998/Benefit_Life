@@ -70,31 +70,37 @@ Page({
     })
   },
   gotoPage:function(e) {
-    switch(e.target.id){
-      case 'collection':
-        wx.navigateTo({
-          url: '/pages/collection/collection',
-        })
-      case 'my-post':
-        wx.navigateTo({
-          url: '/pages/my-post/my-post',
-        })
-        break;
-      case 'physique':
-        this.getInfo();
-        break;
-      case 'feedback':
-        wx.navigateTo({
-          url: '/pages/feedback/feedback',
-        })
-        break;
-      case 'settings':
-        wx.navigateTo({
-          url: '/pages/setting/setting',
-        })
-        break;
-      default:
-    }
+    wx.getSetting({
+      success:(res)=>{
+        if (res.authSetting['scope.userInfo']) {
+          switch(e.target.id){
+            case 'collection':
+              wx.navigateTo({
+                url: '/pages/collection/collection',
+              })
+            case 'my-post':
+              wx.navigateTo({
+                url: '/pages/my-post/my-post',
+              })
+              break;
+            case 'physique':
+              this.getInfo();
+              break;
+            case 'feedback':
+              wx.navigateTo({
+                url: '/pages/feedback/feedback',
+              })
+              break;
+            default:
+              break;
+          }
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    })
   },
   getInfo: function () {
 		getMyinfo({}).then(res => {

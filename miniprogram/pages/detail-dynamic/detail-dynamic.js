@@ -48,6 +48,10 @@ Page({
             currentIndex: e.currentTarget.dataset.id
           })
           clickLike(param).then(res => {})
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
       }
     })

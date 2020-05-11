@@ -71,6 +71,10 @@ Page({
           })
           clickLike(param).then(res => {
           })
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
       }
     })
@@ -108,8 +112,18 @@ Page({
   },
   // 去发送
   gotoSend: function() {
-    wx.navigateTo({
-      url: '/pages/send-dynamic/send-dynamic'
+    wx.getSetting({
+      success:(res)=>{
+        if (res.authSetting['scope.userInfo']) {
+          wx.navigateTo({
+            url: '/pages/send-dynamic/send-dynamic'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
     })
   },
   /**

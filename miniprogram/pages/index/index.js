@@ -56,6 +56,10 @@ Page({
               url: '/pages/physique/physique',
             })
           }
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
       }
     })

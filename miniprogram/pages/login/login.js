@@ -27,23 +27,19 @@ Page({
   },
   bindGetUserInfo: function (e) {
         if (e.detail.userInfo) {
-            //用户按了允许授权按钮
-            
-            wx.setStorage({
-              key: "userInfo",
-              data: e.detail.userInfo
-            })   
-            let param = {
-              nickName: e.detail.userInfo.nickName,
-              avatar: e.detail.userInfo.avatarUrl,
-              // openId: getSessionData('openId'),
-              // userId: getSessionData('userId'),
-
-            }
-            updateBaseinfo(param).then(res => {
-            })
-            wx.navigateBack();
+            this.setData({
+              nickName: res.userInfo.nickName,
+              avatar: res.userInfo.avatarUrl
+            });
+            let user = wx.getStorageSync('user');
+            user.nickName = res.userInfo.nickName;
+            user.avatar = res.userInfo.avatarUrl;
+            wx.setStorageSync('user', user);
               
+            updateBaseinfo({
+              nickName: res.userInfo.nickName,
+              avatar: res.userInfo.avatarUrl
+            });
         } else {
             //用户按了拒绝按钮
             wx.showModal({
